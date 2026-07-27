@@ -3,11 +3,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { Activity, Search, Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { NAV_LINKS } from "../../data/navLinks.js";
+import { UNIVERSES } from "../../data/universes.js";
 
-export default function Header({ onSearchOpen }) {
+export default function Header({ onSearchOpen, onMenuToggle }) {
   const { dark, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
@@ -17,8 +20,31 @@ export default function Header({ onSearchOpen }) {
 
   const go = (href) => {
     setMenuOpen(false);
+    setSearchOpen(false);
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
+
+  const searchableContent = UNIVERSES.flatMap((universe) => [
+    {
+      title: universe.name,
+      description: universe.description,
+      type: "Universo",
+      href: "#galeria",
+    },
+    ...universe.screens.map((screen) => ({
+      title: screen.title,
+      description: screen.desc,
+      type: "Funcionalidade",
+      href: "#galeria",
+    })),
+  ]);
+
+  const results = query.trim()
+    ? searchableContent.filter((item) => {
+        const text = `${item.title} ${item.description} ${item.type}`.toLowerCase();
+        return text.includes(query.trim().toLowerCase());
+      })
+    : [];
 
   return (
     <header
@@ -62,7 +88,10 @@ export default function Header({ onSearchOpen }) {
 
           <div className="hidden md:flex items-center gap-2">
             <button
-              onClick={onSearchOpen}
+              onClick={() => {
+                setSearchOpen((value) => !value);
+                onSearchOpen?.();
+              }}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
                 dark
                   ? "text-slate-400 hover:text-white hover:bg-white/5 border border-white/10"
@@ -98,7 +127,13 @@ export default function Header({ onSearchOpen }) {
           </div>
 
           <div className="md:hidden flex items-center gap-2">
-            <button onClick={onSearchOpen} className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}>
+            <button
+              onClick={() => {
+                setSearchOpen((value) => !value);
+                onSearchOpen?.();
+              }}
+              className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}
+            >
               <Search size={18} />
             </button>
             <button onClick={toggle} className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}>
@@ -106,13 +141,49 @@ export default function Header({ onSearchOpen }) {
             </button>
             <button
               className={`p-1 ${dark ? "text-slate-400" : "text-slate-500"}`}
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+                onMenuToggle?.();
+              }}
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
       </div>
+
+      {searchOpen && (
+        <div className={`border-t ${dark ? "border-white/5 bg-[#0F172A]/95" : "border-black/6 bg-white/95"}`}>
+          <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
+            <div className={`rounded-2xl border p-3 ${dark ? "border-white/10 bg-[#0B1220]" : "border-black/8 bg-slate-50"}`}>
+              <input
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Pesquisar universos, funcionalidades e conteúdos"
+                className={`w-full rounded-xl border px-4 py-3 text-sm outline-none ${dark ? "border-white/10 bg-[#0F172A] text-white placeholder:text-slate-500" : "border-black/8 bg-white text-slate-900 placeholder:text-slate-400"}`}
+              />
+              {results.length > 0 && (
+                <div className="mt-3 space-y-2">
+                  {results.map((item) => (
+                    <button
+                      key={`${item.title}-${item.type}`}
+                      onClick={() => {
+                        setQuery("");
+                        setSearchOpen(false);
+                        document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                      }}
+                      className={`w-full rounded-xl border px-3 py-2 text-left transition-colors ${dark ? "border-white/10 hover:bg-white/5" : "border-black/8 hover:bg-black/5"}`}
+                    >
+                      <div className={`text-sm font-semibold ${dark ? "text-white" : "text-slate-900"}`}>{item.title}</div>
+                      <div className={`text-xs mt-1 ${dark ? "text-slate-400" : "text-slate-600"}`}>{item.type} · {item.description}</div>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <AnimatePresence>
         {menuOpen && (

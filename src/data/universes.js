@@ -1,0 +1,409 @@
+import {
+  LayoutDashboard,
+  ShoppingCart,
+  CreditCard,
+  ClipboardList,
+  UserCheck,
+  Package,
+  Droplets,
+  Activity,
+  Warehouse,
+  DollarSign,
+  BarChart2,
+  FileText,
+  Settings,
+  Receipt,
+  UserCog,
+} from "lucide-react";
+
+// Cada "universo" representa um módulo do SmartFlow. Cada tela (screen)
+// aponta para uma chave de mockup (ver components/sections/mockups/index.jsx)
+// e traz uma lista de hotspots (pontos numerados sobre a tela).
+export const UNIVERSES = [
+  {
+    id: "dashboard",
+    name: "Dashboard",
+    icon: LayoutDashboard,
+    color: "#2563EB",
+    description: "Visão geral dos indicadores após o login",
+    screens: [
+      {
+        title: "Painel Principal",
+        desc: "Tela inicial do SmartFlow após o login. Apresenta todos os indicadores consolidados: vendas no TAP, inserção de créditos, vendas no PDV, consumo em litros e Top 10 consumos do mês.",
+        mockup: "dashboard",
+        hotspots: [
+          { x: 18, y: 17, label: "1 — Vendas no TAP", info: "Relatório de vendas realizadas no TAP no mês atual. Exibe o volume total para acompanhamento do desempenho das torneiras." },
+          { x: 40, y: 17, label: "2 — Inserção de Créditos", info: "Total de créditos inseridos no mês. Acompanhe as recargas realizadas pelos clientes e o movimento financeiro." },
+          { x: 62, y: 17, label: "3 — Vendas no PDV", info: "Valor total das vendas realizadas no PDV no mês corrente. Clique para ver o detalhamento por categoria." },
+          { x: 40, y: 52, label: "4 — Gráfico de Vendas por Categoria", info: "Distribuição das vendas por categoria no PDV. Identifique quais categorias geram mais receita." },
+          { x: 82, y: 52, label: "5 — Top 10 Consumos no TAP", info: "Ranking dos 10 maiores consumidores no TAP do mês. Identifique os melhores clientes para ações de fidelização." },
+          { x: 40, y: 83, label: "6 — Aniversariantes e Exportação", info: "Lista de aniversariantes do dia e clientes por dia. Use os botões de exportação para gerar a lista e compartilhar com a equipe." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "vendas",
+    name: "Vendas",
+    icon: ShoppingCart,
+    color: "#0EA5E9",
+    description: "Registro de vendas no PDV com histórico das últimas 30",
+    screens: [
+      {
+        title: "Tela Inicial de Vendas (PDV)",
+        desc: "Ao acessar Vendas, o sistema exibe as últimas 30 vendas realizadas no PDV. Identifique o cliente para iniciar uma nova venda.",
+        mockup: "vendas",
+        hotspots: [
+          { x: 28, y: 14, label: "1 — Pesquisar por TAG", info: "Aproxime a TAG do cliente para identificação automática ou use o campo de busca. A TAG é o principal identificador do cliente no SmartFlow." },
+          { x: 30, y: 27, label: "2 — Pesquisar por Documento", info: "Caso o cliente não possua TAG, informe o número do documento (CPF, RG). O sistema localiza o cadastro e habilita a nova venda." },
+          { x: 32, y: 58, label: "3 — Selecionar Produto", info: "Após identificar o cliente e iniciar a venda, clique no produto para adicioná-lo ao pedido. O subtotal é atualizado automaticamente." },
+          { x: 78, y: 50, label: "4 — Itens do Pedido", info: "Visualize os itens adicionados com quantidade e valor. Ajuste quantidades ou remova itens antes de finalizar." },
+          { x: 78, y: 87, label: "5 — Encerrar e Pagar", info: "Clique em Encerrar para confirmar o pedido, em seguida Pagamento para registrar a forma de pagamento e concluir a venda." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "pagamento",
+    name: "Pagamento",
+    icon: CreditCard,
+    color: "#8B5CF6",
+    description: "Gerenciamento financeiro do cliente: créditos, TAGs e saldo",
+    screens: [
+      {
+        title: "Identificação e Conta do Cliente",
+        desc: "Informe a TAG ou o número do documento para abrir o atendimento. Em seguida, gerencie créditos, cashback, saldo e TAGs do cliente.",
+        mockup: "pagamento",
+        hotspots: [
+          { x: 42, y: 22, label: "1 — Informar TAG ou Documento", info: "Digite a TAG ou o número do documento do cliente. Ambos identificam o cliente e abrem o acesso ao atendimento financeiro." },
+          { x: 72, y: 22, label: "2 — Abrir Atendimento", info: "Clique em Abrir para acessar a conta. O sistema apresenta informações cadastrais, histórico de créditos e TAGs associadas." },
+          { x: 25, y: 52, label: "3 — Saldo e Histórico", info: "Visualize saldo em TAG, cofre e cashback disponíveis. Consulte histórico de créditos, TAGs, consumo na torneira e compras no PDV." },
+          { x: 72, y: 44, label: "4 — Operações Financeiras", info: "Realize inserção de crédito, cashback, baixa de saldo ou transferência. Cada operação possui validações automáticas antes de ser efetivada." },
+          { x: 72, y: 72, label: "5 — Gerenciar TAGs", info: "Adicione, remova ou substitua TAGs vinculadas. Pessoa física pode ter apenas uma TAG; pessoa jurídica pode ter mais de uma." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "comandas",
+    name: "Comandas",
+    icon: ClipboardList,
+    color: "#0891B2",
+    description: "Consulta e gerenciamento das comandas registradas",
+    screens: [
+      {
+        title: "Lista de Comandas com Filtros",
+        desc: "Consulte todas as comandas registradas. Use filtros por categoria e período para localizar registros específicos. Acesse detalhes ou a conta do cliente diretamente.",
+        mockup: "comandas",
+        hotspots: [
+          { x: 20, y: 18, label: "1 — Filtrar por Categoria", info: "Selecione a categoria desejada para filtrar as comandas. Útil para visualizar apenas um tipo específico de atendimento." },
+          { x: 50, y: 18, label: "2 — Filtrar por Período", info: "Informe a data ou intervalo e clique em Filtrar. Sem filtros aplicados, nenhuma comanda é exibida." },
+          { x: 76, y: 18, label: "3 — Somente Ativos", info: "Ative para ver apenas comandas em aberto. Desative para incluir comandas encerradas na consulta." },
+          { x: 42, y: 55, label: "4 — Visualizar Detalhes", info: "O ícone de visualização exibe os detalhes completos da comanda: itens, valores, datas e informações do cliente." },
+          { x: 70, y: 55, label: "5 — Acessar Conta no Pagamento", info: "O ícone de cartão direciona diretamente para a conta do cliente na funcionalidade Pagamento para continuidade do atendimento." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "clientes",
+    name: "Clientes",
+    icon: UserCheck,
+    color: "#10B981",
+    description: "Gerenciamento completo do cadastro de clientes",
+    screens: [
+      {
+        title: "Consulta de Clientes",
+        desc: "Visualize todos os clientes cadastrados. Pesquise por nome, CPF ou TAG. Acesse o PDV, a conta do cliente, edite ou exclua registros.",
+        mockup: "clientes",
+        hotspots: [
+          { x: 30, y: 13, label: "1 — Pesquisar Cliente", info: "Digite nome, CPF ou TAG e clique em Filtrar para localizar o cliente. Use Limpar para reiniciar a busca." },
+          { x: 88, y: 13, label: "2 — Cadastrar Novo Cliente", info: "Clique em Adicionar (+) para acessar o formulário. Após salvar, o sistema direciona automaticamente para Pagamento para vincular a TAG." },
+          { x: 55, y: 38, label: "3 — Dados e Ações do Cliente", info: "Visualize nome, contato, quantidade de pedidos e total gasto. Os ícones de ação permitem acessar PDV, conta, detalhes, editar ou excluir." },
+          { x: 82, y: 38, label: "4 — Acesso Rápido (PDV/Conta)", info: "Use os ícones para ir diretamente ao PDV do cliente ou à sua conta em Pagamento sem precisar sair da tela de consulta." },
+        ],
+      },
+      {
+        title: "Cadastro de Novo Cliente",
+        desc: "Preencha os dados do cliente. Campos com indicador vermelho são obrigatórios. Após salvar, o sistema direciona para Pagamento para vincular a TAG.",
+        mockup: "clientes",
+        hotspots: [
+          { x: 40, y: 30, label: "1 — Campos Obrigatórios", info: "Campos identificados com bolinha vermelha devem ser preenchidos. Cada campo tem validação específica conforme o tipo de dado (texto, número ou seleção)." },
+          { x: 40, y: 52, label: "2 — Campos Opcionais", info: "Preencha informações adicionais: endereço, data de nascimento (aniversariantes), observações e categoria do cliente." },
+          { x: 40, y: 73, label: "3 — Status Ativo", info: "Por padrão o cliente é criado como Ativo. Desmarque somente se desejar cadastrá-lo como inativo desde o início." },
+          { x: 20, y: 87, label: "4 — Salvar e Vincular TAG", info: "Clique em Salvar para concluir o cadastro. O sistema cria o registro e direciona automaticamente para Pagamento para vinculação da TAG." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "produto",
+    name: "Produto",
+    icon: Package,
+    color: "#F59E0B",
+    description: "Cadastro e gestão do portfólio de produtos",
+    screens: [
+      {
+        title: "Consulta de Produtos",
+        desc: "Visualize todos os produtos cadastrados. Pesquise, filtre, edite ou cadastre novos. Para cadastrar um produto é necessário que categoria, tipo e unidade já estejam cadastrados.",
+        mockup: "produto",
+        hotspots: [
+          { x: 35, y: 13, label: "1 — Pesquisar Produto", info: "Use o campo de pesquisa e os filtros para localizar produtos. Aplique e limpe filtros conforme necessário." },
+          { x: 88, y: 13, label: "2 — Adicionar Novo Produto", info: "Clique em (+) para acessar o formulário de cadastro. Certifique-se que categoria, tipo e unidade já estejam cadastrados antes." },
+          { x: 30, y: 42, label: "3 — Ações do Produto", info: "Use os ícones de ação para visualizar detalhes, editar ou excluir. Os tooltips descrevem a função de cada ícone." },
+          { x: 80, y: 56, label: "4 — Disponibilidade em Estoque", info: "Indica a quantidade disponível. Produto sem entrada no Estoque não pode ser comercializado no PDV." },
+        ],
+      },
+      {
+        title: "Cadastro de Novo Produto",
+        desc: "Preencha informações básicas, defina necessidade de preparo, produto fiscal e foto. Produto é criado como ativo por padrão.",
+        mockup: "produto",
+        hotspots: [
+          { x: 40, y: 25, label: "1 — Nome, Categoria, Tipo e Unidade", info: "Campos obrigatórios (bolinha vermelha). Categoria, tipo e unidade devem estar previamente cadastrados em Outras Opções." },
+          { x: 40, y: 44, label: "2 — Descrição, Ingredientes e Foto", info: "Adicione descrição e ingredientes para exibição no PDV e controle interno. Insira também a foto do produto." },
+          { x: 40, y: 62, label: "3 — Necessidade de Preparo", info: "Indique se o produto precisa ser preparado. Defina o responsável: Cozinha ou Bartender. O pedido é direcionado automaticamente." },
+          { x: 40, y: 74, label: "4 — Produto Fiscal", info: "Marque se o produto deve gerar documento fiscal (NF-e/NFC-e). Configure as informações fiscais correspondentes." },
+          { x: 20, y: 87, label: "5 — Salvar Cadastro", info: "Após preencher os campos obrigatórios, salve. O sistema retorna para a lista com o novo produto disponível." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "barril",
+    name: "Barril",
+    icon: Droplets,
+    color: "#6366F1",
+    description: "Cadastro de barris com redirecionamento para Estoque",
+    screens: [
+      {
+        title: "Cadastro de Barril",
+        desc: "Registre um novo barril. Após salvar, o sistema redireciona automaticamente para a listagem de barris no módulo Estoque.",
+        mockup: "barril",
+        hotspots: [
+          { x: 40, y: 25, label: "1 — Informações Obrigatórias", info: "Preencha os campos com bolinha vermelha: nome, volume e produto vinculado. Cada campo tem validação de preenchimento específica." },
+          { x: 40, y: 50, label: "2 — Campos Opcionais", info: "Adicione informações complementares conforme disponível: fornecedor, número de lote, custo e observações." },
+          { x: 40, y: 72, label: "3 — Status Ativo", info: "Por padrão o barril é criado como Ativo. Desmarque para registrá-lo como inativo (não disponível para operações)." },
+          { x: 20, y: 87, label: "4 — Salvar e Ir ao Estoque", info: "Após salvar, o sistema registra o barril e redireciona automaticamente para a listagem de barris no módulo Estoque." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "torneira",
+    name: "Torneira",
+    icon: Activity,
+    color: "#EC4899",
+    description: "Consulta e cadastro das torneiras do estabelecimento",
+    screens: [
+      {
+        title: "Consulta de Torneiras",
+        desc: "Visualize todas as torneiras cadastradas. Filtre por ativos, gerencie o status de oferta e acesse visualização, edição ou exclusão.",
+        mockup: "torneira",
+        hotspots: [
+          { x: 35, y: 13, label: "1 — Pesquisar e Filtrar", info: "Use pesquisa e filtros para localizar torneiras. O filtro Somente Ativos exibe apenas torneiras em operação." },
+          { x: 88, y: 13, label: "2 — Cadastrar Nova Torneira", info: "Clique em Adicionar (+) para ir ao formulário de cadastro com todas as informações necessárias." },
+          { x: 42, y: 45, label: "3 — Monitorar Torneiras", info: "Acompanhe o nível de cada torneira. Torneiras em vermelho (nível crítico) precisam de atenção para reposição de barril." },
+          { x: 75, y: 60, label: "4 — Ativar Oferta", info: "A opção Oferta indica que a torneira está com preço promocional. Exibido no display para os clientes." },
+        ],
+      },
+      {
+        title: "Cadastro de Nova Torneira",
+        desc: "Preencha os dados da torneira. Defina o status como Ativa ou Bloqueada. Salve para disponibilizá-la nas operações.",
+        mockup: "torneira",
+        hotspots: [
+          { x: 40, y: 25, label: "1 — Informações da Torneira", info: "Informe os dados obrigatórios (campos com bolinha vermelha). Inclui nome, número e barril (produto) vinculado." },
+          { x: 40, y: 55, label: "2 — Status da Torneira", info: "Defina Ativa (disponível para dispensar bebida) ou Bloqueada (indisponível para consumo dos clientes)." },
+          { x: 20, y: 87, label: "3 — Salvar Torneira", info: "Salve para registrar. O sistema retorna para a lista de torneiras com o novo registro disponível para operação." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "estoque",
+    name: "Estoque",
+    icon: Warehouse,
+    color: "#64748B",
+    description: "Produtos e barris disponíveis para comercialização",
+    screens: [
+      {
+        title: "Estoque de Produtos",
+        desc: "Consulte os produtos em estoque e registre entradas. Somente produtos com entrada no estoque podem ser comercializados no PDV.",
+        mockup: "estoque",
+        hotspots: [
+          { x: 35, y: 13, label: "1 — Pesquisar e Filtrar por Tipo/Categoria", info: "Use filtros por tipo e categoria para localizar produtos. A barra de pesquisa permite busca direta por nome." },
+          { x: 88, y: 13, label: "2 — Registrar Entrada", info: "Clique em Adicionar (+) para registrar a entrada de um produto já cadastrado. Preencha os dados obrigatórios e salve." },
+          { x: 42, y: 42, label: "3 — Verificar Disponibilidade", info: "Confira quantidade disponível. Produtos abaixo do mínimo precisam de reposição para não interromper as vendas." },
+          { x: 80, y: 55, label: "4 — Status do Item no Estoque", info: "Itens Ativos aparecem no PDV para venda. Itens Inativos não são exibidos. Altere conforme a disponibilidade real." },
+        ],
+      },
+      {
+        title: "Estoque de Barris",
+        desc: "Consulte os barris disponíveis para as torneiras. Adicione novos barris com o mesmo formulário de cadastro da funcionalidade Barril.",
+        mockup: "estoque",
+        hotspots: [
+          { x: 35, y: 13, label: "1 — Consultar Barris", info: "Visualize todos os barris em estoque. Use pesquisa e filtros para localizar por produto, fornecedor ou status." },
+          { x: 88, y: 13, label: "2 — Adicionar Barril", info: "Clique em (+) para ir ao formulário de cadastro de barril (mesma tela da funcionalidade Barril). O barril é incorporado ao estoque após salvar." },
+          { x: 42, y: 45, label: "3 — Dados do Barril", info: "Visualize produto vinculado, volume, status e demais informações. Use as ações para editar ou atualizar o registro." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "financeiro",
+    name: "Financeiro",
+    icon: DollarSign,
+    color: "#10B981",
+    description: "Extrato, faturamento e saldo do estabelecimento",
+    screens: [
+      {
+        title: "Extrato de Movimentações",
+        desc: "Consulte as movimentações financeiras por forma de pagamento, tipo de operação e período. Exporte em Excel.",
+        mockup: "financeiro",
+        hotspots: [
+          { x: 30, y: 13, label: "1 — Definir Filtros", info: "Selecione a forma de pagamento, o tipo de operação e o período desejado. As informações só são exibidas após clicar em Filtrar." },
+          { x: 18, y: 35, label: "2 — Resumo Financeiro", info: "Após filtrar, visualize o resumo consolidado do período: total de créditos, antecipações e demais operações financeiras." },
+          { x: 65, y: 55, label: "3 — Gráfico de Créditos e Antecipações", info: "Visualize o gráfico de inclusão de crédito e antecipações. Nota: não inclui pagamentos por vendas diretas no PDV." },
+          { x: 82, y: 25, label: "4 — Exportar Excel", info: "Clique em Exportar para gerar o arquivo Excel com todas as movimentações filtradas para análise externa." },
+        ],
+      },
+      {
+        title: "Faturamento",
+        desc: "Consulte o faturamento obtido em um período. Categorias 'não contábil' são excluídas automaticamente do cálculo.",
+        mockup: "financeiro",
+        hotspots: [
+          { x: 30, y: 13, label: "1 — Filtrar por Período", info: "Informe o período e clique em Filtrar. Categorias configuradas como não contábil não são consideradas no cálculo." },
+          { x: 40, y: 45, label: "2 — Total Faturado", info: "Valor total do faturamento no período selecionado, excluindo entradas de categorias marcadas como não contábil." },
+          { x: 75, y: 55, label: "3 — Gráfico por Método de Pagamento", info: "Distribuição do faturamento por forma de pagamento utilizada pelos clientes. Útil para análise financeira e negociação." },
+        ],
+      },
+      {
+        title: "Saldo",
+        desc: "Visualize saldos em TAG e cofre por categoria de cliente. Exporte os dados em Excel.",
+        mockup: "financeiro",
+        hotspots: [
+          { x: 30, y: 13, label: "1 — Filtrar por Categoria", info: "Selecione a categoria de cliente para consultar os saldos correspondentes. Clique em Filtrar para aplicar." },
+          { x: 38, y: 42, label: "2 — Saldo em TAG e Cofre", info: "Gráficos com saldo total em TAGs e no cofre. Permite visualizar a distribuição dos recursos financeiros disponíveis." },
+          { x: 75, y: 55, label: "3 — Saldo dos Clientes", info: "Lista com o saldo individual de cada cliente na categoria filtrada. Exportável para auditoria e análise em Excel." },
+          { x: 82, y: 20, label: "4 — Exportar Excel", info: "Gere o arquivo Excel com os saldos filtrados para análise, conferência ou compartilhamento com a equipe." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "vendasresumo",
+    name: "Vendas – Resumo",
+    icon: BarChart2,
+    color: "#F97316",
+    description: "Indicadores consolidados de vendas por período",
+    screens: [
+      {
+        title: "Resumo de Vendas",
+        desc: "Visualize indicadores de vendas por período: volume no TAP, valor total no TAP e PDV, forma de pagamento e distribuição percentual. Faça download dos gráficos.",
+        mockup: "vendasresumo",
+        hotspots: [
+          { x: 30, y: 13, label: "1 — Definir Período", info: "Informe o período desejado e clique em Filtrar. Os indicadores e gráficos são exibidos apenas após a aplicação do filtro." },
+          { x: 18, y: 35, label: "2 — Volume Vendido no TAP", info: "Total de litros vendidos no TAP no período. Compare com períodos anteriores para identificar tendências de consumo." },
+          { x: 45, y: 35, label: "3 — Valor Total TAP e PDV", info: "Valores financeiros das vendas realizadas no TAP e no PDV separadamente para análise comparativa dos canais." },
+          { x: 60, y: 60, label: "4 — Gráfico PDV por Forma de Pagamento", info: "Distribuição das vendas no PDV por forma de pagamento (dinheiro, cartão, Pix). Útil para negociar taxas." },
+          { x: 82, y: 18, label: "5 — Download dos Gráficos", info: "Faça download de cada gráfico em formato de imagem para uso em apresentações, relatórios ou compartilhamento." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "relatoriosfinanceiro",
+    name: "Relatórios – Financeiro",
+    icon: FileText,
+    color: "#7C3AED",
+    description: "Relatórios financeiros completos exportáveis em Excel",
+    screens: [
+      {
+        title: "Relatórios Financeiros",
+        desc: "Gere relatórios detalhados em Excel: Resumo Geral (créditos, PDV, TAP, pós-pagos) e Vendas por Cliente com dados completos de consumo e pagamento.",
+        mockup: "relatoriosfinanceiro",
+        hotspots: [
+          { x: 30, y: 20, label: "1 — Selecionar Período", info: "Escolha período predefinido ou personalizado. Para personalizado, informe data de início e fim — ambos são obrigatórios." },
+          { x: 40, y: 45, label: "2 — Resumo Geral", info: "Exporta relatório com: operações de crédito, movimentações PDV, consumo TAP e saldo dos clientes pós-pagos. Organizado em abas no Excel." },
+          { x: 40, y: 70, label: "3 — Vendas por Cliente", info: "Exporta detalhe por cliente: consumo no TAP, produtos adquiridos, créditos de comandas, valores, quantidades e métodos de pagamento." },
+          { x: 82, y: 45, label: "4 — Exportar Relatório", info: "Clique no botão de exportação do relatório desejado. O sistema gera o arquivo Excel com os dados do período selecionado." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "torneiraservico",
+    name: "Torneira – Serviço",
+    icon: Settings,
+    color: "#0F766E",
+    description: "Movimentações com TAG de serviço (autosserviço e sangria)",
+    screens: [
+      {
+        title: "Relatório de Serviço",
+        desc: "Gere relatório das movimentações no TAP realizadas com a TAG de serviço. Dados organizados em abas separadas: autosserviço e sangria.",
+        mockup: "torneiraservico",
+        hotspots: [
+          { x: 30, y: 20, label: "1 — Selecionar Período", info: "Escolha o período desejado. Para período personalizado, informe as datas de início e fim — ambas são obrigatórias para geração do relatório." },
+          { x: 40, y: 50, label: "2 — Autosserviço", info: "Aba do relatório com operações de consumo realizadas pela TAG de serviço no modo autosserviço, com data e hora de cada operação." },
+          { x: 40, y: 70, label: "3 — Sangria", info: "Aba com operações de sangria realizadas com a TAG de serviço. Essencial para conferência e auditoria das operações." },
+          { x: 82, y: 35, label: "4 — Exportar Excel", info: "Gera o arquivo Excel com as duas abas (autosserviço e sangria) para controle operacional e auditoria." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "fiscal",
+    name: "Fiscal",
+    icon: Receipt,
+    color: "#DC2626",
+    description: "Situações tributárias e relatórios fiscais exportáveis",
+    screens: [
+      {
+        title: "Situações Tributárias",
+        desc: "Consulte as situações tributárias cadastradas no sistema. Acesse os relatórios fiscais a partir desta tela.",
+        mockup: "fiscal",
+        hotspots: [
+          { x: 30, y: 35, label: "1 — Consultar Situações Tributárias", info: "Visualize as situações tributárias configuradas no SmartFlow. São usadas automaticamente na emissão de documentos fiscais." },
+          { x: 75, y: 35, label: "2 — Acessar Relatórios Fiscais", info: "Clique no botão de relatórios para ir à tela de exportação. Acesso sujeito às permissões do usuário." },
+        ],
+      },
+      {
+        title: "Exportar Relatórios Fiscais",
+        desc: "Selecione e exporte os relatórios fiscais disponíveis. Para relatórios de vendas, aplique o filtro por período antes de exportar.",
+        mockup: "fiscal",
+        hotspots: [
+          { x: 30, y: 20, label: "1 — Filtrar Período (Vendas)", info: "Para relatórios de vendas, informe o período antes de exportar. O filtro não é obrigatório para todos os tipos de relatório." },
+          { x: 40, y: 50, label: "2 — Selecionar Relatório", info: "Visualize os relatórios fiscais disponíveis para exportação. Cada relatório possui seu botão de exportação correspondente." },
+          { x: 82, y: 50, label: "3 — Exportar", info: "Clique no botão de exportação do relatório desejado. O sistema gera o arquivo para download imediato." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "sistema",
+    name: "Sistema",
+    icon: UserCog,
+    color: "#7C3AED",
+    description: "Gestão de filiais e usuários do SmartFlow",
+    screens: [
+      {
+        title: "Filiais",
+        desc: "Consulte as informações da filial vinculada ao sistema. Esta tela é exclusivamente de consulta — sem cadastro, edição ou exclusão.",
+        mockup: "sistema",
+        hotspots: [
+          { x: 42, y: 42, label: "1 — Informações da Filial", info: "Visualize os dados da filial vinculada ao SmartFlow: razão social, CNPJ, endereço e demais informações cadastrais disponíveis." },
+        ],
+      },
+      {
+        title: "Usuários — Gerenciar",
+        desc: "Consulte, cadastre e edite usuários do sistema. Use geração automática de senha e organize por grupos.",
+        mockup: "sistema",
+        hotspots: [
+          { x: 35, y: 13, label: "1 — Pesquisar Usuário", info: "Pesquise por nome ou e-mail do usuário. Aplique filtros disponíveis para localizar perfis específicos." },
+          { x: 88, y: 13, label: "2 — Cadastrar Novo Usuário", info: "Clique em Adicionar (+). Preencha os dados obrigatórios, use a geração automática de senha e salve o cadastro." },
+          { x: 55, y: 38, label: "3 — Grupo e Permissões", info: "O grupo define as permissões de acesso do usuário no sistema. Verifique o grupo atribuído para garantir o nível correto de acesso." },
+          { x: 80, y: 38, label: "4 — Status Ativo/Inativo", info: "Usuários Ativos têm acesso ao sistema. Inative para revogar o acesso sem excluir o histórico de atividades do usuário." },
+        ],
+      },
+    ],
+  },
+];

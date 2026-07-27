@@ -12,6 +12,7 @@ import {
   Settings,
   Receipt,
   UserCog,
+  Building2,
 } from "lucide-react";
 import MockupDashboard from "./MockupDashboard.jsx";
 import MockupFinanceiro from "./MockupFinanceiro.jsx";
@@ -35,9 +36,13 @@ const PENDING = {
   torneira: { active: "Torneira", label: "Torneira", icon: Activity, path: "Torneiras" },
   estoque: { active: "Estoque", label: "Estoque", icon: Warehouse, path: "Estoque" },
   vendasresumo: { active: "Vendas", label: "Vendas — Resumo", icon: BarChart2, path: "Relatórios/Vendas/Resumo" },
+  consultasfinanceiro: { active: "Financeiro", label: "Consultas — Financeiro", icon: FileText, path: "Consultas/Financeiro" },
+  consultasvendas: { active: "Vendas", label: "Consultas — Vendas", icon: BarChart2, path: "Consultas/Vendas" },
   relatoriosfinanceiro: { active: "Financeiro", label: "Relatórios Financeiros", icon: FileText, path: "Relatórios/Financeiro" },
+  relatoriostorneira: { active: "Torneira", label: "Relatórios — Torneira", icon: Settings, path: "Relatórios/Torneira" },
   torneiraservico: { active: "Torneira", label: "Torneira — Serviço", icon: Settings, path: "Relatórios/Torneira/Serviço" },
   fiscal: { active: "Fiscal", label: "Fiscal", icon: Receipt, path: "Relatórios/Fiscal" },
+  sistemafiliais: { active: "Filiais", label: "Sistema — Filiais", icon: Building2, path: "Sistema/Filiais" },
   sistema: { active: "Sistema", label: "Sistema", icon: UserCog, path: "Sistema" },
 };
 

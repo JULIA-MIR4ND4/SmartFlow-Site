@@ -13,7 +13,7 @@ export default function App() {
 
   return (
     <ThemeCtx.Provider value={{ dark, toggle: () => setDark((d) => !d) }}>
-      <div className={`min-h-screen transition-colors duration-300 ${dark ? "bg-[#0F172A] text-white" : "bg-slate-50 text-slate-900"}`} style={{ fontFamily: "'Inter', sans-serif" }}>
+      <div className="min-h-screen bg-[#0D1629] text-white" style={{ fontFamily: "'Inter', sans-serif" }}>
         <div className="flex min-h-screen">
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
           <div className="flex-1">

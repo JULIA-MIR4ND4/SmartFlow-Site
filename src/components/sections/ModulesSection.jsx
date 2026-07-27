@@ -1,4 +1,5 @@
 import { motion } from "motion/react";
+import { useTheme } from "../../context/ThemeContext.jsx";
 import {
   LayoutDashboard,
   ShoppingCart,
@@ -20,6 +21,7 @@ import ScreenFrame from "../ui/ScreenFrame.jsx";
 
 const FEATURES = [
   {
+    id: "dashboard",
     title: "Dashboard",
     category: "VISÃO GERAL DOS INDICADORES APÓS O LOGIN",
     description:
@@ -35,6 +37,7 @@ const FEATURES = [
     mockupKey: "dashboard",
   },
   {
+    id: "vendas",
     title: "Vendas",
     category: "GESTÃO RÁPIDA E ORGANIZADA NO PDV",
     description:
@@ -50,6 +53,7 @@ const FEATURES = [
     mockupKey: "vendas",
   },
   {
+    id: "pagamento",
     title: "Pagamento",
     category: "CONTROLE FINANCEIRO E MOVIMENTAÇÃO DE CRÉDITO",
     description:
@@ -65,6 +69,7 @@ const FEATURES = [
     mockupKey: "pagamento",
   },
   {
+    id: "comandas",
     title: "Comandas",
     category: "ORGANIZAÇÃO E CONSULTA DE ATENDIMENTOS",
     description:
@@ -80,6 +85,7 @@ const FEATURES = [
     mockupKey: "comandas",
   },
   {
+    id: "clientes",
     title: "Clientes",
     category: "VISÃO DO RELACIONAMENTO E HISTÓRICO",
     description:
@@ -95,6 +101,7 @@ const FEATURES = [
     mockupKey: "clientes",
   },
   {
+    id: "produto",
     title: "Produto",
     category: "GERENCIAMENTO DE ITENS E CATÁLOGO",
     description:
@@ -110,6 +117,7 @@ const FEATURES = [
     mockupKey: "produto",
   },
   {
+    id: "barril",
     title: "Barril",
     category: "MONITORAMENTO DE PRODUÇÃO E DISPENSA",
     description:
@@ -125,6 +133,7 @@ const FEATURES = [
     mockupKey: "barril",
   },
   {
+    id: "torneira",
     title: "Torneira",
     category: "CONTROLE DE DISPENSA E FLUXO",
     description:
@@ -140,6 +149,7 @@ const FEATURES = [
     mockupKey: "torneira",
   },
   {
+    id: "estoque",
     title: "Estoque",
     category: "VISÃO GERAL DE DISPONIBILIDADE E MOVIMENTAÇÃO",
     description:
@@ -155,6 +165,7 @@ const FEATURES = [
     mockupKey: "estoque",
   },
   {
+    id: "consultas-financeiro",
     title: "Consultas — Financeiro",
     category: "CONSULTA ÁGIL DE MOVIMENTAÇÕES FINANCEIRAS",
     description:
@@ -170,6 +181,7 @@ const FEATURES = [
     mockupKey: "consultasfinanceiro",
   },
   {
+    id: "consultas-vendas",
     title: "Consultas — Vendas",
     category: "ANÁLISE RÁPIDA DO DESEMPENHO COMERCIAL",
     description:
@@ -185,6 +197,7 @@ const FEATURES = [
     mockupKey: "consultasvendas",
   },
   {
+    id: "relatorios-financeiro",
     title: "Relatórios — Financeiro",
     category: "VISUALIZAÇÃO ESTRUTURADA DOS DADOS FINANCEIROS",
     description:
@@ -200,6 +213,7 @@ const FEATURES = [
     mockupKey: "relatoriosfinanceiro",
   },
   {
+    id: "relatorios-torneira",
     title: "Relatórios — Torneira",
     category: "MONITORAMENTO OPERACIONAL DE DISPENSA",
     description:
@@ -215,6 +229,7 @@ const FEATURES = [
     mockupKey: "relatoriostorneira",
   },
   {
+    id: "relatorios-fiscal",
     title: "Relatórios — Fiscal",
     category: "GESTÃO DE DADOS E COMPLIANCE",
     description:
@@ -230,6 +245,7 @@ const FEATURES = [
     mockupKey: "fiscal",
   },
   {
+    id: "sistema-filiais",
     title: "Sistema — Filiais",
     category: "GESTÃO CENTRALIZADA DE UNIDADES",
     description:
@@ -245,7 +261,8 @@ const FEATURES = [
     mockupKey: "sistemafiliais",
   },
   {
-    title: "Sistema — Usuários",
+    id: "sistema",
+    title: "Sistema",
     category: "CONFIGURAÇÃO E MANUTENÇÃO DA PLATAFORMA",
     description:
       "Oferece acesso às configurações principais da operação para ajustar regras, permissões e funcionamento da solução.",
@@ -262,21 +279,23 @@ const FEATURES = [
 ];
 
 export default function ModulesSection() {
+  const { dark } = useTheme();
+
   return (
-    <section id="funcionalidades" className="relative overflow-hidden bg-[#0D1629] py-24 md:py-32 lg:py-36">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_45%)]" />
+    <section id="funcionalidades" className={`relative overflow-hidden py-24 md:py-32 lg:py-36 ${dark ? "bg-[#0D1629]" : "bg-slate-100"}`}>
+      <div className={`absolute inset-0 ${dark ? "bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_45%)]" : "bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.10),_transparent_45%)]"}`} />
       <div className="relative mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-10">
         <FadeIn className="mx-auto mb-16 max-w-3xl text-center">
-          <div className="mb-5 inline-flex items-center rounded-full border border-[#2563EB]/35 bg-[#2563EB]/10 px-4 py-1.5 text-sm font-medium uppercase tracking-[0.3em] text-[#6DA5FF]">
+          <div className={`mb-5 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium uppercase tracking-[0.3em] ${dark ? "border-[#2563EB]/35 bg-[#2563EB]/10 text-[#6DA5FF]" : "border-blue-200 bg-blue-50 text-blue-700"}`}>
             Funcionalidades
           </div>
           <h2
-            className="text-4xl font-semibold text-white sm:text-5xl lg:text-6xl"
+            className={`text-4xl font-semibold sm:text-5xl lg:text-6xl ${dark ? "text-white" : "text-slate-900"}`}
             style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
           >
             Módulos do sistema
           </h2>
-          <p className="mx-auto mt-5 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
+          <p className={`mx-auto mt-5 max-w-2xl text-base leading-8 sm:text-lg ${dark ? "text-slate-400" : "text-slate-600"}`}>
             15 módulos completamente integrados, cada um desenvolvido para uma etapa específica da gestão do seu estabelecimento.
           </p>
         </FadeIn>
@@ -295,7 +314,7 @@ export default function ModulesSection() {
                 transition={{ duration: 0.35 }}
                 className={`grid gap-8 lg:gap-12 ${isReversed ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"}`}
               >
-                <div className={`order-1 ${isReversed ? "lg:order-2" : "lg:order-1"} p-6 sm:p-7 lg:p-8`}>
+                <div id={feature.id} className={`order-1 ${isReversed ? "lg:order-2" : "lg:order-1"} p-6 sm:p-7 lg:p-8`}>
                   <div className="flex items-center gap-3">
                     <div
                       className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#2563EB]/35 bg-[#07111F] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
@@ -304,25 +323,25 @@ export default function ModulesSection() {
                       <Icon className="h-6 w-6" style={{ color: feature.accent }} />
                     </div>
                     <div>
-                      <div className="text-[10px] uppercase tracking-[0.3em] text-[#6DA5FF]">
+                      <div className={`text-[10px] uppercase tracking-[0.3em] ${dark ? "text-[#6DA5FF]" : "text-[#2563EB]"}`}>
                         {feature.category}
                       </div>
                     </div>
                   </div>
 
-                  <h3 className="mt-5 text-2xl font-semibold text-white sm:text-3xl">{feature.title}</h3>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-400 sm:text-[15px]">
+                  <h3 className={`mt-5 text-2xl font-semibold sm:text-3xl ${dark ? "text-white" : "text-slate-900"}`}>{feature.title}</h3>
+                  <p className={`mt-3 max-w-2xl text-sm leading-7 sm:text-[15px] ${dark ? "text-slate-400" : "text-slate-600"}`}>
                     {feature.description}
                   </p>
 
                   <div className="mt-6">
-                    <h4 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#3B82F6]">
+                    <h4 className={`text-[10px] font-semibold uppercase tracking-[0.3em] ${dark ? "text-[#3B82F6]" : "text-[#2563EB]"}`}>
                       PRINCIPAIS AÇÕES DISPONÍVEIS
                     </h4>
                     <ul className="mt-4 space-y-2.5">
                       {feature.actions.map((action) => (
-                        <li key={action} className="flex items-start gap-2.5 text-sm leading-6 text-slate-300">
-                          <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#3B82F6]" />
+                        <li key={action} className={`flex items-start gap-2.5 text-sm leading-6 ${dark ? "text-slate-300" : "text-slate-700"}`}>
+                          <span className={`mt-2 h-2 w-2 shrink-0 rounded-full ${dark ? "bg-[#3B82F6]" : "bg-[#2563EB]"}`} />
                           <span>{action}</span>
                         </li>
                       ))}
@@ -331,7 +350,7 @@ export default function ModulesSection() {
                 </div>
 
                 <div className={`order-2 ${isReversed ? "lg:order-1" : "lg:order-2"} flex items-center`}>
-                  <div className="w-full rounded-[20px] border border-white/10 bg-[#07111F] p-1.5 shadow-[0_18px_48px_rgba(0,0,0,0.24)] sm:p-2 lg:p-2.5">
+                  <div className={`w-full rounded-[20px] border p-1.5 shadow-[0_18px_48px_rgba(0,0,0,0.24)] sm:p-2 lg:p-2.5 ${dark ? "border-white/10 bg-[#07111F]" : "border-slate-200 bg-white shadow-slate-200/70"}`}>
                     <ScreenFrame mockupKey={feature.mockupKey} height={340} />
                   </div>
                 </div>

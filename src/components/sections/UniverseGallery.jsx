@@ -67,8 +67,8 @@ export default function UniverseGallery() {
                     {universe.screens.length} {universe.screens.length === 1 ? "tela" : "telas"}
                   </div>
 
-                  <div className="bg-[#060D1C]">
-                    <div className="flex items-center gap-1.5 px-3 py-2 border-b border-white/5">
+                  <div className={dark ? "bg-[#060D1C]" : "bg-slate-100"}>
+                    <div className={`flex items-center gap-1.5 px-3 py-2 border-b ${dark ? "border-white/5" : "border-slate-200"}`}>
                       <div className="w-2 h-2 rounded-full bg-red-500/50" />
                       <div className="w-2 h-2 rounded-full bg-yellow-500/50" />
                       <div className="w-2 h-2 rounded-full bg-green-500/50" />

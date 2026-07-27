@@ -122,14 +122,14 @@ export default function HeroSection() {
           className="relative"
         >
           <div className="absolute -inset-6 bg-[#2563EB]/6 rounded-3xl blur-3xl pointer-events-none" />
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/60">
-            <div className="flex items-center gap-2 px-4 py-3 bg-[#060D1C] border-b border-white/5">
+          <div className={`relative rounded-2xl overflow-hidden border shadow-2xl ${dark ? "border-white/10 shadow-black/60" : "border-slate-200 shadow-slate-200/80"}`}>
+            <div className={`flex items-center gap-2 px-4 py-3 border-b ${dark ? "bg-[#060D1C] border-white/5" : "bg-white border-slate-200"}`}>
               <div className="flex gap-1.5">
                 <div className="w-3 h-3 rounded-full bg-red-500/60" />
                 <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
                 <div className="w-3 h-3 rounded-full bg-green-500/60" />
               </div>
-              <div className="flex-1 mx-4 bg-[#0F172A] rounded text-xs text-slate-500 px-3 py-1 text-center">
+              <div className={`flex-1 mx-4 rounded text-xs px-3 py-1 text-center ${dark ? "bg-[#0F172A] text-slate-500" : "bg-slate-100 text-slate-500"}`}>
                 app.smartflow.com.br
               </div>
             </div>

@@ -35,6 +35,7 @@ const FEATURES = [
     icon: LayoutDashboard,
     accent: "#3B82F6",
     mockupKey: "dashboard",
+    imageName: "dashboard1",
   },
   {
     id: "vendas",
@@ -51,6 +52,7 @@ const FEATURES = [
     icon: ShoppingCart,
     accent: "#22C55E",
     mockupKey: "vendas",
+    imageName: "venda1",
   },
   {
     id: "pagamento",
@@ -67,6 +69,7 @@ const FEATURES = [
     icon: CreditCard,
     accent: "#8B5CF6",
     mockupKey: "pagamento",
+    imageName: "pagamento1",
   },
   {
     id: "comandas",
@@ -83,6 +86,7 @@ const FEATURES = [
     icon: ClipboardList,
     accent: "#06B6D4",
     mockupKey: "comandas",
+    imageName: "comandas1",
   },
   {
     id: "clientes",
@@ -99,6 +103,7 @@ const FEATURES = [
     icon: UserCheck,
     accent: "#F59E0B",
     mockupKey: "clientes",
+    imageName: "cliente1",
   },
   {
     id: "produto",
@@ -115,6 +120,7 @@ const FEATURES = [
     icon: Package,
     accent: "#3B82F6",
     mockupKey: "produto",
+    imageName: "produto1",
   },
   {
     id: "barril",
@@ -131,6 +137,7 @@ const FEATURES = [
     icon: Droplets,
     accent: "#14B8A6",
     mockupKey: "barril",
+    imageName: "barril1",
   },
   {
     id: "torneira",
@@ -147,6 +154,7 @@ const FEATURES = [
     icon: Activity,
     accent: "#0EA5E9",
     mockupKey: "torneira",
+    imageName: "torneira1",
   },
   {
     id: "estoque",
@@ -163,6 +171,7 @@ const FEATURES = [
     icon: Warehouse,
     accent: "#F97316",
     mockupKey: "estoque",
+    imageName: "estoque1",
   },
   {
     id: "consultas-financeiro",
@@ -211,6 +220,7 @@ const FEATURES = [
     icon: FileText,
     accent: "#8B5CF6",
     mockupKey: "relatoriosfinanceiro",
+    imageName: "relatorioFinanceiro1",
   },
   {
     id: "relatorios-torneira",
@@ -227,6 +237,7 @@ const FEATURES = [
     icon: Activity,
     accent: "#0EA5E9",
     mockupKey: "relatoriostorneira",
+    imageName: "relatorioTorneira1",
   },
   {
     id: "relatorios-fiscal",
@@ -243,6 +254,7 @@ const FEATURES = [
     icon: FileText,
     accent: "#F59E0B",
     mockupKey: "fiscal",
+    imageName: "fiscal1",
   },
   {
     id: "sistema-filiais",
@@ -259,6 +271,7 @@ const FEATURES = [
     icon: Building2,
     accent: "#3B82F6",
     mockupKey: "sistemafiliais",
+    imageName: "sistema1",
   },
   {
     id: "sistema",
@@ -275,6 +288,7 @@ const FEATURES = [
     icon: Settings,
     accent: "#64748B",
     mockupKey: "sistema",
+    imageName: "sistema2",
   },
 ];
 
@@ -351,7 +365,7 @@ export default function ModulesSection() {
 
                 <div className={`order-2 ${isReversed ? "lg:order-1" : "lg:order-2"} flex items-center`}>
                   <div className={`w-full rounded-[20px] border p-1.5 shadow-[0_18px_48px_rgba(0,0,0,0.24)] sm:p-2 lg:p-2.5 ${dark ? "border-white/10 bg-[#07111F]" : "border-slate-200 bg-white shadow-slate-200/70"}`}>
-                    <ScreenFrame mockupKey={feature.mockupKey} height={340} />
+                    <ScreenFrame mockupKey={feature.mockupKey} imageName={feature.imageName} height={340} />
                   </div>
                 </div>
               </motion.div>

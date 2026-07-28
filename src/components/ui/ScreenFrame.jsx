@@ -1,10 +1,13 @@
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { MOCKUP_MAP } from "../sections/mockups/index.jsx";
+import ScreenImage from "./ScreenImage.jsx";
 
-export default function ScreenFrame({ mockupKey, height = 320 }) {
+export default function ScreenFrame({ mockupKey, imageName, height = 320 }) {
   const { dark } = useTheme();
   const Comp = MOCKUP_MAP[mockupKey];
-  if (!Comp) return null;
+
+  // Se temos uma imagem real (imageName), ela tem prioridade sobre o mockup de código.
+  if (!imageName && !Comp) return null;
 
   return (
     <div className="relative">
@@ -21,7 +24,7 @@ export default function ScreenFrame({ mockupKey, height = 320 }) {
           </div>
         </div>
         <div style={{ height, fontFamily: "'Inter', sans-serif" }}>
-          <Comp />
+          {imageName ? <ScreenImage name={imageName} /> : <Comp />}
         </div>
       </div>
     </div>

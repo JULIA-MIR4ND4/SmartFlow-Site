@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
-import { MOCKUP_MAP } from "./mockups/index.jsx";
+import { getScreenImages } from "../../data/screenImages.js";
+import ScreenImage from "../ui/ScreenImage.jsx";
 import HotspotDot from "../ui/HotspotDot.jsx";
 
 export default function UniverseViewer({ universe, onClose }) {
@@ -10,9 +11,18 @@ export default function UniverseViewer({ universe, onClose }) {
   const [screenIdx, setScreenIdx] = useState(0);
   const [activeHotspot, setActiveHotspot] = useState(null);
 
-  const screen = universe.screens[screenIdx];
-  const Comp = MOCKUP_MAP[screen.mockup];
-  const total = universe.screens.length;
+  // Todas as telas reais (imagens) disponíveis para este universo, em ordem.
+  const images = getScreenImages(universe.id);
+  const total = images.length;
+  const currentImage = images[screenIdx];
+
+  // Texto/hotspots cadastrados para essa tela (nem toda imagem tem um
+  // texto próprio ainda — quando não existe, mostramos só a imagem).
+  const screen = universe.screens[screenIdx] ?? {
+    title: `Tela ${screenIdx + 1}`,
+    desc: "",
+    hotspots: [],
+  };
   const Icon = universe.icon;
 
   useEffect(() => setActiveHotspot(null), [screenIdx]);
@@ -80,11 +90,11 @@ export default function UniverseViewer({ universe, onClose }) {
                   <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
                 </div>
                 <div className={`flex-1 mx-3 rounded text-[10px] px-2 py-0.5 text-center ${dark ? "bg-[#0F172A] text-slate-500" : "bg-slate-100 text-slate-500"}`}>
-                  app.smartflow.com.br/{screen.mockup}
+                  app.smartflow.com.br/{universe.id}
                 </div>
               </div>
               <div className="relative" style={{ height: 380, fontFamily: "'Inter', sans-serif" }}>
-                {Comp && <Comp />}
+                {currentImage && <ScreenImage name={currentImage} />}
                 {screen.hotspots.map((spot, i) => (
                   <HotspotDot key={i} spot={spot} index={i} activeIdx={activeHotspot} onToggle={setActiveHotspot} />
                 ))}
@@ -92,7 +102,7 @@ export default function UniverseViewer({ universe, onClose }) {
             </div>
             {total > 1 && (
               <div className="flex items-center justify-center gap-2 mt-4">
-                {universe.screens.map((_, i) => (
+                {images.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setScreenIdx(i)}
@@ -127,9 +137,11 @@ export default function UniverseViewer({ universe, onClose }) {
             </div>
 
             <div className="flex-1 overflow-y-auto">
-              <div className={`text-[11px] font-semibold uppercase tracking-widest mb-3 ${dark ? "text-slate-500" : "text-slate-400"}`}>
-                Elementos interativos
-              </div>
+              {screen.hotspots.length > 0 && (
+                <div className={`text-[11px] font-semibold uppercase tracking-widest mb-3 ${dark ? "text-slate-500" : "text-slate-400"}`}>
+                  Elementos interativos
+                </div>
+              )}
               <div className="space-y-2">
                 {screen.hotspots.map((hs, i) => (
                   <button

@@ -3,8 +3,9 @@ import { AnimatePresence } from "motion/react";
 import { Eye } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { UNIVERSES } from "../../data/universes.js";
-import { MOCKUP_MAP } from "./mockups/index.jsx";
+import { getFirstScreenImage } from "../../data/screenImages.js";
 import FadeIn from "../ui/FadeIn.jsx";
+import ScreenImage from "../ui/ScreenImage.jsx";
 import UniverseViewer from "./UniverseViewer.jsx";
 
 export default function UniverseGallery() {
@@ -38,7 +39,7 @@ export default function UniverseGallery() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {UNIVERSES.map((universe, i) => {
-            const FirstComp = MOCKUP_MAP[universe.screens[0].mockup];
+            const firstImage = getFirstScreenImage(universe.id);
             const Icon = universe.icon;
             return (
               <FadeIn key={universe.id} delay={i * 0.04}>
@@ -74,7 +75,7 @@ export default function UniverseGallery() {
                       <div className="w-2 h-2 rounded-full bg-green-500/50" />
                     </div>
                     <div style={{ height: 210, fontFamily: "'Inter', sans-serif", pointerEvents: "none" }}>
-                      {FirstComp && <FirstComp />}
+                      {firstImage && <ScreenImage name={firstImage} />}
                     </div>
                   </div>
 

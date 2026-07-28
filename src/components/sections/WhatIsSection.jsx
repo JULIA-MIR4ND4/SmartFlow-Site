@@ -49,7 +49,7 @@ export default function WhatIsSection() {
           </div>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <ScreenFrame mockupKey="financeiro" height={360} />
+          <ScreenFrame imageName="financeiro1" height={360} />
         </FadeIn>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
-import MockupDashboard from "./mockups/MockupDashboard.jsx";
+import ScreenImage from "../ui/ScreenImage.jsx";
 
 const STATS = [
   ["15+", "Módulos integrados"],
@@ -134,7 +134,7 @@ export default function HeroSection() {
               </div>
             </div>
             <div style={{ height: 420, fontFamily: "'Inter', sans-serif" }}>
-              <MockupDashboard />
+              <ScreenImage name="dashboard1" />
             </div>
           </div>
         </motion.div>

@@ -5,6 +5,26 @@ import { useTheme } from "../../context/ThemeContext.jsx";
 import { NAV_LINKS } from "../../data/navLinks.js";
 import { UNIVERSES } from "../../data/universes.js";
 
+// Para cada universo, o anchor exato da seção "Módulos do sistema" que
+// representa aquela funcionalidade (mesmos ids usados em ModulesSection e
+// no submenu da Sidebar). Quando não existe um módulo equivalente, o clique
+// cai no card correspondente dentro da Central de Aprendizagem.
+const UNIVERSE_TO_MODULE_HREF = {
+  dashboard: "#dashboard",
+  vendas: "#vendas",
+  pagamento: "#pagamento",
+  comandas: "#comandas",
+  clientes: "#clientes",
+  produto: "#produto",
+  barril: "#barril",
+  torneira: "#torneira",
+  estoque: "#estoque",
+  relatoriosfinanceiro: "#relatorios-financeiro",
+  torneiraservico: "#relatorios-torneira",
+  fiscal: "#relatorios-fiscal",
+  sistema: "#sistema",
+};
+
 export default function Header({ onSearchOpen, onMenuToggle }) {
   const { dark, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,26 +38,45 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
     return () => window.removeEventListener("scroll", fn);
   }, []);
 
+  // Fecha a barra de pesquisa ao pressionar ESC, para liberar a visualização da tela.
+  useEffect(() => {
+    if (!searchOpen) return;
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setSearchOpen(false);
+        setQuery("");
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [searchOpen]);
+
   const go = (href) => {
     setMenuOpen(false);
     setSearchOpen(false);
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const searchableContent = UNIVERSES.flatMap((universe) => [
-    {
-      title: universe.name,
-      description: universe.description,
-      type: "Universo",
-      href: "#galeria",
-    },
-    ...universe.screens.map((screen) => ({
-      title: screen.title,
-      description: screen.desc,
-      type: "Funcionalidade",
-      href: "#galeria",
-    })),
-  ]);
+  const searchableContent = UNIVERSES.flatMap((universe) => {
+    // Destino exato: módulo correspondente em "Módulos do sistema" quando existir,
+    // senão o card específico daquele universo na Central de Aprendizagem.
+    const targetHref = UNIVERSE_TO_MODULE_HREF[universe.id] ?? `#universo-${universe.id}`;
+
+    return [
+      {
+        title: universe.name,
+        description: universe.description,
+        type: "Universo",
+        href: `#universo-${universe.id}`,
+      },
+      ...universe.screens.map((screen) => ({
+        title: screen.title,
+        description: screen.desc,
+        type: "Funcionalidade",
+        href: targetHref,
+      })),
+    ];
+  });
 
   const results = query.trim()
     ? searchableContent.filter((item) => {
@@ -156,12 +195,30 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
         <div className={`border-t ${dark ? "border-white/5 bg-[#0F172A]/95" : "border-black/6 bg-white/95"}`}>
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
             <div className={`rounded-2xl border p-3 ${dark ? "border-white/10 bg-[#0B1220]" : "border-black/8 bg-slate-50"}`}>
-              <input
-                value={query}
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Pesquisar universos, funcionalidades e conteúdos"
-                className={`w-full rounded-xl border px-4 py-3 text-sm outline-none ${dark ? "border-white/10 bg-[#0F172A] text-white placeholder:text-slate-500" : "border-black/8 bg-white text-slate-900 placeholder:text-slate-400"}`}
-              />
+              <div className="relative">
+                <input
+                  autoFocus
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Pesquisar universos, funcionalidades e conteúdos"
+                  className={`w-full rounded-xl border pl-4 pr-16 py-3 text-sm outline-none ${dark ? "border-white/10 bg-[#0F172A] text-white placeholder:text-slate-500" : "border-black/8 bg-white text-slate-900 placeholder:text-slate-400"}`}
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setSearchOpen(false);
+                    setQuery("");
+                  }}
+                  title="Fechar busca (Esc)"
+                  className={`absolute right-2 top-1/2 -translate-y-1/2 text-[10px] px-2 py-1 rounded-lg font-mono transition-colors ${
+                    dark
+                      ? "bg-white/10 text-slate-400 hover:bg-white/20 hover:text-white"
+                      : "bg-black/5 text-slate-500 hover:bg-black/10 hover:text-slate-900"
+                  }`}
+                >
+                  ESC
+                </button>
+              </div>
               {results.length > 0 && (
                 <div className="mt-3 space-y-2">
                   {results.map((item) => (

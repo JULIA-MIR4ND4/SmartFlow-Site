@@ -44,7 +44,8 @@ export default function UniverseGallery() {
             return (
               <FadeIn key={universe.id} delay={i * 0.04}>
                 <div
-                  className={`group relative rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 hover:shadow-xl ${
+                  id={`universo-${universe.id}`}
+                  className={`group relative rounded-xl overflow-hidden border cursor-pointer transition-all duration-300 hover:shadow-xl scroll-mt-24 ${
                     dark
                       ? "border-white/8 hover:border-[#2563EB]/40 hover:shadow-[#2563EB]/8"
                       : "border-black/8 hover:border-[#2563EB]/40 hover:shadow-[#2563EB]/10 bg-white"

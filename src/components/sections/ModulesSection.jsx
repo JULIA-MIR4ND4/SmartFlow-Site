@@ -296,8 +296,7 @@ export default function ModulesSection() {
   const { dark } = useTheme();
 
   return (
-    <section id="funcionalidades" className={`relative overflow-hidden py-24 md:py-32 lg:py-36 ${dark ? "bg-[#0D1629]" : "bg-slate-100"}`}>
-      <div className={`absolute inset-0 ${dark ? "bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.18),_transparent_45%)]" : "bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.10),_transparent_45%)]"}`} />
+    <section id="funcionalidades" className={`relative overflow-hidden py-24 md:py-32 lg:py-36 ${dark ? "bg-[#0D1629]" : "bg-slate-50"}`}>
       <div className="relative mx-auto max-w-[1400px] px-6 sm:px-8 lg:px-10">
         <FadeIn className="mx-auto mb-16 max-w-3xl text-center">
           <div className={`mb-5 inline-flex items-center rounded-full border px-4 py-1.5 text-sm font-medium uppercase tracking-[0.3em] ${dark ? "border-[#2563EB]/35 bg-[#2563EB]/10 text-[#6DA5FF]" : "border-blue-200 bg-blue-50 text-blue-700"}`}>
@@ -328,7 +327,7 @@ export default function ModulesSection() {
                 transition={{ duration: 0.35 }}
                 className={`grid gap-8 lg:gap-12 ${isReversed ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"}`}
               >
-                <div id={feature.id} className={`order-1 ${isReversed ? "lg:order-2" : "lg:order-1"} p-6 sm:p-7 lg:p-8`}>
+                <div id={feature.id} className={`order-1 ${isReversed ? "lg:order-2" : "lg:order-1"} p-6 sm:p-7 lg:p-8 scroll-mt-24`}>
                   <div className="flex items-center gap-3">
                     <div
                       className="flex h-12 w-12 items-center justify-center rounded-xl border border-[#2563EB]/35 bg-[#07111F] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"

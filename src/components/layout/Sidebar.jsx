@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X, Home, Compass, Layers, Sparkles, Mail } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 
@@ -31,6 +31,23 @@ const FUNCTIONALITY_SUBITEMS = [
 
 export default function Sidebar({ open, onClose }) {
   const { dark } = useTheme();
+  const [funcMenuOpen, setFuncMenuOpen] = useState(false);
+  const closeTimer = useRef(null);
+
+  // Abre na hora; fecha com um pequeno atraso para dar tempo do mouse
+  // "atravessar" até o submenu sem que ele suma no meio do caminho.
+  const openFuncMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setFuncMenuOpen(true);
+  };
+  const scheduleCloseFuncMenu = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setFuncMenuOpen(false), 200);
+  };
+
+  useEffect(() => () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -67,7 +84,12 @@ export default function Sidebar({ open, onClose }) {
           {MENU_ITEMS.map(({ label, href, icon: Icon }) => {
             const isFunctionalities = href === "#funcionalidades";
             return (
-              <div key={href} className="relative group">
+              <div
+                key={href}
+                className="relative group"
+                onMouseEnter={isFunctionalities ? openFuncMenu : undefined}
+                onMouseLeave={isFunctionalities ? scheduleCloseFuncMenu : undefined}
+              >
                 <button
                   onClick={() => goTo(href)}
                   className={`flex h-11 w-11 items-center justify-center rounded-full border transition-all ${
@@ -82,7 +104,11 @@ export default function Sidebar({ open, onClose }) {
 
                 {isFunctionalities && (
                   <div
-                    className={`absolute left-16 top-0 z-50 min-w-[220px] rounded-2xl border px-2 py-2 shadow-2xl transition-all duration-200 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto ${dark ? "border-white/10 bg-[#0F172A]/95" : "border-black/10 bg-white/95"}`}
+                    onMouseEnter={openFuncMenu}
+                    onMouseLeave={scheduleCloseFuncMenu}
+                    className={`absolute left-16 top-0 z-50 min-w-[220px] rounded-2xl border px-2 py-2 shadow-2xl transition-all duration-200 ${
+                      funcMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+                    } ${dark ? "border-white/10 bg-[#0F172A]/95" : "border-black/10 bg-white/95"}`}
                   >
                     <div className={`px-2 pb-2 text-[10px] font-semibold uppercase tracking-[0.3em] ${dark ? "text-[#6DA5FF]" : "text-[#2563EB]"}`}>
                       Funcionalidades
@@ -92,6 +118,7 @@ export default function Sidebar({ open, onClose }) {
                         <button
                           key={item.href}
                           onClick={() => {
+                            setFuncMenuOpen(false);
                             onClose();
                             document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth", block: "start" });
                           }}

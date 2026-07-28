@@ -3,7 +3,7 @@ import { AnimatePresence } from "motion/react";
 import { Eye } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { UNIVERSES } from "../../data/universes.js";
-import { getFirstScreenImage } from "../../data/screenImages.js";
+import { getFirstScreenImage, getScreenImages } from "../../data/screenImages.js";
 import FadeIn from "../ui/FadeIn.jsx";
 import ScreenImage from "../ui/ScreenImage.jsx";
 import UniverseViewer from "./UniverseViewer.jsx";
@@ -40,6 +40,7 @@ export default function UniverseGallery() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {UNIVERSES.map((universe, i) => {
             const firstImage = getFirstScreenImage(universe.id);
+            const screenCount = getScreenImages(universe.id).length || universe.screens.length;
             const Icon = universe.icon;
             return (
               <FadeIn key={universe.id} delay={i * 0.04}>
@@ -66,7 +67,7 @@ export default function UniverseGallery() {
                         : "bg-white/90 text-slate-500 border border-black/8"
                     }`}
                   >
-                    {universe.screens.length} {universe.screens.length === 1 ? "tela" : "telas"}
+                    {screenCount} {screenCount === 1 ? "tela" : "telas"}
                   </div>
 
                   <div className={dark ? "bg-[#060D1C]" : "bg-slate-100"}>

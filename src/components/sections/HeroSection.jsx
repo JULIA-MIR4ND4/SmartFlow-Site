@@ -133,8 +133,8 @@ export default function HeroSection() {
                 app.smartflow.com.br
               </div>
             </div>
-            <div style={{ height: 420, fontFamily: "'Inter', sans-serif" }}>
-              <ScreenImage name="dashboard1" />
+            <div className="aspect-[1920/945]" style={{ fontFamily: "'Inter', sans-serif" }}>
+              <ScreenImage name="dashboard1" fit="contain" />
             </div>
           </div>
         </motion.div>

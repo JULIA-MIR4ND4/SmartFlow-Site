@@ -23,8 +23,11 @@ export default function ScreenFrame({ mockupKey, imageName, height = 320 }) {
             app.smartflow.com.br/{mockupKey}
           </div>
         </div>
-        <div style={{ height, fontFamily: "'Inter', sans-serif" }}>
-          {imageName ? <ScreenImage name={imageName} /> : <Comp />}
+        <div
+          className={imageName ? "aspect-[1920/945]" : ""}
+          style={imageName ? { fontFamily: "'Inter', sans-serif" } : { height, fontFamily: "'Inter', sans-serif" }}
+        >
+          {imageName ? <ScreenImage name={imageName} fit="contain" /> : <Comp />}
         </div>
       </div>
     </div>

@@ -98,9 +98,11 @@ export default function Sidebar({ open, onClose }) {
                 >
                   <Icon size={16} className="text-[#3B82F6]" />
                 </button>
-                <div className={`pointer-events-none absolute left-14 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border px-3 py-1.5 text-[11px] opacity-0 transition-all duration-200 group-hover:opacity-100 ${dark ? "border-white/10 bg-[#0F172A] text-slate-300" : "border-black/8 bg-white text-slate-700"}`}>
-                  {label}
-                </div>
+                {!isFunctionalities && (
+                  <div className={`pointer-events-none absolute left-14 top-1/2 -translate-y-1/2 whitespace-nowrap rounded-full border px-3 py-1.5 text-[11px] opacity-0 transition-all duration-200 group-hover:opacity-100 ${dark ? "border-white/10 bg-[#0F172A] text-slate-300" : "border-black/8 bg-white text-slate-700"}`}>
+                    {label}
+                  </div>
+                )}
 
                 {isFunctionalities && (
                   <div

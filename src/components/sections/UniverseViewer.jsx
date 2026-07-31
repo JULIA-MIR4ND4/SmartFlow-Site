@@ -96,7 +96,7 @@ export default function UniverseViewer({ universe, onClose }) {
               <div className="relative" style={{ height: 380, fontFamily: "'Inter', sans-serif" }}>
                 {currentImage && <ScreenImage name={currentImage} />}
                 {screen.hotspots.map((spot, i) => (
-                  <HotspotDot key={i} spot={spot} index={i} activeIdx={activeHotspot} onToggle={setActiveHotspot} />
+                  <HotspotDot key={spot.id || i} spot={spot} index={i} activeIdx={activeHotspot} onToggle={setActiveHotspot} />
                 ))}
               </div>
             </div>
@@ -145,7 +145,8 @@ export default function UniverseViewer({ universe, onClose }) {
               <div className="space-y-2">
                 {screen.hotspots.map((hs, i) => (
                   <button
-                    key={i}
+                    key={hs.id || i}
+                    data-hotspot-id={hs.id || undefined}
                     onClick={() => setActiveHotspot(activeHotspot === i ? null : i)}
                     className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${
                       activeHotspot === i

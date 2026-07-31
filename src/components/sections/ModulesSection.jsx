@@ -188,6 +188,7 @@ const FEATURES = [
     icon: Search,
     accent: "#0EA5E9",
     mockupKey: "consultasfinanceiro",
+    imageName: "financeiro1",
   },
   {
     id: "consultas-vendas",
@@ -204,6 +205,7 @@ const FEATURES = [
     icon: BarChart2,
     accent: "#22C55E",
     mockupKey: "consultasvendas",
+    imageName: "vendaResumo1",
   },
   {
     id: "relatorios-financeiro",

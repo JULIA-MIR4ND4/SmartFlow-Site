@@ -9,6 +9,8 @@ export default function HotspotDot({ spot, index, activeIdx, onToggle }) {
   return (
     <div
       className="absolute z-10 cursor-pointer"
+      data-hotspot-id={spot.id || `hotspot-${index}`}
+      data-hotspot-index={index}
       style={{ left: `${spot.x}%`, top: `${spot.y}%`, transform: "translate(-50%,-50%)" }}
       onMouseEnter={() => onToggle(index)}
       onMouseLeave={() => onToggle(null)}

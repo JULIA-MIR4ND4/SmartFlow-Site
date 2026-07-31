@@ -6,6 +6,7 @@ import HeroSection from "./components/sections/HeroSection.jsx";
 import WhatIsSection from "./components/sections/WhatIsSection.jsx";
 import UniverseGallery from "./components/sections/UniverseGallery.jsx";
 import ModulesSection from "./components/sections/ModulesSection.jsx";
+import ContactSection from "./components/sections/ContactSection.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(true);
@@ -26,6 +27,7 @@ export default function App() {
               <WhatIsSection />
               <UniverseGallery />
               <ModulesSection />
+              <ContactSection />
             </main>
           </div>
         </div>

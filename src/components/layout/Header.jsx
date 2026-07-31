@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { Activity, Search, Sun, Moon, Menu, X } from "lucide-react";
+import { Search, Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { NAV_LINKS } from "../../data/navLinks.js";
 import { UNIVERSES } from "../../data/universes.js";
@@ -97,16 +97,12 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <button onClick={() => go("#home")} className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#2563EB] flex items-center justify-center shadow-lg shadow-blue-600/30">
-              <Activity size={16} className="text-white" />
-            </div>
-            <span
-              className={`font-bold text-xl ${dark ? "text-white" : "text-slate-900"}`}
-              style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
-            >
-              Smart<span className="text-[#3B82F6]">Flow</span>
-            </span>
+          <button onClick={() => go("#home")} className="flex items-center">
+            <img
+              src={dark ? "/imagem/logo1-escuro.png" : "/imagem/logo1-claro.png"}
+              alt="SmartFlow"
+              className="h-11 w-auto"
+            />
           </button>
 
           <nav className="hidden md:flex items-center gap-1">

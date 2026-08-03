@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
+import { getDocScreenData } from "../../data/learningHotspots.js";
 import { getScreenImages } from "../../data/screenImages.js";
 import ScreenImage from "../ui/ScreenImage.jsx";
 import HotspotDot from "../ui/HotspotDot.jsx";
@@ -11,21 +12,21 @@ export default function UniverseViewer({ universe, onClose }) {
   const [screenIdx, setScreenIdx] = useState(0);
   const [activeHotspot, setActiveHotspot] = useState(null);
 
-  // Todas as telas reais (imagens) disponíveis para este universo, em ordem.
   const images = getScreenImages(universe.id);
   const total = images.length;
   const currentImage = images[screenIdx];
-
-  // Texto/hotspots cadastrados para essa tela (nem toda imagem tem um
-  // texto próprio ainda — quando não existe, mostramos só a imagem).
-  const screen = universe.screens[screenIdx] ?? {
+  const docScreen = getDocScreenData(universe.id, screenIdx);
+  const screen = docScreen ?? universe.screens[screenIdx] ?? {
     title: `Tela ${screenIdx + 1}`,
     desc: "",
     hotspots: [],
   };
+  const hotspots = screen.hotspots ?? [];
   const Icon = universe.icon;
 
-  useEffect(() => setActiveHotspot(null), [screenIdx]);
+  useEffect(() => {
+    setActiveHotspot(null);
+  }, [screenIdx]);
 
   const prev = () => screenIdx > 0 && setScreenIdx(screenIdx - 1);
   const next = () => screenIdx < total - 1 && setScreenIdx(screenIdx + 1);
@@ -93,10 +94,16 @@ export default function UniverseViewer({ universe, onClose }) {
                   app.smartflow.com.br/{universe.id}
                 </div>
               </div>
-              <div className="relative" style={{ height: 380, fontFamily: "'Inter', sans-serif" }}>
+              <div className="relative" style={{ height: 380, fontFamily: "'Inter', sans-serif" }} onClick={() => setActiveHotspot(null)}>
                 {currentImage && <ScreenImage name={currentImage} />}
-                {screen.hotspots.map((spot, i) => (
-                  <HotspotDot key={spot.id || i} spot={spot} index={i} activeIdx={activeHotspot} onToggle={setActiveHotspot} />
+                {hotspots.map((spot, i) => (
+                  <HotspotDot
+                    key={spot.id || i}
+                    spot={spot}
+                    index={i}
+                    activeIdx={activeHotspot}
+                    onToggle={setActiveHotspot}
+                  />
                 ))}
               </div>
             </div>
@@ -117,7 +124,7 @@ export default function UniverseViewer({ universe, onClose }) {
             )}
           </div>
 
-          <div className={`p-6 flex flex-col gap-5 border-l ${dark ? "border-white/5" : "border-black/6 bg-white"}`}>
+          <div className={`p-6 flex flex-col gap-4 border-l ${dark ? "border-white/5" : "border-black/6 bg-white"}`}>
             <div>
               <div
                 className="text-[11px] font-semibold uppercase tracking-widest mb-1"
@@ -126,7 +133,7 @@ export default function UniverseViewer({ universe, onClose }) {
                 {universe.name} — Tela {screenIdx + 1}
               </div>
               <h3
-                className={`text-xl font-bold mb-3 ${dark ? "text-white" : "text-slate-900"}`}
+                className={`text-xl font-bold mb-2 ${dark ? "text-white" : "text-slate-900"}`}
                 style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
               >
                 {screen.title}
@@ -136,19 +143,19 @@ export default function UniverseViewer({ universe, onClose }) {
               </p>
             </div>
 
-            <div className="flex-1 overflow-y-auto">
-              {screen.hotspots.length > 0 && (
-                <div className={`text-[11px] font-semibold uppercase tracking-widest mb-3 ${dark ? "text-slate-500" : "text-slate-400"}`}>
+            <div className="flex-1 min-h-0 overflow-y-auto pr-1">
+              {hotspots.length > 0 && (
+                <div className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${dark ? "text-slate-500" : "text-slate-400"}`}>
                   Elementos interativos
                 </div>
               )}
               <div className="space-y-2">
-                {screen.hotspots.map((hs, i) => (
+                {hotspots.map((hs, i) => (
                   <button
                     key={hs.id || i}
                     data-hotspot-id={hs.id || undefined}
                     onClick={() => setActiveHotspot(activeHotspot === i ? null : i)}
-                    className={`w-full text-left p-2.5 rounded-lg border transition-all text-xs ${
+                    className={`w-full text-left p-2 rounded-lg border transition-all text-[11px] leading-snug ${
                       activeHotspot === i
                         ? "bg-[#2563EB]/15 border-[#2563EB]/40 text-[#3B82F6]"
                         : dark
@@ -158,16 +165,16 @@ export default function UniverseViewer({ universe, onClose }) {
                   >
                     <div className="flex items-center gap-2">
                       <div className="w-4 h-4 rounded-full bg-[#2563EB] flex items-center justify-center flex-shrink-0">
-                        <span className="text-[8px] font-bold text-white">{i + 1}</span>
+                        <span className="text-[8px] font-bold text-white">{hs.number || i + 1}</span>
                       </div>
-                      <span className="font-medium">{hs.label.replace(/^\d+ — /, "")}</span>
+                      <span className="font-medium line-clamp-2">{hs.name}</span>
                     </div>
                   </button>
                 ))}
               </div>
             </div>
 
-            <div className="flex gap-3 pt-3 border-t border-white/5">
+            <div className="flex gap-3 pt-2 border-t border-white/5">
               <button
                 onClick={prev}
                 disabled={screenIdx === 0}
@@ -202,6 +209,7 @@ export default function UniverseViewer({ universe, onClose }) {
           </div>
         </div>
       </motion.div>
+
     </motion.div>
   );
 }

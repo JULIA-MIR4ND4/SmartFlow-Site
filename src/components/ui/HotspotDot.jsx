@@ -61,14 +61,12 @@ export default function HotspotDot({ spot, index, activeIdx, onToggle }) {
 
   return (
     <div
-      className="absolute z-10 cursor-pointer"
+      className={`absolute cursor-pointer ${isActive ? "z-30" : "z-10"}`}
       data-hotspot-id={spot.id || `hotspot-${index}`}
       data-hotspot-index={index}
       style={{ left: `${spot.x}%`, top: `${spot.y}%`, transform: "translate(-50%,-50%)" }}
-      onClick={(e) => {
-        e.stopPropagation();
-        onToggle(isActive ? null : index);
-      }}
+      onMouseEnter={() => onToggle(index)}
+      onMouseLeave={() => onToggle(null)}
     >
       <div className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full ${palette.ring} animate-ping`} />
       <div

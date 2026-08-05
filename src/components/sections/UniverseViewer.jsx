@@ -143,7 +143,7 @@ export default function UniverseViewer({ universe, onClose }) {
               </p>
             </div>
 
-            <div className="flex-1 min-h-0 overflow-y-auto pr-1">
+            <div className="h-[260px] overflow-y-auto pr-1 hotspot-scroll">
               {hotspots.length > 0 && (
                 <div className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${dark ? "text-slate-500" : "text-slate-400"}`}>
                   Elementos interativos

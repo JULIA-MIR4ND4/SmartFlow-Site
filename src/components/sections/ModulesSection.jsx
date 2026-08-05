@@ -44,10 +44,10 @@ const FEATURES = [
     description:
       "O módulo de vendas centraliza a abertura de pedidos, consulta de itens, busca de clientes e fechamento das operações com rapidez e controle.",
     actions: [
-      "Cadastro rápido de clientes",
+      "Busca de clientes",
       "Busca e seleção de produtos",
       "Finalização de venda em poucos passos",
-      "Acompanhamento de pedidos em tempo real",
+      
     ],
     icon: ShoppingCart,
     accent: "#22C55E",
@@ -79,9 +79,8 @@ const FEATURES = [
       "Permite acompanhar comandas, consultar pedidos abertos e facilitar o atendimento com uma visão organizada do fluxo de mesas.",
     actions: [
       "Consulta de comandas abertas",
-      "Filtro por período e mesa",
+      "Filtro por período e categoria",
       "Acompanhamento do status do atendimento",
-      "Rastreamento de pedidos em andamento",
     ],
     icon: ClipboardList,
     accent: "#06B6D4",
@@ -97,8 +96,8 @@ const FEATURES = [
     actions: [
       "Cadastro e atualização de clientes",
       "Histórico de consumo por cliente",
-      "Aniversariantes e recorrência",
-      "Segmentação para ações futuras",
+      "Aniversariantes",
+      "Dadastro e atualização de categorias",
     ],
     icon: UserCheck,
     accent: "#F59E0B",
@@ -112,10 +111,10 @@ const FEATURES = [
     description:
       "Organiza o catálogo do estabelecimento com detalhes de cada item, facilitando o controle e a operação diária.",
     actions: [
-      "Cadastro de produtos e categorias",
+      "Cadastro de produtos, categorias, unidades e tipos",
       "Consulta rápida de disponibilidade",
       "Atualização de preços e detalhes",
-      "Organização de itens por tipo",
+      "Organização de itens",
     ],
     icon: Package,
     accent: "#3B82F6",
@@ -130,8 +129,8 @@ const FEATURES = [
       "Acompanha o consumo, volume e condições operacionais do barril, trazendo maior controle para a produção e a operação.",
     actions: [
       "Monitoramento de consumo por barril",
+      "Cadastro e atualização de barril",
       "Acompanhamento de volume e produtividade",
-      "Alertas para operação contínua",
       "Visão rápida das movimentações",
     ],
     icon: Droplets,
@@ -147,9 +146,8 @@ const FEATURES = [
       "Oferece um painel operacional para acompanhar o estado das torneiras e ajustar a disponibilidade de forma mais eficiente.",
     actions: [
       "Acompanhamento do estado das torneiras",
-      "Análise das operações por equipamento",
+      "Cadastro e atualização de torneiras",
       "Visão rápida do fluxo de uso",
-      "Orientação para manutenção e controle",
     ],
     icon: Activity,
     accent: "#0EA5E9",
@@ -165,8 +163,7 @@ const FEATURES = [
     actions: [
       "Controle de entradas e saídas",
       "Visão eficiente da disponibilidade",
-      "Histórico de movimentações",
-      "Acompanhamento do saldo em tempo real",
+      "Atualizações de produtos ja cadastrados",
     ],
     icon: Warehouse,
     accent: "#F97316",
@@ -180,7 +177,7 @@ const FEATURES = [
     description:
       "Permite revisar entradas, saídas, saldos e movimentações financeiras com filtros rápidos para análise do dia a dia.",
     actions: [
-      "Consulta por período e categoria",
+      "Consulta por período, categoria, forma de pagamento",
       "Acompanhamento de saldos e recebimentos",
       "Visualização de fluxo financeiro",
       "Filtro para operações específicas",
@@ -197,9 +194,9 @@ const FEATURES = [
     description:
       "Organiza consultas de vendas por período, cliente e operação para facilitar a leitura de indicadores e tendências.",
     actions: [
-      "Consulta por período e canal",
+      "Consulta por período",
       "Análise de desempenho comercial",
-      "Acompanhamento de itens e clientes",
+      "Acompanhamento de vendas no tap e no PDV",
       "Comparativo de movimentações",
     ],
     icon: BarChart2,
@@ -216,8 +213,7 @@ const FEATURES = [
     actions: [
       "Resumo financeiro por período",
       "Análise de recebimentos e pagamentos",
-      "Visão consolidada da operação",
-      "Comparativo entre ciclos financeiros",
+      "Verificação das movimentações",
     ],
     icon: FileText,
     accent: "#8B5CF6",
@@ -231,10 +227,10 @@ const FEATURES = [
     description:
       "Apresenta a performance das torneiras com indicadores de uso e operação para um controle mais detalhado.",
     actions: [
-      "Indicadores de uso por equipamento",
-      "Análise de operação e fluxo",
-      "Acompanhamento de tempo e volume",
-      "Visão consolidada do desempenho",
+      "Registro das movimentações de consumo no TAP por meio da TAG de serviço",
+      "Consulta das operações realizadas",
+      "Aba exclusiva para operações de Autosserviço",
+      "Aba exclusiva para operações de Sangria",
     ],
     icon: Activity,
     accent: "#0EA5E9",
@@ -251,30 +247,13 @@ const FEATURES = [
       "Resumo de documentos e movimentações",
       "Organização das informações fiscais",
       "Acompanhamento de conformidade",
-      "Consulta rápida para auditoria",
     ],
     icon: FileText,
     accent: "#F59E0B",
     mockupKey: "fiscal",
     imageName: "fiscal1",
   },
-  {
-    id: "sistema-filiais",
-    title: "Sistema — Filiais",
-    category: "GESTÃO CENTRALIZADA DE UNIDADES",
-    description:
-      "Permite configurar e acompanhar o funcionamento das filiais de forma integrada, mantendo padronização e controle.",
-    actions: [
-      "Configuração de filiais e unidades",
-      "Acompanhamento operacional centralizado",
-      "Padronização de processos",
-      "Visão integrada das operações",
-    ],
-    icon: Building2,
-    accent: "#3B82F6",
-    mockupKey: "sistemafiliais",
-    imageName: "sistema1",
-  },
+ 
   {
     id: "sistema",
     title: "Sistema",
@@ -282,10 +261,10 @@ const FEATURES = [
     description:
       "Oferece acesso às configurações principais da operação para ajustar regras, permissões e funcionamento da solução.",
     actions: [
-      "Configuração de regras e permissões",
-      "Ajustes gerais da plataforma",
-      "Manutenção de parâmetros do sistema",
-      "Visão centralizada da operação",
+      "Consulta e gerenciamento dos usuários cadastrados",
+      "Edição de informações e permissões de acesso",
+      "Geração e alteração de senhas",
+      "Registro de observações dos usuários",
     ],
     icon: Settings,
     accent: "#64748B",
@@ -311,7 +290,7 @@ export default function ModulesSection() {
             Módulos do sistema
           </h2>
           <p className={`mx-auto mt-5 max-w-2xl text-base leading-8 sm:text-lg ${dark ? "text-slate-400" : "text-slate-600"}`}>
-            15 módulos completamente integrados, cada um desenvolvido para uma etapa específica da gestão do seu estabelecimento.
+            15+ módulos completamente integrados, cada um desenvolvido para uma etapa específica da gestão do seu estabelecimento.
           </p>
         </FadeIn>
 

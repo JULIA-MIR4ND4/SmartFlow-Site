@@ -1159,7 +1159,7 @@ const DOC_HOTSPOTS = {
       ],
     },
     10: {
-      title: "Pagamento – Modal – Estorno de Venda PDV (Cancelamento de Venda)",
+      title: "Pagamento – Modal – Estorno de Venda PDV",
       desc: "Permitir a consulta dos dados de uma venda registrada no PDV e a realização do seu estorno/cancelamento, mediante justificativa.",
       hotspots: [
         {

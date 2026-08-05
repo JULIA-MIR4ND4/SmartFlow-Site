@@ -34,7 +34,13 @@ export default function UniverseGallery() {
             Selecione um Universo para explorar as telas reais do sistema. Os números nas bolinhas
             indicam a sequência lógica de utilização. Passe o mouse para saber mais sobre cada
             elemento.
+            
           </p>
+          <p className="text-lg max-w-2xl mx-auto text-slate-500">
+             🟢 Ação,  🔵 Visualização, 🟠 Navegação, 🟣 Configuração, ⚪ Informação, 🟡 Download / Exportação.
+          </p>
+          
+          
         </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

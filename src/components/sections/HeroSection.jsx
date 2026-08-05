@@ -6,7 +6,7 @@ import ScreenImage from "../ui/ScreenImage.jsx";
 const STATS = [
   ["15+", "Módulos integrados"],
   ["100%", "Web e responsivo"],
-  ["24/7", "Dados em tempo real"],
+  ["&", "Suporte e atualizações"],
 ];
 
 export default function HeroSection() {

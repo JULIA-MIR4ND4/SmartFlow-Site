@@ -14,6 +14,7 @@ import {
   Settings,
   Receipt,
   UserCog,
+  Tablet,
 } from "lucide-react";
 
 // Cada "universo" representa um módulo do SmartFlow. Cada tela (screen)
@@ -418,6 +419,171 @@ export const UNIVERSES = [
           { x: 88, y: 13, label: "2 — Cadastrar Novo Usuário", info: "Clique em Adicionar (+). Preencha os dados obrigatórios, use a geração automática de senha e salve o cadastro." },
           { x: 55, y: 38, label: "3 — Grupo e Permissões", info: "O grupo define as permissões de acesso do usuário no sistema. Verifique o grupo atribuído para garantir o nível correto de acesso." },
           { x: 80, y: 38, label: "4 — Status Ativo/Inativo", info: "Usuários Ativos têm acesso ao sistema. Inative para revogar o acesso sem excluir o histórico de atividades do usuário." },
+        ],
+      },
+    ],
+  },
+  {
+    id: "tablet",
+    name: "Tablet — Sirva-se",
+    icon: Tablet,
+    color: "#C026D3",
+    description: "Aplicativo do tablet instalado na torneira para autoatendimento",
+    // Este universo não possui alternância entre modo claro/escuro: o app do
+    // tablet só existe em um único modo visual. As imagens são exibidas por
+    // inteiro (sem cortes), pois as telas são fotos em formato retrato.
+    imageFit: "contain",
+    screens: [
+      {
+        title: "Tela Inicial da Torneira (Sirva-se)",
+        desc: "Tela de espera exibida no tablet da torneira, apresentando a bebida disponível no barril conectado, com informações, preço e status do dispositivo.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 7, y: 5, label: "1 — Logo SmartFlow", info: "Identifica visualmente o sistema SmartFlow instalado no tablet da torneira." },
+          { x: 81, y: 13, label: "2 — Logo da Cervejaria", info: "Exibe a marca/rótulo vinculada ao barril conectado na torneira." },
+          { x: 60, y: 28, label: "3 — Foto e Dados da Bebida", info: "Apresenta a foto do estilo disponível, teor alcoólico (ABV), amargor (IBU) e cor." },
+          { x: 34, y: 44, label: "4 — Botão \"Saiba +\"", info: "Abre o modal com descrição detalhada e ingredientes da bebida." },
+          { x: 6, y: 61, label: "5 — Selecionar Torneira", info: "Permite alternar a visualização entre as diferentes torneiras/taps do totem." },
+          { x: 50, y: 80, label: "6 — Preço e Nome da Bebida", info: "Exibe o valor cobrado a cada 100 mL e o nome do estilo de cerveja." },
+          { x: 50, y: 96, label: "7 — Barra de Status", info: "Mostra bateria, Wi-Fi, sincronização e versão do sistema instalado." },
+        ],
+      },
+      {
+        title: "Menu de Opções do Tap",
+        desc: "Menu de acesso rápido sobreposto à tela inicial, com atalhos para fechar, configurar, bloquear, consultar e selecionar a torneira.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 10, y: 58, label: "1 — Fechar Menu", info: "Fecha o menu de opções e retorna à tela inicial." },
+          { x: 28, y: 58, label: "2 — Configurações", info: "Abre a tela de Configurações do Tap." },
+          { x: 46, y: 58, label: "3 — Bloquear", info: "Bloqueia o fornecimento da torneira, impedindo novos atendimentos." },
+          { x: 64, y: 58, label: "4 — Relatório/Consumo", info: "Exibe informações de consumo vinculadas à torneira." },
+          { x: 82, y: 58, label: "5 — Selecionar Torneira", info: "Permite selecionar entre as torneiras/taps conectados ao totem." },
+        ],
+      },
+      {
+        title: "Torneira Indisponível",
+        desc: "Mensagem exibida quando a torneira não está disponível para uso, orientando o cliente a utilizar outra torneira.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 64, y: 49, label: "1 — Mensagem de Indisponibilidade", info: "Informa que a torneira está temporariamente indisponível e orienta o uso de outra torneira." },
+          { x: 81, y: 33, label: "2 — Indicadores Vazios", info: "ABV, IBU e Cor ficam em branco (\"-\") enquanto a torneira está indisponível." },
+          { x: 34, y: 44, label: "3 — Botão \"Saiba +\"", info: "Permanece disponível para consultar informações da última bebida associada." },
+          { x: 6, y: 61, label: "4 — Selecionar Torneira", info: "Direciona o cliente para escolher outra torneira disponível." },
+        ],
+      },
+      {
+        title: "Sobre a Bebida (Descrição e Ingredientes)",
+        desc: "Modal com a descrição completa e os ingredientes cadastrados para o estilo de cerveja em exibição.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 13, y: 7, label: "1 — Voltar", info: "Fecha o modal e retorna à tela anterior." },
+          { x: 50, y: 21, label: "2 — Descrição", info: "Exibe o texto descritivo cadastrado para o estilo de cerveja." },
+          { x: 50, y: 66, label: "3 — Ingredientes", info: "Lista os ingredientes cadastrados para a bebida." },
+          { x: 50, y: 90, label: "4 — Fechar", info: "Fecha o modal \"Sobre a bebida\" e retorna à tela inicial." },
+        ],
+      },
+      {
+        title: "Sirva-se! (Autoatendimento)",
+        desc: "Tela de dispensação exibida durante o consumo, com crédito disponível, volume servido e valor total em tempo real.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 9, y: 8, label: "1 — Indicador de Etapa", info: "Indicador de progresso exibido durante o atendimento." },
+          { x: 89, y: 8, label: "2 — Configurações Rápidas", info: "Acesso rápido às configurações do tap durante o atendimento." },
+          { x: 50, y: 38, label: "3 — Ilustração do Sistema", info: "Indica que o sistema está pronto para servir a bebida." },
+          { x: 50, y: 58, label: "4 — Crédito / Volume / Total", info: "Exibe o saldo de crédito, o volume já servido e o valor total consumido em tempo real." },
+          { x: 50, y: 82, label: "5 — Botão \"Estou Servido(a)!\"", info: "O cliente toca para concluir o atendimento e liberar a torneira para o próximo uso." },
+        ],
+      },
+      {
+        title: "Acesso Manutenção (Senha)",
+        desc: "Modal de autenticação exigido para liberar o acesso às configurações de manutenção do tap.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 85, y: 29, label: "1 — Fechar", info: "Fecha o modal de acesso à manutenção." },
+          { x: 50, y: 42, label: "2 — Campo Senha", info: "Campo para o operador informar a senha de acesso à manutenção do tap." },
+          { x: 50, y: 58, label: "3 — Botão \"Abrir\"", info: "Valida a senha informada e libera o acesso às configurações de manutenção." },
+          { x: 50, y: 69, label: "4 — Botão \"Cancelar\"", info: "Cancela a solicitação e fecha o modal sem liberar a manutenção." },
+        ],
+      },
+      {
+        title: "Configurações do Tap",
+        desc: "Tela de configuração do tap, com identificação do dispositivo, estado da torneira e ações de manutenção.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 46, y: 17, label: "1 — Campo UUID", info: "Identificador único do tap, usado para vincular o dispositivo físico ao sistema." },
+          { x: 50, y: 26, label: "2 — Barril / Estado / Hash", info: "Exibe o barril conectado, o estado da torneira (Liberada/Bloqueada) e o hash de identificação do dispositivo." },
+          { x: 85, y: 20, label: "3 — Badge do Tap", info: "Identifica visualmente o número do tap configurado." },
+          { x: 27, y: 45, label: "4 — Botão \"Atualizar\"", info: "Atualiza as informações exibidas com os dados mais recentes do tap." },
+          { x: 72, y: 45, label: "5 — Botão \"Desativar\"", info: "Desativa o tap, interrompendo seu funcionamento." },
+          { x: 50, y: 79, label: "6 — Ações de Manutenção", info: "Calibrar, bloquear/desbloquear, sangria, liberar/travar app e diagnóstico do tap." },
+        ],
+      },
+      {
+        title: "Confirmação — Tap Bloqueado",
+        desc: "Confirmação exibida após o bloqueio manual da torneira a partir da tela de configurações.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 40, y: 28, label: "1 — Estado \"Bloqueada\"", info: "Indica que a torneira foi bloqueada e não realiza novos atendimentos." },
+          { x: 50, y: 47, label: "2 — Modal de Confirmação", info: "Confirma que o tap foi bloqueado com sucesso." },
+          { x: 50, y: 54, label: "3 — Botão \"Ok\"", info: "Fecha a confirmação e retorna à tela de configurações do tap." },
+          { x: 50, y: 79, label: "4 — Botão \"Desbloquear\"", info: "Reverte o bloqueio e libera novamente a torneira para uso." },
+        ],
+      },
+      {
+        title: "Confirmação — Tap Desbloqueado",
+        desc: "Confirmação exibida após o desbloqueio manual da torneira a partir da tela de configurações.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 40, y: 28, label: "1 — Estado \"Liberada\"", info: "Indica que a torneira está liberada e apta para novos atendimentos." },
+          { x: 50, y: 47, label: "2 — Modal de Confirmação", info: "Confirma que o tap foi desbloqueado com sucesso." },
+          { x: 50, y: 54, label: "3 — Botão \"Ok\"", info: "Fecha a confirmação." },
+          { x: 50, y: 79, label: "4 — Botão \"Bloquear\"", info: "Permite bloquear novamente a torneira quando necessário." },
+        ],
+      },
+      {
+        title: "Calibração do Sensor de Fluxo",
+        desc: "Modal com passo a passo para calibrar o sensor de fluxo, comparando o volume lido pelo sensor com o volume real retirado.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 88, y: 8, label: "1 — Fechar", info: "Fecha o modal de calibração." },
+          { x: 50, y: 28, label: "2 — Instruções de Calibração", info: "Passo a passo para calibrar corretamente o sensor de fluxo do tap." },
+          { x: 33, y: 53, label: "3 — Volume Lido", info: "Exibe o volume medido automaticamente pelo sensor durante o teste." },
+          { x: 33, y: 62, label: "4 — Campo Volume Real", info: "Campo para informar o volume real retirado, usado para ajustar a calibração." },
+          { x: 50, y: 75, label: "5 — Abrir/Fechar Válvula", info: "Controlam manualmente a abertura e o fechamento da válvula durante o teste." },
+          { x: 50, y: 89, label: "6 — Botão \"Salvar Calibração\"", info: "Grava os novos parâmetros de calibração do sensor de fluxo." },
+        ],
+      },
+      {
+        title: "Sangria (Descarte de Volume)",
+        desc: "Modal utilizado para realizar a sangria da torneira, descartando o volume necessário antes de novos atendimentos.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 85, y: 25, label: "1 — Fechar", info: "Fecha o modal de sangria." },
+          { x: 50, y: 58, label: "2 — Volume da Sangria", info: "Exibe em tempo real o volume descartado durante o processo de sangria." },
+          { x: 50, y: 72, label: "3 — Botão \"Finalizar Sangria\"", info: "Encerra o processo de sangria e registra o volume descartado." },
+        ],
+      },
+      {
+        title: "Diagnóstico do Tap",
+        desc: "Tela de diagnóstico com a legenda de comportamento do LED indicador e o log de eventos e falhas registrados pelo dispositivo.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 88, y: 8, label: "1 — Fechar", info: "Fecha a tela de diagnóstico." },
+          { x: 50, y: 25, label: "2 — Comportamento do LED", info: "Relaciona cada estado do tap (idle, servindo, sem conexão, bloqueado etc.) com a cor/piscada do LED." },
+          { x: 85, y: 58, label: "3 — Botão \"APK Link\"", info: "Disponibiliza o link para download/atualização do aplicativo instalado no tablet." },
+          { x: 50, y: 75, label: "4 — Log de Eventos e Falhas", info: "Lista cronológica dos eventos e falhas registrados pelo dispositivo, incluindo status e identificação (IMEI) do tablet." },
+        ],
+      },
+      {
+        title: "Configuração de Novo Tap (Ativação)",
+        desc: "Tela de configuração de um tap ainda não vinculado, utilizada para informar o UUID e ativá-lo pela primeira vez.",
+        mockup: "tablet",
+        hotspots: [
+          { x: 46, y: 17, label: "1 — Campo UUID (vazio)", info: "Campo em destaque para vincular o UUID de um novo tap ainda não configurado." },
+          { x: 40, y: 28, label: "2 — Estado \"Bloqueada\"", info: "Um novo tap inicia bloqueado até que seja ativado." },
+          { x: 85, y: 20, label: "3 — Badge \"-\"", info: "Indica que o tap ainda não possui um número identificador definido." },
+          { x: 72, y: 45, label: "4 — Botão \"Ativar\"", info: "Ativa o tap após o preenchimento do UUID, tornando-o pronto para uso." },
+          { x: 50, y: 79, label: "5 — Ações de Manutenção", info: "Mesmas ações de manutenção disponíveis após a ativação do tap." },
         ],
       },
     ],

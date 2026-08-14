@@ -33,3 +33,4 @@ export default function ScreenFrame({ mockupKey, imageName, height = 320 }) {
     </div>
   );
 }
+/*Cria uma moldura para as telas.*/

@@ -17,3 +17,4 @@ export default function FadeIn({ children, delay = 0, className = "" }) {
     </motion.div>
   );
 }
+/*animacoes da entrada*/

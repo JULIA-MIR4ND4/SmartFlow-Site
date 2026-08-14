@@ -95,7 +95,7 @@ export default function UniverseViewer({ universe, onClose }) {
                 </div>
               </div>
               <div className="relative" style={{ height: 380, fontFamily: "'Inter', sans-serif" }} onClick={() => setActiveHotspot(null)}>
-                {currentImage && <ScreenImage name={currentImage} />}
+                {currentImage && <ScreenImage name={currentImage} fit={universe.imageFit || "cover"} />}
                 {hotspots.map((spot, i) => (
                   <HotspotDot
                     key={spot.id || i}

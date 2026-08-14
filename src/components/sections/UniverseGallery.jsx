@@ -83,7 +83,7 @@ export default function UniverseGallery() {
                       <div className="w-2 h-2 rounded-full bg-green-500/50" />
                     </div>
                     <div style={{ height: 210, fontFamily: "'Inter', sans-serif", pointerEvents: "none" }}>
-                      {firstImage && <ScreenImage name={firstImage} />}
+                      {firstImage && <ScreenImage name={firstImage} fit={universe.imageFit || "cover"} />}
                     </div>
                   </div>
 

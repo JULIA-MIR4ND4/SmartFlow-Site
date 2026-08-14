@@ -22,6 +22,7 @@ const IMAGE_CONFIG = {
   torneiraservico: { prefix: "relatorioTorneira", count: 1 },
   fiscal: { prefix: "fiscal", count: 2 },
   sistema: { prefix: "sistema", count: 3 },
+  tablet: { prefix: "tablet", count: 13 },
 };
 
 // Retorna a lista ordenada de nomes-base de imagem para um universo

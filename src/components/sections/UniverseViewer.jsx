@@ -81,7 +81,7 @@ export default function UniverseViewer({ universe, onClose }) {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_320px] flex-1 min-h-0 lg:h-full">
+        <div className="grid lg:grid-cols-[1fr_320px] flex-1 min-h-0 lg:h-full" style={{ gridTemplateRows: "minmax(0, 1fr)" }}>
           <div className={`p-6 ${dark ? "" : "bg-slate-50"}`}>
             <div className={`relative rounded-xl overflow-hidden border shadow-2xl ${dark ? "border-white/10 shadow-black/50" : "border-slate-200 shadow-slate-200/70"}`}>
               <div className={`flex items-center gap-2 px-4 py-2.5 border-b ${dark ? "bg-[#060D1C] border-white/5" : "bg-white border-slate-200"}`}>
@@ -122,26 +122,25 @@ export default function UniverseViewer({ universe, onClose }) {
             </div>
           </div>
 
-          <div className={`p-6 h-full flex flex-col gap-4 border-l ${dark ? "border-white/5" : "border-black/6 bg-white"}`}>
-            <div className="h-[132px] flex-shrink-0 overflow-hidden">
-              <div
-                className="text-[11px] font-semibold uppercase tracking-widest mb-1"
-                style={{ color: universe.color }}
-              >
-                {universe.name} — Tela {screenIdx + 1}
+          <div className={`p-6 h-full min-h-0 flex flex-col gap-4 border-l ${dark ? "border-white/5" : "border-black/6 bg-white"}`}>
+            <div className="flex-1 min-h-0 overflow-y-auto pr-1 hotspot-scroll">
+              <div className="mb-4">
+                <div
+                  className="text-[11px] font-semibold uppercase tracking-widest mb-1"
+                  style={{ color: universe.color }}
+                >
+                  {universe.name} — Tela {screenIdx + 1}
+                </div>
+                <h3
+                  className={`text-xl font-bold mb-2 ${dark ? "text-white" : "text-slate-900"}`}
+                  style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
+                >
+                  {screen.title}
+                </h3>
+                <p className={`text-sm leading-relaxed ${dark ? "text-slate-400" : "text-slate-600"}`}>
+                  {screen.desc}
+                </p>
               </div>
-              <h3
-                className={`text-xl font-bold mb-2 line-clamp-1 ${dark ? "text-white" : "text-slate-900"}`}
-                style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
-              >
-                {screen.title}
-              </h3>
-              <p className={`text-sm leading-relaxed line-clamp-3 ${dark ? "text-slate-400" : "text-slate-600"}`}>
-                {screen.desc}
-              </p>
-            </div>
-
-            <div className="h-[260px] overflow-y-auto pr-1 hotspot-scroll flex-shrink-0">
               {hotspots.length > 0 && (
                 <div className={`text-[11px] font-semibold uppercase tracking-widest mb-2 ${dark ? "text-slate-500" : "text-slate-400"}`}>
                   Elementos interativos
@@ -172,7 +171,7 @@ export default function UniverseViewer({ universe, onClose }) {
               </div>
             </div>
 
-            <div className="flex gap-3 pt-2 mt-auto border-t border-white/5 flex-shrink-0">
+            <div className="flex gap-3 pt-2 border-t border-white/5 flex-shrink-0">
               <button
                 onClick={prev}
                 disabled={screenIdx === 0}

@@ -123,7 +123,7 @@ export default function UniverseViewer({ universe, onClose }) {
           </div>
 
           <div className={`p-6 h-full flex flex-col gap-4 border-l ${dark ? "border-white/5" : "border-black/6 bg-white"}`}>
-            <div className="flex-1 min-h-0 overflow-hidden">
+            <div className="h-[132px] flex-shrink-0 overflow-hidden">
               <div
                 className="text-[11px] font-semibold uppercase tracking-widest mb-1"
                 style={{ color: universe.color }}
@@ -131,12 +131,12 @@ export default function UniverseViewer({ universe, onClose }) {
                 {universe.name} — Tela {screenIdx + 1}
               </div>
               <h3
-                className={`text-xl font-bold mb-2 ${dark ? "text-white" : "text-slate-900"}`}
+                className={`text-xl font-bold mb-2 line-clamp-1 ${dark ? "text-white" : "text-slate-900"}`}
                 style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
               >
                 {screen.title}
               </h3>
-              <p className={`text-sm leading-relaxed line-clamp-4 ${dark ? "text-slate-400" : "text-slate-600"}`}>
+              <p className={`text-sm leading-relaxed line-clamp-3 ${dark ? "text-slate-400" : "text-slate-600"}`}>
                 {screen.desc}
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function UniverseViewer({ universe, onClose }) {
               </div>
             </div>
 
-            <div className="flex gap-3 pt-2 border-t border-white/5 flex-shrink-0">
+            <div className="flex gap-3 pt-2 mt-auto border-t border-white/5 flex-shrink-0">
               <button
                 onClick={prev}
                 disabled={screenIdx === 0}

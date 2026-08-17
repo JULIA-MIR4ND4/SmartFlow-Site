@@ -9,7 +9,7 @@ import { useTheme } from "../../context/ThemeContext.jsx";
  * @param {"cover"|"contain"} fit - "cover" (padrão) preenche o quadro podendo
  *   cortar bordas da imagem; "contain" exibe a imagem inteira, sem cortes.
  */
-export default function ScreenImage({ name, alt = "", className = "", fit = "cover" }) {
+export default function ScreenImage({ name, alt = "", className = "", fit = "cover", onLoad }) {
   const { dark } = useTheme();
   if (!name) return null;
 
@@ -24,6 +24,11 @@ export default function ScreenImage({ name, alt = "", className = "", fit = "cov
         alt={alt || `Tela ${name} do SmartFlow`}
         loading="lazy"
         className={`w-full h-full ${fitClass} ${className}`}
+        onLoad={(e) => {
+          if (onLoad) {
+            onLoad({ naturalWidth: e.target.naturalWidth, naturalHeight: e.target.naturalHeight });
+          }
+        }}
       />
     </div>
   );

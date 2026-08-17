@@ -6601,7 +6601,7 @@ tablet: {
   },
 
   8: {
-    title: "Tap – Modal (Torneira Bloqueada)",
+    title: "Tap – Modal (Torneira Desbloqueada)",
     desc: "Permitir ao funcionário realizar ação de Desbloqueio.",
     hotspots: [
       {
@@ -6642,7 +6642,7 @@ tablet: {
       {
         id: "tap-calibrar-02-indicador-de-calibracao",
         number: "2",
-        name: "Indicador de calibração",
+        name: "Instruções de calibração",
         category: "⚪ Informação",
         type: "Indicador de progresso",
         priority: "Média",
@@ -6847,6 +6847,34 @@ tablet: {
         observations: "",
          x: "50",
          y: "24"
+      },
+      {
+        id: "tap-diagnostico-04-secao-log-eventos-falhas",
+        number: "4",
+        name: "Seção \"Log de eventos e falhas\"",
+        category: "⚪ Informação",
+        type: "Título de seção",
+        priority: "Baixa",
+        location: "Área central da janela, abaixo da tabela de comportamento do LED.",
+        function: "Agrupa o registro dos eventos e falhas ocorridos no aplicativo.",
+        usage: "",
+        observations: "",
+        x: "52",
+        y: "61"
+      },
+      {
+        id: "tap-diagnostico-05-botao-apk-link",
+        number: "5",
+        name: "Botão \"APK Link\"",
+        category: "🟢 Ação",
+        type: "Botão",
+        priority: "Média",
+        location: "À direita do título da seção \"Log de eventos e falhas\".",
+        function: "Disponibiliza o acesso ao arquivo de instalação do aplicativo.",
+        usage: "Tocar sobre o botão.",
+        observations: "Recurso destinado à equipe técnica, para atualização ou reinstalação do aplicativo no dispositivo.",
+        x: "55",
+        y: "61"
       },
     ],
   },

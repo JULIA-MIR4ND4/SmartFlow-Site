@@ -19,8 +19,6 @@ export default function App() {
           <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
           <div className="flex-1">
             <Header
-              onSearchOpen={() => setSidebarOpen(true)}
-              onMenuToggle={() => setSidebarOpen((value) => !value)}
             />
             <main className="pt-16">
               <HeroSection />

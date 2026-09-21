@@ -67,6 +67,10 @@ export default function HotspotDot({ spot, index, activeIdx, onToggle }) {
       style={{ left: `${spot.x}%`, top: `${spot.y}%`, transform: "translate(-50%,-50%)" }}
       onMouseEnter={() => onToggle(index)}
       onMouseLeave={() => onToggle(null)}
+      onClick={(event) => {
+        event.stopPropagation();
+        onToggle(isActive ? null : index);
+      }}
     >
       <div className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full ${palette.ring} animate-ping`} />
       <div

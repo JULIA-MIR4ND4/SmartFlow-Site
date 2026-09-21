@@ -25,7 +25,7 @@ const UNIVERSE_TO_MODULE_HREF = {
   sistema: "#sistema",
 };
 
-export default function Header({ onSearchOpen, onMenuToggle }) {
+export default function Header() {
   const { dark, toggle } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -125,7 +125,6 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
             <button
               onClick={() => {
                 setSearchOpen((value) => !value);
-                onSearchOpen?.();
               }}
               className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
                 dark
@@ -165,7 +164,6 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
             <button
               onClick={() => {
                 setSearchOpen((value) => !value);
-                onSearchOpen?.();
               }}
               className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}
             >
@@ -178,7 +176,6 @@ export default function Header({ onSearchOpen, onMenuToggle }) {
               className={`p-1 ${dark ? "text-slate-400" : "text-slate-500"}`}
               onClick={() => {
                 setMenuOpen(!menuOpen);
-                onMenuToggle?.();
               }}
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}

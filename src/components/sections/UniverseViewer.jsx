@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
@@ -11,6 +11,8 @@ export default function UniverseViewer({ universe, onClose }) {
   const { dark } = useTheme();
   const [screenIdx, setScreenIdx] = useState(0);
   const [activeHotspot, setActiveHotspot] = useState(null);
+  const dialogRef = useRef(null);
+  const closeButtonRef = useRef(null);
 
   const images = getScreenImages(universe.id);
   const total = images.length;
@@ -27,6 +29,56 @@ export default function UniverseViewer({ universe, onClose }) {
   useEffect(() => {
     setActiveHotspot(null);
   }, [screenIdx]);
+
+  useEffect(() => {
+    const previousActiveElement = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    const focusableSelector = [
+      "button:not([disabled])",
+      "[href]",
+      "input:not([disabled])",
+      "select:not([disabled])",
+      "textarea:not([disabled])",
+      "[tabindex]:not([tabindex=\"-1\"])",
+    ].join(",");
+
+    document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+
+      if (event.key !== "Tab" || !dialogRef.current) return;
+
+      const focusableElements = [...dialogRef.current.querySelectorAll(focusableSelector)];
+      if (focusableElements.length === 0) {
+        event.preventDefault();
+        dialogRef.current.focus();
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstElement) {
+        event.preventDefault();
+        lastElement.focus();
+      } else if (!event.shiftKey && document.activeElement === lastElement) {
+        event.preventDefault();
+        firstElement.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousActiveElement?.focus?.();
+    };
+  }, [onClose]);
 
   const prev = () => screenIdx > 0 && setScreenIdx(screenIdx - 1);
   const next = () => screenIdx < total - 1 && setScreenIdx(screenIdx + 1);
@@ -45,6 +97,11 @@ export default function UniverseViewer({ universe, onClose }) {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         transition={{ type: "spring", damping: 28, stiffness: 280 }}
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="universe-viewer-title"
+        tabIndex={-1}
         className={`relative w-full max-w-6xl rounded-2xl overflow-hidden border shadow-2xl flex flex-col h-[640px] max-h-[90vh] ${
           dark ? "bg-[#0B1526] border-white/10" : "bg-slate-100 border-black/10"
         }`}
@@ -56,6 +113,7 @@ export default function UniverseViewer({ universe, onClose }) {
           }`}
         >
           <button
+            ref={closeButtonRef}
             onClick={onClose}
             className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors"
           >
@@ -70,6 +128,7 @@ export default function UniverseViewer({ universe, onClose }) {
               <Icon size={12} className="text-white" />
             </div>
             <span
+              id="universe-viewer-title"
               className={`font-semibold ${dark ? "text-white" : "text-slate-900"}`}
               style={{ fontFamily: "'Bricolage Grotesque', sans-serif" }}
             >

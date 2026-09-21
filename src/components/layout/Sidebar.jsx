@@ -25,7 +25,6 @@ const FUNCTIONALITY_SUBITEMS = [
   { label: "Relatórios Financeiro", href: "#relatorios-financeiro" },
   { label: "Relatórios Torneira", href: "#relatorios-torneira" },
   { label: "Relatórios Fiscal", href: "#relatorios-fiscal" },
-  { label: "Sistema Filiais", href: "#sistema-filiais" },
   { label: "Sistema", href: "#sistema" },
 ];
 

@@ -97,7 +97,7 @@ const FEATURES = [
       "Cadastro e atualização de clientes",
       "Histórico de consumo por cliente",
       "Aniversariantes",
-      "Dadastro e atualização de categorias",
+      "Cadastro e atualização de categorias",
     ],
     icon: UserCheck,
     accent: "#F59E0B",
@@ -163,7 +163,7 @@ const FEATURES = [
     actions: [
       "Controle de entradas e saídas",
       "Visão eficiente da disponibilidade",
-      "Atualizações de produtos ja cadastrados",
+      "Atualizações de produtos já cadastrados",
     ],
     icon: Warehouse,
     accent: "#F97316",

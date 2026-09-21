@@ -88,11 +88,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? dark
-            ? "bg-[#0F172A]/90 backdrop-blur-xl border-b border-white/5 shadow-xl shadow-black/30"
-            : "bg-slate-50/92 backdrop-blur-xl border-b border-black/6 shadow-xl shadow-black/5"
-          : ""
+        scrolled ? "bg-slate-50/92 backdrop-blur-xl border-b border-black/6 shadow-xl shadow-black/5 dark:bg-[#0F172A]/90 dark:border-white/5 dark:shadow-black/30" : ""
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -110,11 +106,7 @@ export default function Header() {
               <button
                 key={href}
                 onClick={() => go(href)}
-                className={`px-4 py-2 text-sm rounded-lg transition-colors ${
-                  dark
-                    ? "text-slate-400 hover:text-white hover:bg-white/5"
-                    : "text-slate-500 hover:text-slate-900 hover:bg-black/5"
-                }`}
+                className="px-4 py-2 text-sm rounded-lg transition-colors text-slate-500 hover:text-slate-900 hover:bg-black/5 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5"
               >
                 {label}
               </button>
@@ -126,35 +118,25 @@ export default function Header() {
               onClick={() => {
                 setSearchOpen((value) => !value);
               }}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${
-                dark
-                  ? "text-slate-400 hover:text-white hover:bg-white/5 border border-white/10"
-                  : "text-slate-500 hover:text-slate-900 hover:bg-black/5 border border-black/10"
-              }`}
+                className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors text-slate-500 hover:text-slate-900 hover:bg-black/5 border border-black/10 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 dark:border-white/10"
             >
               <Search size={15} />
               <span className="text-xs hidden lg:inline">Buscar</span>
               <kbd
-                className={`hidden lg:inline text-[10px] px-1.5 py-0.5 rounded font-mono ${
-                  dark ? "bg-white/10 text-slate-500" : "bg-black/5 text-slate-400"
-                }`}
+                className="hidden lg:inline text-[10px] px-1.5 py-0.5 rounded font-mono bg-black/5 text-slate-400 dark:bg-white/10 dark:text-slate-500"
               >
                 ⌘K
               </kbd>
             </button>
             <button
               onClick={toggle}
-              className={`w-9 h-9 rounded-lg flex items-center justify-center transition-colors ${
-                dark
-                  ? "text-slate-400 hover:text-yellow-400 hover:bg-white/5 border border-white/10"
-                  : "text-slate-500 hover:text-blue-600 hover:bg-black/5 border border-black/10"
-              }`}
+              className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors text-slate-500 hover:text-blue-600 hover:bg-black/5 border border-black/10 dark:text-slate-400 dark:hover:text-yellow-400 dark:hover:bg-white/5 dark:border-white/10"
             >
               {dark ? <Sun size={15} /> : <Moon size={15} />}
             </button>
             <button
               onClick={() => go("#funcionalidades")}
-              className="px-5 py-2 bg-[#2563EB] hover:bg-[#1D4ED8] text-white text-sm rounded-lg font-medium transition-colors shadow-lg shadow-blue-600/20"
+              className="px-5 py-2 bg-brand hover:bg-brand-hover text-white text-sm rounded-lg font-medium transition-colors shadow-lg shadow-blue-600/20"
             >
               Conhecer o SmartFlow
             </button>
@@ -165,15 +147,15 @@ export default function Header() {
               onClick={() => {
                 setSearchOpen((value) => !value);
               }}
-              className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}
+              className="p-2 text-slate-500 dark:text-slate-400"
             >
               <Search size={18} />
             </button>
-            <button onClick={toggle} className={`p-2 ${dark ? "text-slate-400" : "text-slate-500"}`}>
+            <button onClick={toggle} className="p-2 text-slate-500 dark:text-slate-400">
               {dark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
             <button
-              className={`p-1 ${dark ? "text-slate-400" : "text-slate-500"}`}
+              className="p-1 text-slate-500 dark:text-slate-400"
               onClick={() => {
                 setMenuOpen(!menuOpen);
               }}
@@ -185,16 +167,16 @@ export default function Header() {
       </div>
 
       {searchOpen && (
-        <div className={`border-t ${dark ? "border-white/5 bg-[#0F172A]/95" : "border-black/6 bg-white/95"}`}>
+        <div className="border-t border-black/6 bg-white/95 dark:border-white/5 dark:bg-[#0F172A]/95">
           <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
-            <div className={`rounded-2xl border p-3 ${dark ? "border-white/10 bg-[#0B1220]" : "border-black/8 bg-slate-50"}`}>
+            <div className="rounded-2xl border border-black/8 bg-slate-50 p-3 dark:border-white/10 dark:bg-[#0B1220]">
               <div className="relative">
                 <input
                   autoFocus
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
                   placeholder="Pesquisar universos, funcionalidades e conteúdos"
-                  className={`w-full rounded-xl border pl-4 pr-16 py-3 text-sm outline-none ${dark ? "border-white/10 bg-[#0F172A] text-white placeholder:text-slate-500" : "border-black/8 bg-white text-slate-900 placeholder:text-slate-400"}`}
+                  className="w-full rounded-xl border border-black/8 bg-white text-slate-900 placeholder:text-slate-400 pl-4 pr-16 py-3 text-sm outline-none dark:border-white/10 dark:bg-[#0F172A] dark:text-white dark:placeholder:text-slate-500"
                 />
                 <button
                   type="button"
@@ -203,11 +185,7 @@ export default function Header() {
                     setQuery("");
                   }}
                   title="Fechar busca (Esc)"
-                  className={`absolute right-2 top-1/2 -translate-y-1/2 text-[10px] px-2 py-1 rounded-lg font-mono transition-colors ${
-                    dark
-                      ? "bg-white/10 text-slate-400 hover:bg-white/20 hover:text-white"
-                      : "bg-black/5 text-slate-500 hover:bg-black/10 hover:text-slate-900"
-                  }`}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] px-2 py-1 rounded-lg font-mono transition-colors bg-black/5 text-slate-500 hover:bg-black/10 hover:text-slate-900 dark:bg-white/10 dark:text-slate-400 dark:hover:bg-white/20 dark:hover:text-white"
                 >
                   ESC
                 </button>
@@ -222,10 +200,10 @@ export default function Header() {
                         setSearchOpen(false);
                         document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth", block: "start" });
                       }}
-                      className={`w-full rounded-xl border px-3 py-2 text-left transition-colors ${dark ? "border-white/10 hover:bg-white/5" : "border-black/8 hover:bg-black/5"}`}
+                      className="w-full rounded-xl border border-black/8 px-3 py-2 text-left transition-colors hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
                     >
-                      <div className={`text-sm font-semibold ${dark ? "text-white" : "text-slate-900"}`}>{item.title}</div>
-                      <div className={`text-xs mt-1 ${dark ? "text-slate-400" : "text-slate-600"}`}>{item.type} · {item.description}</div>
+                      <div className="text-sm font-semibold text-slate-900 dark:text-white">{item.title}</div>
+                      <div className="text-xs mt-1 text-slate-600 dark:text-slate-400">{item.type} · {item.description}</div>
                     </button>
                   ))}
                 </div>
@@ -241,27 +219,21 @@ export default function Header() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className={`md:hidden border-t ${
-              dark ? "bg-[#0F172A]/95 backdrop-blur-xl border-white/5" : "bg-white/95 backdrop-blur-xl border-black/6"
-            }`}
+            className="md:hidden border-t bg-white/95 backdrop-blur-xl border-black/6 dark:bg-[#0F172A]/95 dark:border-white/5"
           >
             <div className="px-6 py-4 space-y-1">
               {NAV_LINKS.map(({ label, href }) => (
                 <button
                   key={href}
                   onClick={() => go(href)}
-                  className={`block w-full text-left px-4 py-2.5 rounded-lg transition-colors ${
-                    dark
-                      ? "text-slate-300 hover:text-white hover:bg-white/5"
-                      : "text-slate-600 hover:text-slate-900 hover:bg-black/5"
-                  }`}
+                  className="block w-full text-left px-4 py-2.5 rounded-lg transition-colors text-slate-600 hover:text-slate-900 hover:bg-black/5 dark:text-slate-300 dark:hover:text-white dark:hover:bg-white/5"
                 >
                   {label}
                 </button>
               ))}
               <button
                 onClick={() => go("#funcionalidades")}
-                className="w-full mt-2 px-5 py-2.5 bg-[#2563EB] text-white rounded-lg font-medium"
+                className="w-full mt-2 px-5 py-2.5 bg-brand text-white rounded-lg font-medium"
               >
                 Conhecer o SmartFlow
               </button>

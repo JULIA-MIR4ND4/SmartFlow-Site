@@ -17,7 +17,7 @@ export default function ScreenImage({ name, alt = "", className = "", fit = "cov
   const fitClass = fit === "contain" ? "object-contain" : "object-cover object-top";
 
   return (
-    <div className={`w-full h-full flex items-center justify-center ${dark ? "bg-[#0E1726]" : "bg-white"}`}>
+    <div className="w-full h-full flex items-center justify-center bg-white dark:bg-[#0E1726]">
       <img
         key={src}
         src={src}

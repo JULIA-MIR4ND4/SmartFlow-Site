@@ -17,9 +17,6 @@ import {
   Tablet,
 } from "lucide-react";
 
-// Cada "universo" representa um módulo do SmartFlow. Cada tela (screen)
-// aponta para uma chave de mockup (ver components/sections/mockups/index.jsx)
-// e traz uma lista de hotspots (pontos numerados sobre a tela).
 export const UNIVERSES = [
   {
     id: "dashboard",
@@ -31,31 +28,10 @@ export const UNIVERSES = [
       {
         title: "Dashboard Principal",
         desc: "Apresenta um resumo das principais informações do sistema.",
-        mockup: "dashboard",
-        hotspots: [
-          { id: "dash-t1-cards", x: 25, y: 20, label: "1 — Cards de Indicadores", info: "Exibe os principais indicadores do sistema, como valores e quantidade de registros." },
-          { id: "dash-t1-vendas", x: 40, y: 42, label: "2 — Gráfico de Vendas", info: "Apresenta uma visão gráfica das vendas realizadas no período." },
-          { id: "dash-t1-resumo", x: 85, y: 68, label: "3 — Resumo Lateral", info: "Mostra informações rápidas para acompanhamento diário." },
-          { id: "dash-t1-central", x: 55, y: 55, label: "4 — Área Central", info: "Exibe os principais painéis do Dashboard." },
-          { id: "dash-t1-menu", x: 6, y: 50, label: "5 — Menu Lateral", info: "Permite acessar todas as funcionalidades do SmartFlow." },
-          { id: "dash-t1-nome", x: 55, y: 10, label: "6 — Nome da Página", info: "Indica a funcionalidade atualmente aberta." },
-          { id: "dash-t1-perfil", x: 97, y: 6, label: "7 — Perfil do Usuário", info: "Exibe informações do usuário conectado e opções relacionadas à conta." },
-          { id: "dash-t1-tema", x: 14, y: 10, label: "8 — Alternância de Tema", info: "Permite alterar entre modo claro e modo escuro." },
-        ],
       },
       {
         title: "Dashboard (Painel de Acompanhamento)",
         desc: "Exibe informações resumidas e indicadores operacionais.",
-        mockup: "dashboard",
-        hotspots: [
-          { id: "dash-t2-indicadores", x: 85, y: 45, label: "1 — Indicadores Laterais", info: "Exibe dados resumidos do funcionamento do sistema." },
-          { id: "dash-t2-observacoes", x: 30, y: 72, label: "2 — Área de Observações", info: "Mostra informações complementares para acompanhamento." },
-          { id: "dash-t2-paineis", x: 80, y: 20, label: "3 — Painéis Informativos", info: "Apresenta métricas importantes em tempo real." },
-          { id: "dash-t2-menu", x: 6, y: 50, label: "4 — Menu Lateral", info: "Permite navegar entre as funcionalidades." },
-          { id: "dash-t2-cabecalho", x: 55, y: 10, label: "5 — Cabeçalho", info: "Identifica a tela atualmente aberta." },
-          { id: "dash-t2-perfil", x: 97, y: 6, label: "6 — Perfil do Usuário", info: "Acesso às opções do usuário logado." },
-          { id: "dash-t2-area", x: 55, y: 50, label: "7 — Área Principal", info: "Centraliza todas as informações exibidas pelo Dashboard." },
-        ],
       },
     ],
   },
@@ -69,14 +45,6 @@ export const UNIVERSES = [
       {
         title: "Tela Inicial de Vendas (PDV)",
         desc: "Ao acessar Vendas, o sistema exibe as últimas 30 vendas realizadas no PDV. Identifique o cliente para iniciar uma nova venda.",
-        mockup: "vendas",
-        hotspots: [
-          { x: 28, y: 14, label: "1 — Pesquisar por TAG", info: "Aproxime a TAG do cliente para identificação automática ou use o campo de busca. A TAG é o principal identificador do cliente no SmartFlow." },
-          { x: 30, y: 27, label: "2 — Pesquisar por Documento", info: "Caso o cliente não possua TAG, informe o número do documento (CPF, RG). O sistema localiza o cadastro e habilita a nova venda." },
-          { x: 32, y: 58, label: "3 — Selecionar Produto", info: "Após identificar o cliente e iniciar a venda, clique no produto para adicioná-lo ao pedido. O subtotal é atualizado automaticamente." },
-          { x: 78, y: 50, label: "4 — Itens do Pedido", info: "Visualize os itens adicionados com quantidade e valor. Ajuste quantidades ou remova itens antes de finalizar." },
-          { x: 78, y: 87, label: "5 — Encerrar e Pagar", info: "Clique em Encerrar para confirmar o pedido, em seguida Pagamento para registrar a forma de pagamento e concluir a venda." },
-        ],
       },
     ],
   },
@@ -90,14 +58,6 @@ export const UNIVERSES = [
       {
         title: "Identificação e Conta do Cliente",
         desc: "Informe a TAG ou o número do documento para abrir o atendimento. Em seguida, gerencie créditos, cashback, saldo e TAGs do cliente.",
-        mockup: "pagamento",
-        hotspots: [
-          { x: 42, y: 22, label: "1 — Informar TAG ou Documento", info: "Digite a TAG ou o número do documento do cliente. Ambos identificam o cliente e abrem o acesso ao atendimento financeiro." },
-          { x: 72, y: 22, label: "2 — Abrir Atendimento", info: "Clique em Abrir para acessar a conta. O sistema apresenta informações cadastrais, histórico de créditos e TAGs associadas." },
-          { x: 25, y: 52, label: "3 — Saldo e Histórico", info: "Visualize saldo em TAG, cofre e cashback disponíveis. Consulte histórico de créditos, TAGs, consumo na torneira e compras no PDV." },
-          { x: 72, y: 44, label: "4 — Operações Financeiras", info: "Realize inserção de crédito, cashback, baixa de saldo ou transferência. Cada operação possui validações automáticas antes de ser efetivada." },
-          { x: 72, y: 72, label: "5 — Gerenciar TAGs", info: "Adicione, remova ou substitua TAGs vinculadas. Pessoa física pode ter apenas uma TAG; pessoa jurídica pode ter mais de uma." },
-        ],
       },
     ],
   },
@@ -111,14 +71,6 @@ export const UNIVERSES = [
       {
         title: "Lista de Comandas com Filtros",
         desc: "Consulte todas as comandas registradas. Use filtros por categoria e período para localizar registros específicos. Acesse detalhes ou a conta do cliente diretamente.",
-        mockup: "comandas",
-        hotspots: [
-          { x: 20, y: 18, label: "1 — Filtrar por Categoria", info: "Selecione a categoria desejada para filtrar as comandas. Útil para visualizar apenas um tipo específico de atendimento." },
-          { x: 50, y: 18, label: "2 — Filtrar por Período", info: "Informe a data ou intervalo e clique em Filtrar. Sem filtros aplicados, nenhuma comanda é exibida." },
-          { x: 76, y: 18, label: "3 — Somente Ativos", info: "Ative para ver apenas comandas em aberto. Desative para incluir comandas encerradas na consulta." },
-          { x: 42, y: 55, label: "4 — Visualizar Detalhes", info: "O ícone de visualização exibe os detalhes completos da comanda: itens, valores, datas e informações do cliente." },
-          { x: 70, y: 55, label: "5 — Acessar Conta no Pagamento", info: "O ícone de cartão direciona diretamente para a conta do cliente na funcionalidade Pagamento para continuidade do atendimento." },
-        ],
       },
     ],
   },
@@ -132,24 +84,10 @@ export const UNIVERSES = [
       {
         title: "Consulta de Clientes",
         desc: "Visualize todos os clientes cadastrados. Pesquise por nome, CPF ou TAG. Acesse o PDV, a conta do cliente, edite ou exclua registros.",
-        mockup: "clientes",
-        hotspots: [
-          { x: 30, y: 13, label: "1 — Pesquisar Cliente", info: "Digite nome, CPF ou TAG e clique em Filtrar para localizar o cliente. Use Limpar para reiniciar a busca." },
-          { x: 88, y: 13, label: "2 — Cadastrar Novo Cliente", info: "Clique em Adicionar (+) para acessar o formulário. Após salvar, o sistema direciona automaticamente para Pagamento para vincular a TAG." },
-          { x: 55, y: 38, label: "3 — Dados e Ações do Cliente", info: "Visualize nome, contato, quantidade de pedidos e total gasto. Os ícones de ação permitem acessar PDV, conta, detalhes, editar ou excluir." },
-          { x: 82, y: 38, label: "4 — Acesso Rápido (PDV/Conta)", info: "Use os ícones para ir diretamente ao PDV do cliente ou à sua conta em Pagamento sem precisar sair da tela de consulta." },
-        ],
       },
       {
         title: "Cadastro de Novo Cliente",
         desc: "Preencha os dados do cliente. Campos com indicador vermelho são obrigatórios. Após salvar, o sistema direciona para Pagamento para vincular a TAG.",
-        mockup: "clientes",
-        hotspots: [
-          { x: 40, y: 30, label: "1 — Campos Obrigatórios", info: "Campos identificados com bolinha vermelha devem ser preenchidos. Cada campo tem validação específica conforme o tipo de dado (texto, número ou seleção)." },
-          { x: 40, y: 52, label: "2 — Campos Opcionais", info: "Preencha informações adicionais: endereço, data de nascimento (aniversariantes), observações e categoria do cliente." },
-          { x: 40, y: 73, label: "3 — Status Ativo", info: "Por padrão o cliente é criado como Ativo. Desmarque somente se desejar cadastrá-lo como inativo desde o início." },
-          { x: 20, y: 87, label: "4 — Salvar e Vincular TAG", info: "Clique em Salvar para concluir o cadastro. O sistema cria o registro e direciona automaticamente para Pagamento para vinculação da TAG." },
-        ],
       },
     ],
   },
@@ -163,25 +101,10 @@ export const UNIVERSES = [
       {
         title: "Consulta de Produtos",
         desc: "Visualize todos os produtos cadastrados. Pesquise, filtre, edite ou cadastre novos. Para cadastrar um produto é necessário que categoria, tipo e unidade já estejam cadastrados.",
-        mockup: "produto",
-        hotspots: [
-          { x: 35, y: 13, label: "1 — Pesquisar Produto", info: "Use o campo de pesquisa e os filtros para localizar produtos. Aplique e limpe filtros conforme necessário." },
-          { x: 88, y: 13, label: "2 — Adicionar Novo Produto", info: "Clique em (+) para acessar o formulário de cadastro. Certifique-se que categoria, tipo e unidade já estejam cadastrados antes." },
-          { x: 30, y: 42, label: "3 — Ações do Produto", info: "Use os ícones de ação para visualizar detalhes, editar ou excluir. Os tooltips descrevem a função de cada ícone." },
-          { x: 80, y: 56, label: "4 — Disponibilidade em Estoque", info: "Indica a quantidade disponível. Produto sem entrada no Estoque não pode ser comercializado no PDV." },
-        ],
       },
       {
         title: "Cadastro de Novo Produto",
         desc: "Preencha informações básicas, defina necessidade de preparo, produto fiscal e foto. Produto é criado como ativo por padrão.",
-        mockup: "produto",
-        hotspots: [
-          { x: 40, y: 25, label: "1 — Nome, Categoria, Tipo e Unidade", info: "Campos obrigatórios (bolinha vermelha). Categoria, tipo e unidade devem estar previamente cadastrados em Outras Opções." },
-          { x: 40, y: 44, label: "2 — Descrição, Ingredientes e Foto", info: "Adicione descrição e ingredientes para exibição no PDV e controle interno. Insira também a foto do produto." },
-          { x: 40, y: 62, label: "3 — Necessidade de Preparo", info: "Indique se o produto precisa ser preparado. Defina o responsável: Cozinha ou Bartender. O pedido é direcionado automaticamente." },
-          { x: 40, y: 74, label: "4 — Produto Fiscal", info: "Marque se o produto deve gerar documento fiscal (NF-e/NFC-e). Configure as informações fiscais correspondentes." },
-          { x: 20, y: 87, label: "5 — Salvar Cadastro", info: "Após preencher os campos obrigatórios, salve. O sistema retorna para a lista com o novo produto disponível." },
-        ],
       },
     ],
   },
@@ -195,13 +118,6 @@ export const UNIVERSES = [
       {
         title: "Cadastro de Barril",
         desc: "Registre um novo barril. Após salvar, o sistema redireciona automaticamente para a listagem de barris no módulo Estoque.",
-        mockup: "barril",
-        hotspots: [
-          { x: 40, y: 25, label: "1 — Informações Obrigatórias", info: "Preencha os campos com bolinha vermelha: nome, volume e produto vinculado. Cada campo tem validação de preenchimento específica." },
-          { x: 40, y: 50, label: "2 — Campos Opcionais", info: "Adicione informações complementares conforme disponível: fornecedor, número de lote, custo e observações." },
-          { x: 40, y: 72, label: "3 — Status Ativo", info: "Por padrão o barril é criado como Ativo. Desmarque para registrá-lo como inativo (não disponível para operações)." },
-          { x: 20, y: 87, label: "4 — Salvar e Ir ao Estoque", info: "Após salvar, o sistema registra o barril e redireciona automaticamente para a listagem de barris no módulo Estoque." },
-        ],
       },
     ],
   },
@@ -215,23 +131,10 @@ export const UNIVERSES = [
       {
         title: "Consulta de Torneiras",
         desc: "Visualize todas as torneiras cadastradas. Filtre por ativos, gerencie o status de oferta e acesse visualização, edição ou exclusão.",
-        mockup: "torneira",
-        hotspots: [
-          { x: 35, y: 13, label: "1 — Pesquisar e Filtrar", info: "Use pesquisa e filtros para localizar torneiras. O filtro Somente Ativos exibe apenas torneiras em operação." },
-          { x: 88, y: 13, label: "2 — Cadastrar Nova Torneira", info: "Clique em Adicionar (+) para ir ao formulário de cadastro com todas as informações necessárias." },
-          { x: 42, y: 45, label: "3 — Monitorar Torneiras", info: "Acompanhe o nível de cada torneira. Torneiras em vermelho (nível crítico) precisam de atenção para reposição de barril." },
-          { x: 75, y: 60, label: "4 — Ativar Oferta", info: "A opção Oferta indica que a torneira está com preço promocional. Exibido no display para os clientes." },
-        ],
       },
       {
         title: "Cadastro de Nova Torneira",
         desc: "Preencha os dados da torneira. Defina o status como Ativa ou Bloqueada. Salve para disponibilizá-la nas operações.",
-        mockup: "torneira",
-        hotspots: [
-          { x: 40, y: 25, label: "1 — Informações da Torneira", info: "Informe os dados obrigatórios (campos com bolinha vermelha). Inclui nome, número e barril (produto) vinculado." },
-          { x: 40, y: 55, label: "2 — Status da Torneira", info: "Defina Ativa (disponível para dispensar bebida) ou Bloqueada (indisponível para consumo dos clientes)." },
-          { x: 20, y: 87, label: "3 — Salvar Torneira", info: "Salve para registrar. O sistema retorna para a lista de torneiras com o novo registro disponível para operação." },
-        ],
       },
     ],
   },
@@ -245,23 +148,10 @@ export const UNIVERSES = [
       {
         title: "Estoque de Produtos",
         desc: "Consulte os produtos em estoque e registre entradas. Somente produtos com entrada no estoque podem ser comercializados no PDV.",
-        mockup: "estoque",
-        hotspots: [
-          { x: 35, y: 13, label: "1 — Pesquisar e Filtrar por Tipo/Categoria", info: "Use filtros por tipo e categoria para localizar produtos. A barra de pesquisa permite busca direta por nome." },
-          { x: 88, y: 13, label: "2 — Registrar Entrada", info: "Clique em Adicionar (+) para registrar a entrada de um produto já cadastrado. Preencha os dados obrigatórios e salve." },
-          { x: 42, y: 42, label: "3 — Verificar Disponibilidade", info: "Confira quantidade disponível. Produtos abaixo do mínimo precisam de reposição para não interromper as vendas." },
-          { x: 80, y: 55, label: "4 — Status do Item no Estoque", info: "Itens Ativos aparecem no PDV para venda. Itens Inativos não são exibidos. Altere conforme a disponibilidade real." },
-        ],
       },
       {
         title: "Estoque de Barris",
         desc: "Consulte os barris disponíveis para as torneiras. Adicione novos barris com o mesmo formulário de cadastro da funcionalidade Barril.",
-        mockup: "estoque",
-        hotspots: [
-          { x: 35, y: 13, label: "1 — Consultar Barris", info: "Visualize todos os barris em estoque. Use pesquisa e filtros para localizar por produto, fornecedor ou status." },
-          { x: 88, y: 13, label: "2 — Adicionar Barril", info: "Clique em (+) para ir ao formulário de cadastro de barril (mesma tela da funcionalidade Barril). O barril é incorporado ao estoque após salvar." },
-          { x: 42, y: 45, label: "3 — Dados do Barril", info: "Visualize produto vinculado, volume, status e demais informações. Use as ações para editar ou atualizar o registro." },
-        ],
       },
     ],
   },
@@ -275,34 +165,14 @@ export const UNIVERSES = [
       {
         title: "Extrato de Movimentações",
         desc: "Consulte as movimentações financeiras por forma de pagamento, tipo de operação e período. Exporte em Excel.",
-        mockup: "financeiro",
-        hotspots: [
-          { x: 30, y: 13, label: "1 — Definir Filtros", info: "Selecione a forma de pagamento, o tipo de operação e o período desejado. As informações só são exibidas após clicar em Filtrar." },
-          { x: 18, y: 35, label: "2 — Resumo Financeiro", info: "Após filtrar, visualize o resumo consolidado do período: total de créditos, antecipações e demais operações financeiras." },
-          { x: 65, y: 55, label: "3 — Gráfico de Créditos e Antecipações", info: "Visualize o gráfico de inclusão de crédito e antecipações. Nota: não inclui pagamentos por vendas diretas no PDV." },
-          { x: 82, y: 25, label: "4 — Exportar Excel", info: "Clique em Exportar para gerar o arquivo Excel com todas as movimentações filtradas para análise externa." },
-        ],
       },
       {
         title: "Faturamento",
         desc: "Consulte o faturamento obtido em um período. Categorias 'não contábil' são excluídas automaticamente do cálculo.",
-        mockup: "financeiro",
-        hotspots: [
-          { x: 30, y: 13, label: "1 — Filtrar por Período", info: "Informe o período e clique em Filtrar. Categorias configuradas como não contábil não são consideradas no cálculo." },
-          { x: 40, y: 45, label: "2 — Total Faturado", info: "Valor total do faturamento no período selecionado, excluindo entradas de categorias marcadas como não contábil." },
-          { x: 75, y: 55, label: "3 — Gráfico por Método de Pagamento", info: "Distribuição do faturamento por forma de pagamento utilizada pelos clientes. Útil para análise financeira e negociação." },
-        ],
       },
       {
         title: "Saldo",
         desc: "Visualize saldos em TAG e cofre por categoria de cliente. Exporte os dados em Excel.",
-        mockup: "financeiro",
-        hotspots: [
-          { x: 30, y: 13, label: "1 — Filtrar por Categoria", info: "Selecione a categoria de cliente para consultar os saldos correspondentes. Clique em Filtrar para aplicar." },
-          { x: 38, y: 42, label: "2 — Saldo em TAG e Cofre", info: "Gráficos com saldo total em TAGs e no cofre. Permite visualizar a distribuição dos recursos financeiros disponíveis." },
-          { x: 75, y: 55, label: "3 — Saldo dos Clientes", info: "Lista com o saldo individual de cada cliente na categoria filtrada. Exportável para auditoria e análise em Excel." },
-          { x: 82, y: 20, label: "4 — Exportar Excel", info: "Gere o arquivo Excel com os saldos filtrados para análise, conferência ou compartilhamento com a equipe." },
-        ],
       },
     ],
   },
@@ -316,14 +186,6 @@ export const UNIVERSES = [
       {
         title: "Resumo de Vendas",
         desc: "Visualize indicadores de vendas por período: volume no TAP, valor total no TAP e PDV, forma de pagamento e distribuição percentual. Faça download dos gráficos.",
-        mockup: "vendasresumo",
-        hotspots: [
-          { x: 30, y: 13, label: "1 — Definir Período", info: "Informe o período desejado e clique em Filtrar. Os indicadores e gráficos são exibidos apenas após a aplicação do filtro." },
-          { x: 18, y: 35, label: "2 — Volume Vendido no TAP", info: "Total de litros vendidos no TAP no período. Compare com períodos anteriores para identificar tendências de consumo." },
-          { x: 45, y: 35, label: "3 — Valor Total TAP e PDV", info: "Valores financeiros das vendas realizadas no TAP e no PDV separadamente para análise comparativa dos canais." },
-          { x: 60, y: 60, label: "4 — Gráfico PDV por Forma de Pagamento", info: "Distribuição das vendas no PDV por forma de pagamento (dinheiro, cartão, Pix). Útil para negociar taxas." },
-          { x: 82, y: 18, label: "5 — Download dos Gráficos", info: "Faça download de cada gráfico em formato de imagem para uso em apresentações, relatórios ou compartilhamento." },
-        ],
       },
     ],
   },
@@ -337,13 +199,6 @@ export const UNIVERSES = [
       {
         title: "Relatórios Financeiros",
         desc: "Gere relatórios detalhados em Excel: Resumo Geral (créditos, PDV, TAP, pós-pagos) e Vendas por Cliente com dados completos de consumo e pagamento.",
-        mockup: "relatoriosfinanceiro",
-        hotspots: [
-          { x: 30, y: 20, label: "1 — Selecionar Período", info: "Escolha período predefinido ou personalizado. Para personalizado, informe data de início e fim — ambos são obrigatórios." },
-          { x: 40, y: 45, label: "2 — Resumo Geral", info: "Exporta relatório com: operações de crédito, movimentações PDV, consumo TAP e saldo dos clientes pós-pagos. Organizado em abas no Excel." },
-          { x: 40, y: 70, label: "3 — Vendas por Cliente", info: "Exporta detalhe por cliente: consumo no TAP, produtos adquiridos, créditos de comandas, valores, quantidades e métodos de pagamento." },
-          { x: 82, y: 45, label: "4 — Exportar Relatório", info: "Clique no botão de exportação do relatório desejado. O sistema gera o arquivo Excel com os dados do período selecionado." },
-        ],
       },
     ],
   },
@@ -357,13 +212,6 @@ export const UNIVERSES = [
       {
         title: "Relatório de Serviço",
         desc: "Gere relatório das movimentações no TAP realizadas com a TAG de serviço. Dados organizados em abas separadas: autosserviço e sangria.",
-        mockup: "torneiraservico",
-        hotspots: [
-          { x: 30, y: 20, label: "1 — Selecionar Período", info: "Escolha o período desejado. Para período personalizado, informe as datas de início e fim — ambas são obrigatórias para geração do relatório." },
-          { x: 40, y: 50, label: "2 — Autosserviço", info: "Aba do relatório com operações de consumo realizadas pela TAG de serviço no modo autosserviço, com data e hora de cada operação." },
-          { x: 40, y: 70, label: "3 — Sangria", info: "Aba com operações de sangria realizadas com a TAG de serviço. Essencial para conferência e auditoria das operações." },
-          { x: 82, y: 35, label: "4 — Exportar Excel", info: "Gera o arquivo Excel com as duas abas (autosserviço e sangria) para controle operacional e auditoria." },
-        ],
       },
     ],
   },
@@ -377,21 +225,10 @@ export const UNIVERSES = [
       {
         title: "Situações Tributárias",
         desc: "Consulte as situações tributárias cadastradas no sistema. Acesse os relatórios fiscais a partir desta tela.",
-        mockup: "fiscal",
-        hotspots: [
-          { x: 30, y: 35, label: "1 — Consultar Situações Tributárias", info: "Visualize as situações tributárias configuradas no SmartFlow. São usadas automaticamente na emissão de documentos fiscais." },
-          { x: 75, y: 35, label: "2 — Acessar Relatórios Fiscais", info: "Clique no botão de relatórios para ir à tela de exportação. Acesso sujeito às permissões do usuário." },
-        ],
       },
       {
         title: "Exportar Relatórios Fiscais",
         desc: "Selecione e exporte os relatórios fiscais disponíveis. Para relatórios de vendas, aplique o filtro por período antes de exportar.",
-        mockup: "fiscal",
-        hotspots: [
-          { x: 30, y: 20, label: "1 — Filtrar Período (Vendas)", info: "Para relatórios de vendas, informe o período antes de exportar. O filtro não é obrigatório para todos os tipos de relatório." },
-          { x: 40, y: 50, label: "2 — Selecionar Relatório", info: "Visualize os relatórios fiscais disponíveis para exportação. Cada relatório possui seu botão de exportação correspondente." },
-          { x: 82, y: 50, label: "3 — Exportar", info: "Clique no botão de exportação do relatório desejado. O sistema gera o arquivo para download imediato." },
-        ],
       },
     ],
   },
@@ -405,21 +242,10 @@ export const UNIVERSES = [
       {
         title: "Filiais",
         desc: "Consulte as informações da filial vinculada ao sistema. Esta tela é exclusivamente de consulta — sem cadastro, edição ou exclusão.",
-        mockup: "sistema",
-        hotspots: [
-          { x: 42, y: 42, label: "1 — Informações da Filial", info: "Visualize os dados da filial vinculada ao SmartFlow: razão social, CNPJ, endereço e demais informações cadastrais disponíveis." },
-        ],
       },
       {
         title: "Usuários — Gerenciar",
         desc: "Consulte, cadastre e edite usuários do sistema. Use geração automática de senha e organize por grupos.",
-        mockup: "sistema",
-        hotspots: [
-          { x: 35, y: 13, label: "1 — Pesquisar Usuário", info: "Pesquise por nome ou e-mail do usuário. Aplique filtros disponíveis para localizar perfis específicos." },
-          { x: 88, y: 13, label: "2 — Cadastrar Novo Usuário", info: "Clique em Adicionar (+). Preencha os dados obrigatórios, use a geração automática de senha e salve o cadastro." },
-          { x: 55, y: 38, label: "3 — Grupo e Permissões", info: "O grupo define as permissões de acesso do usuário no sistema. Verifique o grupo atribuído para garantir o nível correto de acesso." },
-          { x: 80, y: 38, label: "4 — Status Ativo/Inativo", info: "Usuários Ativos têm acesso ao sistema. Inative para revogar o acesso sem excluir o histórico de atividades do usuário." },
-        ],
       },
     ],
   },
@@ -437,154 +263,54 @@ export const UNIVERSES = [
       {
         title: "Tela Inicial da Torneira (Sirva-se)",
         desc: "Tela de espera exibida no tablet da torneira, apresentando a bebida disponível no barril conectado, com informações, preço e status do dispositivo.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 7, y: 5, label: "1 — Logo SmartFlow", info: "Identifica visualmente o sistema SmartFlow instalado no tablet da torneira." },
-          { x: 81, y: 13, label: "2 — Logo da Cervejaria", info: "Exibe a marca/rótulo vinculada ao barril conectado na torneira." },
-          { x: 60, y: 28, label: "3 — Foto e Dados da Bebida", info: "Apresenta a foto do estilo disponível, teor alcoólico (ABV), amargor (IBU) e cor." },
-          { x: 34, y: 44, label: "4 — Botão \"Saiba +\"", info: "Abre o modal com descrição detalhada e ingredientes da bebida." },
-          { x: 6, y: 61, label: "5 — Selecionar Torneira", info: "Permite alternar a visualização entre as diferentes torneiras/taps do totem." },
-          { x: 50, y: 80, label: "6 — Preço e Nome da Bebida", info: "Exibe o valor cobrado a cada 100 mL e o nome do estilo de cerveja." },
-          { x: 50, y: 96, label: "7 — Barra de Status", info: "Mostra bateria, Wi-Fi, sincronização e versão do sistema instalado." },
-        ],
       },
       {
         title: "Menu de Opções do Tap",
         desc: "Menu de acesso rápido sobreposto à tela inicial, com atalhos para fechar, configurar, bloquear, consultar e selecionar a torneira.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 10, y: 58, label: "1 — Fechar Menu", info: "Fecha o menu de opções e retorna à tela inicial." },
-          { x: 28, y: 58, label: "2 — Configurações", info: "Abre a tela de Configurações do Tap." },
-          { x: 46, y: 58, label: "3 — Bloquear", info: "Bloqueia o fornecimento da torneira, impedindo novos atendimentos." },
-          { x: 64, y: 58, label: "4 — Relatório/Consumo", info: "Exibe informações de consumo vinculadas à torneira." },
-          { x: 82, y: 58, label: "5 — Selecionar Torneira", info: "Permite selecionar entre as torneiras/taps conectados ao totem." },
-        ],
       },
       {
         title: "Torneira Indisponível",
         desc: "Mensagem exibida quando a torneira não está disponível para uso, orientando o cliente a utilizar outra torneira.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 64, y: 49, label: "1 — Mensagem de Indisponibilidade", info: "Informa que a torneira está temporariamente indisponível e orienta o uso de outra torneira." },
-          { x: 81, y: 33, label: "2 — Indicadores Vazios", info: "ABV, IBU e Cor ficam em branco (\"-\") enquanto a torneira está indisponível." },
-          { x: 34, y: 44, label: "3 — Botão \"Saiba +\"", info: "Permanece disponível para consultar informações da última bebida associada." },
-          { x: 6, y: 61, label: "4 — Selecionar Torneira", info: "Direciona o cliente para escolher outra torneira disponível." },
-        ],
       },
       {
         title: "Sobre a Bebida (Descrição e Ingredientes)",
         desc: "Modal com a descrição completa e os ingredientes cadastrados para o estilo de cerveja em exibição.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 13, y: 7, label: "1 — Voltar", info: "Fecha o modal e retorna à tela anterior." },
-          { x: 50, y: 21, label: "2 — Descrição", info: "Exibe o texto descritivo cadastrado para o estilo de cerveja." },
-          { x: 50, y: 66, label: "3 — Ingredientes", info: "Lista os ingredientes cadastrados para a bebida." },
-          { x: 50, y: 90, label: "4 — Fechar", info: "Fecha o modal \"Sobre a bebida\" e retorna à tela inicial." },
-        ],
       },
       {
         title: "Sirva-se! (Autoatendimento)",
         desc: "Tela de dispensação exibida durante o consumo, com crédito disponível, volume servido e valor total em tempo real.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 9, y: 8, label: "1 — Indicador de Etapa", info: "Indicador de progresso exibido durante o atendimento." },
-          { x: 89, y: 8, label: "2 — Configurações Rápidas", info: "Acesso rápido às configurações do tap durante o atendimento." },
-          { x: 50, y: 38, label: "3 — Ilustração do Sistema", info: "Indica que o sistema está pronto para servir a bebida." },
-          { x: 50, y: 58, label: "4 — Crédito / Volume / Total", info: "Exibe o saldo de crédito, o volume já servido e o valor total consumido em tempo real." },
-          { x: 50, y: 82, label: "5 — Botão \"Estou Servido(a)!\"", info: "O cliente toca para concluir o atendimento e liberar a torneira para o próximo uso." },
-        ],
       },
       {
         title: "Acesso Manutenção (Senha)",
         desc: "Modal de autenticação exigido para liberar o acesso às configurações de manutenção do tap.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 85, y: 29, label: "1 — Fechar", info: "Fecha o modal de acesso à manutenção." },
-          { x: 50, y: 42, label: "2 — Campo Senha", info: "Campo para o operador informar a senha de acesso à manutenção do tap." },
-          { x: 50, y: 58, label: "3 — Botão \"Abrir\"", info: "Valida a senha informada e libera o acesso às configurações de manutenção." },
-          { x: 50, y: 69, label: "4 — Botão \"Cancelar\"", info: "Cancela a solicitação e fecha o modal sem liberar a manutenção." },
-        ],
       },
       {
         title: "Configurações do Tap",
         desc: "Tela de configuração do tap, com identificação do dispositivo, estado da torneira e ações de manutenção.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 46, y: 17, label: "1 — Campo UUID", info: "Identificador único do tap, usado para vincular o dispositivo físico ao sistema." },
-          { x: 50, y: 26, label: "2 — Barril / Estado / Hash", info: "Exibe o barril conectado, o estado da torneira (Liberada/Bloqueada) e o hash de identificação do dispositivo." },
-          { x: 85, y: 20, label: "3 — Badge do Tap", info: "Identifica visualmente o número do tap configurado." },
-          { x: 27, y: 45, label: "4 — Botão \"Atualizar\"", info: "Atualiza as informações exibidas com os dados mais recentes do tap." },
-          { x: 72, y: 45, label: "5 — Botão \"Desativar\"", info: "Desativa o tap, interrompendo seu funcionamento." },
-          { x: 50, y: 79, label: "6 — Ações de Manutenção", info: "Calibrar, bloquear/desbloquear, sangria, liberar/travar app e diagnóstico do tap." },
-        ],
       },
       {
         title: "Confirmação — Tap Bloqueado",
         desc: "Confirmação exibida após o bloqueio manual da torneira a partir da tela de configurações.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 40, y: 28, label: "1 — Estado \"Bloqueada\"", info: "Indica que a torneira foi bloqueada e não realiza novos atendimentos." },
-          { x: 50, y: 47, label: "2 — Modal de Confirmação", info: "Confirma que o tap foi bloqueado com sucesso." },
-          { x: 50, y: 54, label: "3 — Botão \"Ok\"", info: "Fecha a confirmação e retorna à tela de configurações do tap." },
-          { x: 50, y: 79, label: "4 — Botão \"Desbloquear\"", info: "Reverte o bloqueio e libera novamente a torneira para uso." },
-        ],
       },
       {
         title: "Confirmação — Tap Desbloqueado",
         desc: "Confirmação exibida após o desbloqueio manual da torneira a partir da tela de configurações.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 40, y: 28, label: "1 — Estado \"Liberada\"", info: "Indica que a torneira está liberada e apta para novos atendimentos." },
-          { x: 50, y: 47, label: "2 — Modal de Confirmação", info: "Confirma que o tap foi desbloqueado com sucesso." },
-          { x: 50, y: 54, label: "3 — Botão \"Ok\"", info: "Fecha a confirmação." },
-          { x: 50, y: 79, label: "4 — Botão \"Bloquear\"", info: "Permite bloquear novamente a torneira quando necessário." },
-        ],
       },
       {
         title: "Calibração do Sensor de Fluxo",
         desc: "Modal com passo a passo para calibrar o sensor de fluxo, comparando o volume lido pelo sensor com o volume real retirado.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 88, y: 8, label: "1 — Fechar", info: "Fecha o modal de calibração." },
-          { x: 50, y: 28, label: "2 — Instruções de Calibração", info: "Passo a passo para calibrar corretamente o sensor de fluxo do tap." },
-          { x: 33, y: 53, label: "3 — Volume Lido", info: "Exibe o volume medido automaticamente pelo sensor durante o teste." },
-          { x: 33, y: 62, label: "4 — Campo Volume Real", info: "Campo para informar o volume real retirado, usado para ajustar a calibração." },
-          { x: 50, y: 75, label: "5 — Abrir/Fechar Válvula", info: "Controlam manualmente a abertura e o fechamento da válvula durante o teste." },
-          { x: 50, y: 89, label: "6 — Botão \"Salvar Calibração\"", info: "Grava os novos parâmetros de calibração do sensor de fluxo." },
-        ],
       },
       {
         title: "Sangria (Descarte de Volume)",
         desc: "Modal utilizado para realizar a sangria da torneira, descartando o volume necessário antes de novos atendimentos.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 85, y: 25, label: "1 — Fechar", info: "Fecha o modal de sangria." },
-          { x: 50, y: 58, label: "2 — Volume da Sangria", info: "Exibe em tempo real o volume descartado durante o processo de sangria." },
-          { x: 50, y: 72, label: "3 — Botão \"Finalizar Sangria\"", info: "Encerra o processo de sangria e registra o volume descartado." },
-        ],
       },
       {
         title: "Diagnóstico do Tap",
         desc: "Tela de diagnóstico com a legenda de comportamento do LED indicador e o log de eventos e falhas registrados pelo dispositivo.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 88, y: 8, label: "1 — Fechar", info: "Fecha a tela de diagnóstico." },
-          { x: 50, y: 25, label: "2 — Comportamento do LED", info: "Relaciona cada estado do tap (idle, servindo, sem conexão, bloqueado etc.) com a cor/piscada do LED." },
-          { x: 85, y: 58, label: "3 — Botão \"APK Link\"", info: "Disponibiliza o link para download/atualização do aplicativo instalado no tablet." },
-          { x: 50, y: 75, label: "4 — Log de Eventos e Falhas", info: "Lista cronológica dos eventos e falhas registrados pelo dispositivo, incluindo status e identificação (IMEI) do tablet." },
-        ],
       },
       {
         title: "Configuração de Novo Tap (Ativação)",
         desc: "Tela de configuração de um tap ainda não vinculado, utilizada para informar o UUID e ativá-lo pela primeira vez.",
-        mockup: "tablet",
-        hotspots: [
-          { x: 46, y: 17, label: "1 — Campo UUID (vazio)", info: "Campo em destaque para vincular o UUID de um novo tap ainda não configurado." },
-          { x: 40, y: 28, label: "2 — Estado \"Bloqueada\"", info: "Um novo tap inicia bloqueado até que seja ativado." },
-          { x: 85, y: 20, label: "3 — Badge \"-\"", info: "Indica que o tap ainda não possui um número identificador definido." },
-          { x: 72, y: 45, label: "4 — Botão \"Ativar\"", info: "Ativa o tap após o preenchimento do UUID, tornando-o pronto para uso." },
-          { x: 50, y: 79, label: "5 — Ações de Manutenção", info: "Mesmas ações de manutenção disponíveis após a ativação do tap." },
-        ],
       },
     ],
   },

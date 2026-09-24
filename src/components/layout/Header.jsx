@@ -3,27 +3,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { Search, Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { NAV_LINKS } from "../../data/navLinks.js";
+import { FEATURES } from "../../data/features.js";
 import { UNIVERSES } from "../../data/universes.js";
-
-// Para cada universo, o anchor exato da seção "Módulos do sistema" que
-// representa aquela funcionalidade (mesmos ids usados em ModulesSection e
-// no submenu da Sidebar). Quando não existe um módulo equivalente, o clique
-// cai no card correspondente dentro da Central de Aprendizagem.
-const UNIVERSE_TO_MODULE_HREF = {
-  dashboard: "#dashboard",
-  vendas: "#vendas",
-  pagamento: "#pagamento",
-  comandas: "#comandas",
-  clientes: "#clientes",
-  produto: "#produto",
-  barril: "#barril",
-  torneira: "#torneira",
-  estoque: "#estoque",
-  relatoriosfinanceiro: "#relatorios-financeiro",
-  torneiraservico: "#relatorios-torneira",
-  fiscal: "#relatorios-fiscal",
-  sistema: "#sistema",
-};
+import { scrollToSection } from "../../scrollToSection.js";
 
 export default function Header() {
   const { dark, toggle } = useTheme();
@@ -54,13 +36,13 @@ export default function Header() {
   const go = (href) => {
     setMenuOpen(false);
     setSearchOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection(href);
   };
 
   const searchableContent = UNIVERSES.flatMap((universe) => {
-    // Destino exato: módulo correspondente em "Módulos do sistema" quando existir,
-    // senão o card específico daquele universo na Central de Aprendizagem.
-    const targetHref = UNIVERSE_TO_MODULE_HREF[universe.id] ?? `#universo-${universe.id}`;
+    const feature = FEATURES.find(
+      (item) => item.id === universe.id || item.universeId === universe.id,
+    );
 
     return [
       {
@@ -73,7 +55,9 @@ export default function Header() {
         title: screen.title,
         description: screen.desc,
         type: "Funcionalidade",
-        href: targetHref,
+        href: feature
+          ? `#${feature.id}`
+          : `#universo-${universe.id}`,
       })),
     ];
   });
@@ -198,7 +182,7 @@ export default function Header() {
                       onClick={() => {
                         setQuery("");
                         setSearchOpen(false);
-                        document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                        scrollToSection(item.href);
                       }}
                       className="w-full rounded-xl border border-black/8 px-3 py-2 text-left transition-colors hover:bg-black/5 dark:border-white/10 dark:hover:bg-white/5"
                     >

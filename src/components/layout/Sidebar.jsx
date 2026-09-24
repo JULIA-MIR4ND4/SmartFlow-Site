@@ -1,31 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { X, Home, Compass, Layers, Sparkles, Mail } from "lucide-react";
-
-const MENU_ITEMS = [
-  { label: "Home", href: "#home", icon: Home },
-  { label: "Sobre", href: "#sobre", icon: Sparkles },
-  { label: "Central de Aprendizagem", href: "#galeria", icon: Compass },
-  { label: "Funcionalidades", href: "#funcionalidades", icon: Layers },
-  { label: "Contato", href: "#contato", icon: Mail },
-];
-
-const FUNCTIONALITY_SUBITEMS = [
-  { label: "Dashboard", href: "#dashboard" },
-  { label: "Vendas", href: "#vendas" },
-  { label: "Pagamento", href: "#pagamento" },
-  { label: "Comandas", href: "#comandas" },
-  { label: "Clientes", href: "#clientes" },
-  { label: "Produto", href: "#produto" },
-  { label: "Barril", href: "#barril" },
-  { label: "Torneira", href: "#torneira" },
-  { label: "Estoque", href: "#estoque" },
-  { label: "Consultas Financeiro", href: "#consultas-financeiro" },
-  { label: "Consultas Vendas", href: "#consultas-vendas" },
-  { label: "Relatórios Financeiro", href: "#relatorios-financeiro" },
-  { label: "Relatórios Torneira", href: "#relatorios-torneira" },
-  { label: "Relatórios Fiscal", href: "#relatorios-fiscal" },
-  { label: "Sistema", href: "#sistema" },
-];
+import { X } from "lucide-react";
+import { NAV_LINKS } from "../../data/navLinks.js";
+import { FEATURES } from "../../data/features.js";
+import { scrollToSection } from "../../scrollToSection.js";
 
 export default function Sidebar({ open, onClose }) {
   const [funcMenuOpen, setFuncMenuOpen] = useState(false);
@@ -57,7 +34,7 @@ export default function Sidebar({ open, onClose }) {
 
   const goTo = (href) => {
     onClose();
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToSection(href);
   };
 
   return (
@@ -76,7 +53,7 @@ export default function Sidebar({ open, onClose }) {
         </div>
 
         <div className="flex flex-col items-center gap-3 px-3 py-3">
-          {MENU_ITEMS.map(({ label, href, icon: Icon }) => {
+          {NAV_LINKS.map(({ label, href, icon: Icon }) => {
             const isFunctionalities = href === "#funcionalidades";
             return (
               <div
@@ -111,17 +88,17 @@ export default function Sidebar({ open, onClose }) {
                       Funcionalidades
                     </div>
                     <div className="flex flex-col gap-1">
-                      {FUNCTIONALITY_SUBITEMS.map((item) => (
+                      {FEATURES.map((feature) => (
                         <button
-                          key={item.href}
+                          key={feature.id}
                           onClick={() => {
                             setFuncMenuOpen(false);
                             onClose();
-                            document.querySelector(item.href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+                            scrollToSection(`#${feature.id}`);
                           }}
                           className="rounded-xl px-2.5 py-1.5 text-left text-sm text-slate-700 transition-colors hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-white/5"
                         >
-                          {item.label}
+                          {feature.title}
                         </button>
                       ))}
                     </div>

@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import ScreenImage from "../ui/ScreenImage.jsx";
+import { scrollToSection } from "../../scrollToSection.js";
 
 const STATS = [
   ["15+", "Módulos integrados"],
@@ -9,8 +10,6 @@ const STATS = [
 ];
 
 export default function HeroSection() {
-  const goTo = (href) => document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
       <div className="absolute inset-0 pointer-events-none">
@@ -73,14 +72,14 @@ export default function HeroSection() {
             className="flex flex-wrap gap-3"
           >
             <button
-              onClick={() => goTo("#funcionalidades")}
+              onClick={() => scrollToSection("#funcionalidades")}
               className="flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand-hover text-white rounded-xl font-medium transition-colors group shadow-lg shadow-blue-600/25"
             >
               Explorar funcionalidades
               <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
             </button>
             <button
-              onClick={() => goTo("#sobre")}
+              onClick={() => scrollToSection("#sobre")}
               className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border bg-black/5 hover:bg-black/8 text-slate-700 border-black/10 dark:bg-white/5 dark:hover:bg-white/10 dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20"
             >
               Conheça o projeto

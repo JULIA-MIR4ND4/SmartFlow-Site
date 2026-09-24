@@ -18,7 +18,7 @@ export default function UniverseViewer({ universe, onClose }) {
   const total = images.length;
   const currentImage = images[screenIdx];
   const docScreen = getDocScreenData(universe.id, screenIdx);
-  const screen = docScreen ?? universe.screens[screenIdx] ?? {
+  const screen = docScreen ?? {
     title: `Tela ${screenIdx + 1}`,
     desc: "",
     hotspots: [],

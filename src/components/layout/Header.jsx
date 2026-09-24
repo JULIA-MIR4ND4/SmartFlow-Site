@@ -14,6 +14,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState("");
+  const [docScreens, setDocScreens] = useState(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 24);
@@ -22,9 +23,15 @@ export default function Header() {
   }, []);
 
   useEffect(() => {
-    if (!searchOpen) return;
     const onKeyDown = (event) => {
-      if (event.key === "Escape") {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === "k") {
+        event.preventDefault();
+        setMenuOpen(false);
+        setSearchOpen(true);
+        return;
+      }
+
+      if (searchOpen && event.key === "Escape") {
         setSearchOpen(false);
         setQuery("");
       }
@@ -32,6 +39,24 @@ export default function Header() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [searchOpen]);
+
+  useEffect(() => {
+    if (!searchOpen || docScreens) return;
+
+    let active = true;
+    import("../../data/learningHotspots.js").then(({ default: hotspots }) => {
+      if (active) setDocScreens(hotspots);
+    });
+
+    return () => {
+      active = false;
+    };
+  }, [searchOpen, docScreens]);
+
+  const openSearch = () => {
+    setMenuOpen(false);
+    setSearchOpen(true);
+  };
 
   const go = (href) => {
     setMenuOpen(false);
@@ -44,6 +69,12 @@ export default function Header() {
       (item) => item.id === universe.id || item.universeId === universe.id,
     );
 
+    const screens = docScreens?.[universe.id]
+      ? Object.entries(docScreens[universe.id])
+          .sort(([firstIndex], [secondIndex]) => Number(firstIndex) - Number(secondIndex))
+          .map(([, screen]) => screen)
+      : [];
+
     return [
       {
         title: universe.name,
@@ -51,7 +82,7 @@ export default function Header() {
         type: "Universo",
         href: `#universo-${universe.id}`,
       },
-      ...universe.screens.map((screen) => ({
+      ...screens.map((screen) => ({
         title: screen.title,
         description: screen.desc,
         type: "Funcionalidade",
@@ -86,14 +117,14 @@ export default function Header() {
           <HeaderActions
             dark={dark}
             onToggleTheme={toggle}
-            onToggleSearch={() => setSearchOpen((value) => !value)}
+            onToggleSearch={openSearch}
             onNavigate={go}
           />
           <MobileActions
             dark={dark}
             menuOpen={menuOpen}
             onToggleTheme={toggle}
-            onToggleSearch={() => setSearchOpen((value) => !value)}
+            onToggleSearch={openSearch}
             onToggleMenu={() => setMenuOpen((value) => !value)}
           />
         </div>

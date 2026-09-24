@@ -5,7 +5,7 @@ import { getFirstScreenImage, getScreenImages } from "../../data/screenImages.js
 
 export default function UniverseCard({ universe, index, onSelect }) {
   const firstImage = getFirstScreenImage(universe.id);
-  const screenCount = getScreenImages(universe.id).length || universe.screens.length;
+  const screenCount = getScreenImages(universe.id).length;
   const Icon = universe.icon;
 
   return (

@@ -2,6 +2,8 @@ export default function SidebarItem({ label, href, Icon, onClick }) {
   return (
     <>
       <button
+        type="button"
+        aria-label={label}
         onClick={onClick}
         className="flex h-11 w-11 items-center justify-center rounded-full border transition-all border-black/8 bg-white hover:bg-brand/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-brand/20"
       >

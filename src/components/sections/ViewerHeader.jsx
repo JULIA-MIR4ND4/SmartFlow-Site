@@ -7,6 +7,8 @@ export default function ViewerHeader({ universe, screenIdx, total, closeButtonRe
     <div className="flex items-center justify-between px-6 py-4 border-b border-black/6 bg-white dark:border-white/5 dark:bg-[#070E1E]">
       <button
         ref={closeButtonRef}
+        type="button"
+        aria-label="Voltar à galeria"
         onClick={onClose}
         className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors"
       >

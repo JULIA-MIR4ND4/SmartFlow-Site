@@ -10,9 +10,10 @@ export default function UniverseCard({ universe, index, onSelect }) {
 
   return (
     <FadeIn delay={index * 0.04}>
-      <div
+      <button
+        type="button"
         id={`universo-${universe.id}`}
-        className="group relative rounded-xl overflow-hidden border border-black/8 bg-white cursor-pointer transition-all duration-300 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 scroll-mt-24 dark:border-white/8 dark:bg-transparent dark:hover:shadow-brand/8"
+        className="group relative block w-full rounded-xl overflow-hidden border border-black/8 bg-white text-left cursor-pointer transition-all duration-300 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 scroll-mt-24 dark:border-white/8 dark:bg-transparent dark:hover:shadow-brand/8"
         onClick={onSelect}
       >
         <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-white text-[11px] font-semibold shadow-lg" style={{ background: universe.color }}>
@@ -42,7 +43,7 @@ export default function UniverseCard({ universe, index, onSelect }) {
           <div className="font-semibold text-sm text-slate-900 dark:text-white">{universe.name}</div>
           <div className="text-xs mt-0.5 text-slate-500">{universe.description}</div>
         </div>
-      </div>
+      </button>
     </FadeIn>
   );
 }

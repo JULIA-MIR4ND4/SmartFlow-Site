@@ -5,13 +5,13 @@ import { Menu, Moon, Search, Sun, X } from "lucide-react";
 export function MobileActions({ dark, menuOpen, onToggleTheme, onToggleSearch, onToggleMenu }) {
   return (
     <div className="md:hidden flex items-center gap-2">
-      <button onClick={onToggleSearch} className="p-2 text-slate-500 dark:text-slate-400">
+      <button type="button" aria-label="Abrir busca" onClick={onToggleSearch} className="p-2 text-slate-500 dark:text-slate-400">
         <Search size={18} />
       </button>
-      <button onClick={onToggleTheme} className="p-2 text-slate-500 dark:text-slate-400">
+      <button type="button" aria-label={dark ? "Ativar tema claro" : "Ativar tema escuro"} onClick={onToggleTheme} className="p-2 text-slate-500 dark:text-slate-400">
         {dark ? <Sun size={18} /> : <Moon size={18} />}
       </button>
-      <button className="p-1 text-slate-500 dark:text-slate-400" onClick={onToggleMenu}>
+      <button type="button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} className="p-1 text-slate-500 dark:text-slate-400" onClick={onToggleMenu}>
         {menuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
     </div>

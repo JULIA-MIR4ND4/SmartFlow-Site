@@ -72,7 +72,7 @@ export default function HotspotDot({ spot, index, activeIdx, onToggle }) {
         onToggle(isActive ? null : index);
       }}
     >
-      <div className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full ${palette.ring} animate-ping`} />
+      <div className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full ${palette.ring} animate-ping motion-reduce:animate-none`} />
       <div
         className={`w-5 h-5 rounded-full border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${palette.dot} ${palette.hover} ${
           isActive ? "scale-125" : "hover:scale-110"

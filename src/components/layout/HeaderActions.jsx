@@ -4,6 +4,8 @@ export default function HeaderActions({ dark, onToggleTheme, onToggleSearch, onN
   return (
     <div className="hidden md:flex items-center gap-2">
       <button
+        type="button"
+        aria-label="Abrir busca"
         onClick={onToggleSearch}
         className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors text-slate-500 hover:text-slate-900 hover:bg-black/5 border border-black/10 dark:text-slate-400 dark:hover:text-white dark:hover:bg-white/5 dark:border-white/10"
       >
@@ -14,6 +16,8 @@ export default function HeaderActions({ dark, onToggleTheme, onToggleSearch, onN
         </kbd>
       </button>
       <button
+        type="button"
+        aria-label={dark ? "Ativar tema claro" : "Ativar tema escuro"}
         onClick={onToggleTheme}
         className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors text-slate-500 hover:text-blue-600 hover:bg-black/5 border border-black/10 dark:text-slate-400 dark:hover:text-yellow-400 dark:hover:bg-white/5 dark:border-white/10"
       >

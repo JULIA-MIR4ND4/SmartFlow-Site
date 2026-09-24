@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { MotionConfig } from "motion/react";
 import { ThemeCtx } from "./context/ThemeContext.jsx";
 import Header from "./components/layout/Header.jsx";
 import Sidebar from "./components/layout/Sidebar.jsx";
@@ -17,22 +18,24 @@ export default function App() {
   }, [dark]);
 
   return (
-    <ThemeCtx.Provider value={{ dark, toggle: () => setDark((d) => !d) }}>
-      <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#0D1629] dark:text-white">
-        <div className="flex min-h-screen">
-          <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-          <div className="flex-1">
-            <Header />
-            <main className="pt-16">
-              <HeroSection />
-              <WhatIsSection />
-              <UniverseGallery />
-              <ModulesSection />
-              <ContactSection />
-            </main>
+    <MotionConfig reducedMotion="user">
+      <ThemeCtx.Provider value={{ dark, toggle: () => setDark((d) => !d) }}>
+        <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#0D1629] dark:text-white">
+          <div className="flex min-h-screen">
+            <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+            <div className="flex-1">
+              <Header />
+              <main className="pt-16">
+                <HeroSection />
+                <WhatIsSection />
+                <UniverseGallery />
+                <ModulesSection />
+                <ContactSection />
+              </main>
+            </div>
           </div>
         </div>
-      </div>
-    </ThemeCtx.Provider>
+      </ThemeCtx.Provider>
+    </MotionConfig>
   );
 }

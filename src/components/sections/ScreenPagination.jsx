@@ -4,6 +4,9 @@ export default function ScreenPagination({ images, screenIdx, onSelect }) {
       {images.map((_, i) => (
         <button
           key={i}
+          type="button"
+          aria-label={`Abrir tela ${i + 1}`}
+          aria-current={i === screenIdx ? "page" : undefined}
           onClick={() => onSelect(i)}
           className={`rounded-full transition-all duration-300 ${
             i === screenIdx

@@ -33,7 +33,7 @@ export default function HeroSection() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-sm text-[#3B82F6] mb-7"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse motion-reduce:animate-none" />
             Sistema completo de gestão
           </motion.div>
 

@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { lazy, Suspense, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { UNIVERSES } from "../../data/universes.js";
 import FadeIn from "../ui/FadeIn.jsx";
 import UniverseCard from "./UniverseCard.jsx";
-import UniverseViewer from "./UniverseViewer.jsx";
+
+const UniverseViewer = lazy(() => import("./UniverseViewer.jsx"));
 
 export default function UniverseGallery() {
   const [selectedUniverse, setSelectedUniverse] = useState(null);
@@ -47,7 +48,20 @@ export default function UniverseGallery() {
 
       <AnimatePresence>
         {selectedUniverse && (
-          <UniverseViewer universe={selectedUniverse} onClose={() => setSelectedUniverse(null)} />
+          <Suspense
+            fallback={
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                style={{ background: "rgba(0,0,0,0.85)" }}
+                aria-label="Carregando telas"
+                role="status"
+              >
+                <div className="h-10 w-10 animate-spin motion-reduce:animate-none rounded-full border-2 border-white/30 border-t-white" />
+              </div>
+            }
+          >
+            <UniverseViewer universe={selectedUniverse} onClose={() => setSelectedUniverse(null)} />
+          </Suspense>
         )}
       </AnimatePresence>
     </section>

@@ -1,8 +1,8 @@
 // Mapeia cada universo/módulo para o prefixo usado nos arquivos de imagem
-// dentro de public/imagem (ex: "dashboard" -> dashboard1-claro.png / dashboard1-escuro.png)
+// dentro de public/imagem (ex: "dashboard" -> dashboard1-claro.webp / dashboard1-escuro.webp)
 // e para a quantidade de telas reais disponíveis para aquele universo.
 //
-// Como as imagens já seguem o padrão "<prefixo><numero>-<claro|escuro>.png",
+// Como as imagens já seguem o padrão "<prefixo><numero>-<claro|escuro>.webp",
 // só precisamos saber o prefixo e quantas telas existem — o restante do nome
 // é montado automaticamente pelo componente ScreenImage.
 

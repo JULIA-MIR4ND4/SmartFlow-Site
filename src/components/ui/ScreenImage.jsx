@@ -5,15 +5,15 @@ import { useTheme } from "../../context/ThemeContext.jsx";
  * entre a versão "claro" e "escuro" conforme o tema atual do site.
  *
  * @param {string} name - nome-base da imagem, sem o sufixo de tema
- *   (ex: "dashboard1" vira /imagem/dashboard1-claro.png ou -escuro.png)
+ *   (ex: "dashboard1" vira /imagem/dashboard1-claro.webp ou -escuro.webp)
  * @param {"cover"|"contain"} fit - "cover" (padrão) preenche o quadro podendo
  *   cortar bordas da imagem; "contain" exibe a imagem inteira, sem cortes.
  */
-export default function ScreenImage({ name, alt = "", className = "", fit = "cover", onLoad }) {
+export default function ScreenImage({ name, alt = "", className = "", fit = "cover", loading = "lazy", onLoad }) {
   const { dark } = useTheme();
   if (!name) return null;
 
-  const src = `/imagem/${name}-${dark ? "escuro" : "claro"}.png`;
+  const src = `/imagem/${name}-${dark ? "escuro" : "claro"}.webp`;
   const fitClass = fit === "contain" ? "object-contain" : "object-cover object-top";
 
   return (
@@ -22,7 +22,7 @@ export default function ScreenImage({ name, alt = "", className = "", fit = "cov
         key={src}
         src={src}
         alt={alt || `Tela ${name} do SmartFlow`}
-        loading="lazy"
+        loading={loading}
         className={`w-full h-full ${fitClass} ${className}`}
         onLoad={(e) => {
           if (onLoad) {

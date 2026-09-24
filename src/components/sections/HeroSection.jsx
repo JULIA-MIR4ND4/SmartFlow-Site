@@ -124,7 +124,7 @@ export default function HeroSection() {
               </div>
             </div>
             <div className="aspect-[1920/945]">
-              <ScreenImage name="dashboard1" fit="contain" />
+              <ScreenImage name="dashboard1" fit="contain" loading="eager" />
             </div>
           </div>
         </motion.div>

@@ -48,7 +48,12 @@ export default function Sidebar({ open, onClose }) {
       <div className={overlayClasses} onClick={onClose} />
       <aside className={sidebarClasses}>
         <div className="flex items-center justify-center px-4 py-5">
-          <button type="button" aria-label="Fechar menu lateral" className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/5" onClick={onClose}>
+          <button
+            type="button"
+            aria-label="Fechar menu lateral"
+            className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/5"
+            onClick={onClose}
+          >
             <X size={14} />
           </button>
         </div>

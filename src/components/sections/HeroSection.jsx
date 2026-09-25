@@ -88,8 +88,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.42 }}
             className="flex gap-8 mt-12 pt-8 border-t border-black/6 dark:border-white/5"
           >

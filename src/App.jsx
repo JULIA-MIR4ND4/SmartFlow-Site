@@ -11,7 +11,6 @@ import ContactSection from "./components/sections/ContactSection.jsx";
 
 export default function App() {
   const [dark, setDark] = useState(true);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", dark);
@@ -22,7 +21,7 @@ export default function App() {
       <ThemeCtx.Provider value={{ dark, toggle: () => setDark((d) => !d) }}>
         <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#0D1629] dark:text-white">
           <div className="flex min-h-screen">
-            <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+            <Sidebar open={false} onClose={() => {}} />
             <div className="flex-1">
               <Header />
               <main className="pt-16">

@@ -71,11 +71,14 @@ export default function HotspotDot({ spot, index, isActive, onToggle }) {
         onToggle(isActive ? null : index);
       }}
     >
-      <div className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full ${palette.ring} animate-ping motion-reduce:animate-none`} />
       <div
-        className={`w-5 h-5 rounded-full border-2 border-white shadow-lg flex items-center justify-center transition-all duration-200 ${palette.dot} ${palette.hover} ${
-          isActive ? "scale-125" : "hover:scale-110"
-        }`}
+        className={`absolute inset-0 w-5 h-5 -translate-x-px -translate-y-px rounded-full
+          ${palette.ring} animate-ping motion-reduce:animate-none`}
+      />
+      <div
+        className={`w-5 h-5 rounded-full border-2 border-white shadow-lg flex items-center justify-center
+          transition-all duration-200 ${palette.dot} ${palette.hover}
+          ${isActive ? "scale-125" : "hover:scale-110"}`}
       >
         <span className="text-[8px] font-bold text-white leading-none select-none">{num}</span>
       </div>
@@ -93,8 +96,13 @@ export default function HotspotDot({ spot, index, isActive, onToggle }) {
               transform: `translateY(${flipY ? "50%" : "-50%"})`,
             }}
           >
-            <div className={`rounded-xl border bg-slate-950/95 p-3 shadow-2xl shadow-black/50 ${palette.border}`}>
-              <div className={`text-[11px] font-semibold ${palette.text} mb-1`}>{spot.number || index + 1} · {spot.name}</div>
+            <div
+              className={`rounded-xl border bg-slate-950/95 p-3 shadow-2xl shadow-black/50
+                ${palette.border}`}
+            >
+              <div className={`text-[11px] font-semibold ${palette.text} mb-1`}>
+                {spot.number || index + 1} · {spot.name}
+              </div>
               <div className="text-[10px] text-slate-300 leading-relaxed mb-2">{spot.function}</div>
               <div className="text-[10px] text-slate-400 leading-relaxed">{spot.usage}</div>
               {spot.observations && (

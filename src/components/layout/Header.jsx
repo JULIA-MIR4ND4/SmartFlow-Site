@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "../../context/ThemeContext.jsx";
 import { FEATURES } from "../../data/features.js";
 import { UNIVERSES } from "../../data/universes.js";
@@ -97,7 +97,10 @@ export default function Header() {
     scrollToSection(href);
   };
 
-  const searchableContent = buildSearchableContent(docScreens);
+  const searchableContent = useMemo(
+    () => buildSearchableContent(docScreens),
+    [docScreens],
+  );
   const normalizedQuery = query.trim().toLowerCase();
 
   const results = normalizedQuery

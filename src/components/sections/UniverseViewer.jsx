@@ -26,10 +26,6 @@ export default function UniverseViewer({ universe, onClose }) {
   const hotspots = screen.hotspots ?? [];
 
   useEffect(() => {
-    setActiveHotspot(null);
-  }, [screenIdx]);
-
-  useEffect(() => {
     const previousActiveElement = document.activeElement;
     const previousOverflow = document.body.style.overflow;
     const focusableSelector = [
@@ -78,8 +74,22 @@ export default function UniverseViewer({ universe, onClose }) {
     };
   }, [onClose]);
 
-  const prev = () => screenIdx > 0 && setScreenIdx(screenIdx - 1);
-  const next = () => screenIdx < total - 1 && setScreenIdx(screenIdx + 1);
+  const changeScreen = (nextScreenIdx) => {
+    setScreenIdx(nextScreenIdx);
+    setActiveHotspot(null);
+  };
+
+  const prev = () => {
+    if (screenIdx > 0) {
+      changeScreen(screenIdx - 1);
+    }
+  };
+
+  const next = () => {
+    if (screenIdx < total - 1) {
+      changeScreen(screenIdx + 1);
+    }
+  };
 
   return (
     <motion.div
@@ -120,7 +130,7 @@ export default function UniverseViewer({ universe, onClose }) {
               onClearHotspot={() => setActiveHotspot(null)}
               onToggleHotspot={setActiveHotspot}
             />
-            <ScreenPagination images={images} screenIdx={screenIdx} onSelect={setScreenIdx} />
+            <ScreenPagination images={images} screenIdx={screenIdx} onSelect={changeScreen} />
           </div>
           <div className="p-6 h-full min-h-0 flex flex-col gap-4 border-l border-black/6 bg-white dark:border-white/5 dark:bg-transparent">
             <div className="flex-1 min-h-0 overflow-y-auto pr-1 hotspot-scroll">

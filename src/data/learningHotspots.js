@@ -827,7 +827,7 @@ const DOC_HOTSPOTS = {
           y: 37,
         },
         {
-          id: "pag-estado-actions",
+          id: "pag-vincular-actions",
           number: "02",
           name: "Botões do modal",
           category: "🟢 Ação",
@@ -6962,4 +6962,4 @@ export function getDocScreenData(universeId, screenIndex) {
   return DOC_HOTSPOTS[universeId]?.[screenIndex] ?? null;
 }
 
-export default DOC_HOTSPOTS;
+export { DOC_HOTSPOTS };

@@ -2,6 +2,7 @@ import { lazy, Suspense, useState } from "react";
 import { AnimatePresence } from "motion/react";
 import { UNIVERSES } from "../../data/universes.js";
 import FadeIn from "../ui/FadeIn.jsx";
+import SectionHeader from "../ui/SectionHeader.jsx";
 import UniverseCard from "./UniverseCard.jsx";
 
 const UniverseViewer = lazy(() => import("./UniverseViewer.jsx"));
@@ -18,20 +19,14 @@ export default function UniverseGallery() {
       />
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <FadeIn className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-sm text-[#3B82F6] mb-4">
-            Central de Aprendizagem SmartFlow
-          </div>
-          <h2
-            className="font-display text-4xl lg:text-5xl font-bold mb-4 text-slate-900 dark:text-white"
-          >
-            Central de Aprendizagem SmartFlow
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto text-slate-500">
-            Selecione um Universo para explorar as telas reais do sistema. Os números nas bolinhas
-            indicam a sequência lógica de utilização. Passe o mouse para saber mais sobre cada
-            elemento.
-            
-          </p>
+          <SectionHeader
+            eyebrow="Central de Aprendizagem SmartFlow"
+            title="Central de Aprendizagem SmartFlow"
+            description="Selecione um Universo para explorar as telas reais do sistema. Os números nas bolinhas indicam a sequência lógica de utilização. Passe o mouse para saber mais sobre cada elemento."
+            eyebrowClassName="inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-sm text-[#3B82F6] mb-4"
+            titleClassName="font-display text-4xl lg:text-5xl font-bold mb-4 text-slate-900 dark:text-white"
+            descriptionClassName="text-lg max-w-2xl mx-auto text-slate-500"
+          />
           <p className="text-lg max-w-2xl mx-auto text-slate-500">
              🟢 Ação,  🔵 Visualização, 🟠 Navegação, 🟣 Configuração, ⚪ Informação, 🟡 Download / Exportação.
           </p>

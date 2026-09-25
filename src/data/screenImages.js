@@ -37,5 +37,3 @@ export function getScreenImages(universeId) {
 export function getFirstScreenImage(universeId) {
   return getScreenImages(universeId)[0] ?? null;
 }
-
-export default IMAGE_CONFIG;

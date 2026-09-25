@@ -52,8 +52,7 @@ const HOTSPOT_PALETTE = {
   },
 };
 
-export default function HotspotDot({ spot, index, activeIdx, onToggle }) {
-  const isActive = activeIdx === index;
+export default function HotspotDot({ spot, index, isActive, onToggle }) {
   const num = spot.number || `${index + 1}`.padStart(2, "0");
   const flipX = spot.x > 55;
   const flipY = spot.y > 60;

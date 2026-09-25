@@ -36,15 +36,17 @@ export default function Sidebar({ open, onClose }) {
     scrollToSection(href);
   };
 
+  const overlayClasses = `fixed inset-0 z-30 transition-all duration-300 lg:hidden ${
+    open ? "bg-black/50 visible" : "invisible bg-transparent"
+  }`;
+  const sidebarClasses = `fixed left-0 top-0 z-40 h-full bg-slate-50/90 text-slate-900 transition-all duration-300 lg:sticky lg:translate-x-0 lg:h-screen dark:bg-[#0F172A]/90 dark:text-white ${
+    open ? "translate-x-0 w-24" : "-translate-x-full lg:translate-x-0 w-20"
+  }`;
+
   return (
     <>
-      <div
-        className={`fixed inset-0 z-30 transition-all duration-300 lg:hidden ${open ? "bg-black/50 visible" : "invisible bg-transparent"}`}
-        onClick={onClose}
-      />
-      <aside
-        className={`fixed left-0 top-0 z-40 h-full bg-slate-50/90 text-slate-900 transition-all duration-300 lg:sticky lg:translate-x-0 lg:h-screen dark:bg-[#0F172A]/90 dark:text-white ${open ? "translate-x-0 w-24" : "-translate-x-full lg:translate-x-0 w-20"}`}
-      >
+      <div className={overlayClasses} onClick={onClose} />
+      <aside className={sidebarClasses}>
         <div className="flex items-center justify-center px-4 py-5">
           <button type="button" aria-label="Fechar menu lateral" className="rounded-full p-2 hover:bg-black/5 dark:hover:bg-white/5" onClick={onClose}>
             <X size={14} />

@@ -1,13 +1,19 @@
 import { motion } from "motion/react";
 import { ChevronRight } from "lucide-react";
 import ScreenImage from "../ui/ScreenImage.jsx";
+import BrowserChrome from "../ui/BrowserChrome.jsx";
 import { scrollToSection } from "../../scrollToSection.js";
 
 const STATS = [
-  ["15+", "Módulos integrados"],
-  ["100%", "Web e responsivo"],
-  ["24/7", "Suporte e atualizações"],
+  { value: "15", label: "Módulos integrados" },
+  { value: "100%", label: "Web e responsivo" },
+  { value: "24/7", label: "Suporte e atualizações" },
 ];
+
+const HERO_REVEAL = {
+  initial: { opacity: 0, y: 16 },
+  animate: { opacity: 1, y: 0 },
+};
 
 export default function HeroSection() {
   return (
@@ -28,8 +34,7 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-16 items-center w-full">
         <div>
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-sm text-[#3B82F6] mb-7"
           >
@@ -38,8 +43,7 @@ export default function HeroSection() {
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="font-display text-6xl lg:text-7xl font-extrabold leading-none mb-5 text-slate-900 dark:text-white"
           >
@@ -47,8 +51,7 @@ export default function HeroSection() {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.18 }}
             className="text-xl font-medium mb-4 leading-snug text-slate-800 dark:text-slate-200"
           >
@@ -56,8 +59,7 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.24 }}
             className="text-base mb-10 leading-relaxed text-slate-500"
           >
@@ -66,8 +68,7 @@ export default function HeroSection() {
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
+            {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.32 }}
             className="flex flex-wrap gap-3"
           >
@@ -92,14 +93,14 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.42 }}
             className="flex gap-8 mt-12 pt-8 border-t border-black/6 dark:border-white/5"
           >
-            {STATS.map(([n, l]) => (
-              <div key={l}>
+            {STATS.map(({ value, label }) => (
+              <div key={label}>
                 <div
                     className="font-display text-2xl font-bold text-slate-900 dark:text-white"
                 >
-                  {n}
+                  {value}
                 </div>
-                <div className="text-xs text-slate-500 mt-0.5">{l}</div>
+                <div className="text-xs text-slate-500 mt-0.5">{label}</div>
               </div>
             ))}
           </motion.div>
@@ -113,16 +114,7 @@ export default function HeroSection() {
         >
           <div className="absolute -inset-6 bg-brand/6 rounded-3xl blur-3xl pointer-events-none" />
           <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/80 dark:border-white/10 dark:shadow-black/60">
-            <div className="flex items-center gap-2 px-4 py-3 border-b bg-white border-slate-200 dark:bg-[#060D1C] dark:border-white/5">
-              <div className="flex gap-1.5">
-                <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                <div className="w-3 h-3 rounded-full bg-green-500/60" />
-              </div>
-              <div className="flex-1 mx-4 rounded text-xs px-3 py-1 text-center bg-slate-100 text-slate-500 dark:bg-[#0F172A]">
-                app.smartflow.com.br
-              </div>
-            </div>
+            <BrowserChrome address="app.smartflow.com.br" variant="large" />
             <div className="aspect-[1920/945]">
               <ScreenImage name="dashboard1" fit="contain" loading="eager" />
             </div>

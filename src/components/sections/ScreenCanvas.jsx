@@ -8,12 +8,12 @@ export default function ScreenCanvas({ universe, currentImage, hotspots, activeH
       <BrowserChrome address={`app.smartflow.com.br/${universe.id}`} />
       <div className="relative" style={{ height: 380 }} onClick={onClearHotspot}>
         {currentImage && <ScreenImage name={currentImage} fit={universe.imageFit || "cover"} />}
-        {hotspots.map((spot, i) => (
+        {hotspots.map((spot, index) => (
           <HotspotDot
-            key={spot.id || i}
+            key={spot.id || index}
             spot={spot}
-            index={i}
-            isActive={activeHotspot === i}
+            index={index}
+            isActive={activeHotspot === index}
             onToggle={onToggleHotspot}
           />
         ))}

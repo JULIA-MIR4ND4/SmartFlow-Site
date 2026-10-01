@@ -30,7 +30,7 @@ const IMAGE_CONFIG = {
 export function getScreenImages(universeId) {
   const config = IMAGE_CONFIG[universeId];
   if (!config) return [];
-  return Array.from({ length: config.count }, (_, i) => `${config.prefix}${i + 1}`);
+  return Array.from({ length: config.count }, (_, index) => `${config.prefix}${index + 1}`);
 }
 
 // Retorna apenas a primeira tela real de um universo (usado em cards/resumos).

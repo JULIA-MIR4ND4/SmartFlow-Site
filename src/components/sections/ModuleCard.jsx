@@ -40,7 +40,7 @@ export default function ModuleCard({ feature, index }) {
           {feature.description}
         </p>
         <div className="mt-6">
-          <h4 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand dark:text-[#3B82F6]">
+          <h4 className="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand dark:text-brand-light">
             PRINCIPAIS AÇÕES DISPONÍVEIS
           </h4>
           <ul className="mt-4 space-y-2.5">
@@ -49,7 +49,7 @@ export default function ModuleCard({ feature, index }) {
                 key={action}
                 className="flex items-start gap-2.5 text-sm leading-6 text-slate-700 dark:text-slate-300"
               >
-                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand dark:bg-[#3B82F6]" />
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand dark:bg-brand-light" />
                 <span>{action}</span>
               </li>
             ))}

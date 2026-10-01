@@ -21,7 +21,6 @@ const CONTACT_METHODS = [
     icon: Instagram,
   },
 ];
-
 export default function ContactSection() {
   return (
     <section id="contato" className="py-32 relative">
@@ -31,8 +30,14 @@ export default function ContactSection() {
             className="text-center max-w-2xl mx-auto mb-14"
             eyebrow="Contato"
             title="Alguma dúvida sobre o SmartFlow?"
-            description="Estamos à disposição para conversar, tirar dúvidas ou mostrar o sistema com mais calma. É só chamar por um dos canais abaixo."
-            titleClassName="font-display text-3xl lg:text-4xl font-bold mb-4 leading-tight text-slate-900 dark:text-white"
+            description={
+              "Estamos à disposição para conversar, tirar dúvidas ou mostrar o sistema com mais calma. " +
+              "É só chamar por um dos canais abaixo."
+            }
+            titleClassName={[
+              "font-display text-3xl lg:text-4xl font-bold mb-4 leading-tight",
+              "text-slate-900 dark:text-white",
+            ].join(" ")}
             descriptionClassName="text-lg leading-relaxed text-slate-600 dark:text-slate-400"
           />
         </FadeIn>
@@ -45,10 +50,20 @@ export default function ContactSection() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-3 px-6 py-4 rounded-2xl border border-black/8 bg-white transition-colors hover:border-brand/30 hover:bg-slate-50 w-full sm:w-auto dark:border-white/10 dark:bg-white/5 dark:hover:border-brand/40 dark:hover:bg-white/[0.07]"
+                className={[
+                  "group flex items-center gap-3 px-6 py-4 rounded-2xl border border-black/8",
+                  "bg-white transition-colors hover:border-brand/30 hover:bg-slate-50 w-full sm:w-auto",
+                  "dark:border-white/10 dark:bg-white/5 dark:hover:border-brand/40",
+                  "dark:hover:bg-white/[0.07]",
+                ].join(" ")}
               >
-                <div className="w-11 h-11 rounded-xl bg-brand/15 border border-brand/25 flex items-center justify-center flex-shrink-0">
-                  <Icon size={18} className="text-[#3B82F6]" />
+                <div
+                  className={[
+                    "w-11 h-11 rounded-xl bg-brand/15 border border-brand/25",
+                    "flex items-center justify-center flex-shrink-0",
+                  ].join(" ")}
+                >
+                  <Icon size={18} className="text-brand-light" />
                 </div>
                 <div className="text-left">
                   <div className="text-xs mb-0.5 text-slate-500">{label}</div>
@@ -60,11 +75,16 @@ export default function ContactSection() {
         </FadeIn>
 
         <FadeIn delay={0.2}>
-          <div className="mt-20 pt-8 border-t border-black/8 flex flex-col sm:flex-row items-center justify-between gap-4 dark:border-white/10">
+          <div
+            className={[
+              "mt-20 pt-8 border-t border-black/8 flex flex-col sm:flex-row",
+              "items-center justify-between gap-4 dark:border-white/10",
+            ].join(" ")}
+          >
             <span
               className="font-display font-bold text-slate-900 dark:text-white"
             >
-              Smart<span className="text-[#3B82F6]">Flow</span>
+              Smart<span className="text-brand-light">Flow</span>
             </span>
             <span className="text-sm text-slate-500">
               © {new Date().getFullYear()} SmartFlow. Todos os direitos reservados.

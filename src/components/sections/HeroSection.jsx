@@ -17,15 +17,23 @@ const HERO_REVEAL = {
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-16">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center overflow-hidden pt-16"
+    >
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-brand/8 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#7C3AED]/6 rounded-full blur-[100px]" />
+        <div
+          className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-brand/8 rounded-full blur-[140px]"
+        />
+        <div
+          className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-[#7C3AED]/6 rounded-full blur-[100px]"
+        />
         <div
           className="absolute inset-0 opacity-[0.025]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px)",
+              "linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px)," +
+              "linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px)",
             backgroundSize: "64px 64px",
           }}
         />
@@ -36,18 +44,24 @@ export default function HeroSection() {
           <motion.div
             {...HERO_REVEAL}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20 rounded-full text-sm text-[#3B82F6] mb-7"
+            className={[
+              "inline-flex items-center gap-2 px-3 py-1.5 bg-brand/10 border border-brand/20",
+              "rounded-full text-sm text-brand-light mb-7",
+            ].join(" ")}
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#3B82F6] animate-pulse motion-reduce:animate-none" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-light animate-pulse motion-reduce:animate-none" />
             Sistema completo de gestão
           </motion.div>
 
           <motion.h1
             {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-display text-6xl lg:text-7xl font-extrabold leading-none mb-5 text-slate-900 dark:text-white"
+            className={[
+              "font-display text-6xl lg:text-7xl font-extrabold leading-none mb-5",
+              "text-slate-900 dark:text-white",
+            ].join(" ")}
           >
-            Smart<span className="text-[#3B82F6]">Flow</span>
+            Smart<span className="text-brand-light">Flow</span>
           </motion.h1>
 
           <motion.p
@@ -74,14 +88,26 @@ export default function HeroSection() {
           >
             <button
               onClick={() => scrollToSection("#funcionalidades")}
-              className="flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand-hover text-white rounded-xl font-medium transition-colors group shadow-lg shadow-blue-600/25"
+              className={[
+                "flex items-center gap-2 px-6 py-3 bg-brand hover:bg-brand-hover",
+                "text-white rounded-xl font-medium transition-colors group shadow-lg",
+                "shadow-blue-600/25",
+              ].join(" ")}
             >
               Explorar funcionalidades
-              <ChevronRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
+              <ChevronRight
+                size={16}
+                className="group-hover:translate-x-0.5 transition-transform"
+              />
             </button>
             <button
               onClick={() => scrollToSection("#sobre")}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all border bg-black/5 hover:bg-black/8 text-slate-700 border-black/10 dark:bg-white/5 dark:hover:bg-white/10 dark:text-slate-300 dark:border-white/10 dark:hover:border-white/20"
+              className={[
+                "flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all",
+                "border bg-black/5 hover:bg-black/8 text-slate-700 border-black/10",
+                "dark:bg-white/5 dark:hover:bg-white/10 dark:text-slate-300",
+                "dark:border-white/10 dark:hover:border-white/20",
+              ].join(" ")}
             >
               Conheça o projeto
             </button>
@@ -108,11 +134,20 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            duration: 0.8,
+            delay: 0.25,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="relative"
         >
           <div className="absolute -inset-6 bg-brand/6 rounded-3xl blur-3xl pointer-events-none" />
-          <div className="relative rounded-2xl overflow-hidden border border-slate-200 shadow-2xl shadow-slate-200/80 dark:border-white/10 dark:shadow-black/60">
+          <div
+            className={[
+              "relative rounded-2xl overflow-hidden border border-slate-200 shadow-2xl",
+              "shadow-slate-200/80 dark:border-white/10 dark:shadow-black/60",
+            ].join(" ")}
+          >
             <BrowserChrome address="app.smartflow.com.br" variant="large" />
             <div className="aspect-[1920/945]">
               <ScreenImage name="dashboard1" fit="contain" loading="eager" />

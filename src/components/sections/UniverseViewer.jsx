@@ -24,6 +24,15 @@ export default function UniverseViewer({ universe, onClose }) {
     hotspots: [],
   };
   const hotspots = screen.hotspots ?? [];
+  const dialogClasses = [
+    "relative w-full max-w-6xl rounded-2xl overflow-hidden border border-black/10",
+    "bg-slate-100 shadow-2xl flex flex-col h-[640px] max-h-[90vh]",
+    "dark:border-white/10 dark:bg-[#0B1526]",
+  ].join(" ");
+  const detailsPanelClasses = [
+    "p-6 h-full min-h-0 flex flex-col gap-4 border-l border-black/6 bg-white",
+    "dark:border-white/5 dark:bg-transparent",
+  ].join(" ");
 
   useEffect(() => {
     const previousActiveElement = document.activeElement;
@@ -110,7 +119,7 @@ export default function UniverseViewer({ universe, onClose }) {
         aria-modal="true"
         aria-labelledby="universe-viewer-title"
         tabIndex={-1}
-        className="relative w-full max-w-6xl rounded-2xl overflow-hidden border border-black/10 bg-slate-100 shadow-2xl flex flex-col h-[640px] max-h-[90vh] dark:border-white/10 dark:bg-[#0B1526]"
+        className={dialogClasses}
         onClick={(event) => event.stopPropagation()}
       >
         <ViewerHeader
@@ -120,7 +129,10 @@ export default function UniverseViewer({ universe, onClose }) {
           closeButtonRef={closeButtonRef}
           onClose={onClose}
         />
-        <div className="grid lg:grid-cols-[1fr_320px] flex-1 min-h-0 lg:h-full" style={{ gridTemplateRows: "minmax(0, 1fr)" }}>
+        <div
+          className="grid lg:grid-cols-[1fr_320px] flex-1 min-h-0 lg:h-full"
+          style={{ gridTemplateRows: "minmax(0, 1fr)" }}
+        >
           <div className="bg-slate-50 p-6 dark:bg-transparent">
             <ScreenCanvas
               universe={universe}
@@ -132,14 +144,21 @@ export default function UniverseViewer({ universe, onClose }) {
             />
             <ScreenPagination images={images} screenIdx={screenIdx} onSelect={changeScreen} />
           </div>
-          <div className="p-6 h-full min-h-0 flex flex-col gap-4 border-l border-black/6 bg-white dark:border-white/5 dark:bg-transparent">
+          <div className={detailsPanelClasses}>
             <div className="flex-1 min-h-0 overflow-y-auto pr-1 hotspot-scroll">
               <div className="mb-4">
-                <div className="text-[11px] font-semibold uppercase tracking-widest mb-1" style={{ color: universe.color }}>
+                <div
+                  className="text-[11px] font-semibold uppercase tracking-widest mb-1"
+                  style={{ color: universe.color }}
+                >
                   {universe.name} — Tela {screenIdx + 1}
                 </div>
-                <h3 className="font-display text-xl font-bold mb-2 text-slate-900 dark:text-white">{screen.title}</h3>
-                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">{screen.desc}</p>
+                <h3 className="font-display text-xl font-bold mb-2 text-slate-900 dark:text-white">
+                  {screen.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                  {screen.desc}
+                </p>
               </div>
               <HotspotList hotspots={hotspots} activeHotspot={activeHotspot} onToggle={setActiveHotspot} />
             </div>

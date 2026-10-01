@@ -110,7 +110,10 @@ export default function Header() {
       })
     : [];
   const headerScrolledClasses = scrolled
-    ? "bg-slate-50/92 backdrop-blur-xl border-b border-black/6 shadow-xl shadow-black/5 dark:bg-[#0F172A]/90 dark:border-white/5 dark:shadow-black/30"
+    ? [
+        "bg-slate-50/92 backdrop-blur-xl border-b border-black/6 shadow-xl shadow-black/5",
+        "dark:bg-[#0F172A]/90 dark:border-white/5 dark:shadow-black/30",
+      ].join(" ")
     : "";
   const headerClasses = `fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerScrolledClasses}`;
 
@@ -118,7 +121,10 @@ export default function Header() {
     <header className={headerClasses}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <button onClick={() => navigateTo("#home")} className="flex items-center">
+          <button
+            onClick={() => navigateTo("#home")}
+            className="flex items-center"
+          >
             <img
               src={dark ? "/imagem/logo1-escuro.webp" : "/imagem/logo1-claro.webp"}
               alt="SmartFlow"

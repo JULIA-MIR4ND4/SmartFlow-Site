@@ -36,12 +36,15 @@ export default function Sidebar({ open, onClose }) {
     scrollToSection(href);
   };
 
-  const overlayClasses = `fixed inset-0 z-30 transition-all duration-300 lg:hidden ${
-    open ? "bg-black/50 visible" : "invisible bg-transparent"
-  }`;
-  const sidebarClasses = `fixed left-0 top-0 z-40 h-full bg-slate-50/90 text-slate-900 transition-all duration-300 lg:sticky lg:translate-x-0 lg:h-screen dark:bg-[#0F172A]/90 dark:text-white ${
-    open ? "translate-x-0 w-24" : "-translate-x-full lg:translate-x-0 w-20"
-  }`;
+  const overlayClasses = [
+    "fixed inset-0 z-30 transition-all duration-300 lg:hidden",
+    open ? "bg-black/50 visible" : "invisible bg-transparent",
+  ].join(" ");
+  const sidebarClasses = [
+    "fixed left-0 top-0 z-40 h-full bg-slate-50/90 text-slate-900 transition-all duration-300",
+    "lg:sticky lg:translate-x-0 lg:h-screen dark:bg-[#0F172A]/90 dark:text-white",
+    open ? "translate-x-0 w-24" : "-translate-x-full lg:translate-x-0 w-20",
+  ].join(" ");
 
   return (
     <>
@@ -67,7 +70,11 @@ export default function Sidebar({ open, onClose }) {
                 onMouseEnter={isFunctionalities ? openFuncMenu : undefined}
                 onMouseLeave={isFunctionalities ? scheduleCloseFuncMenu : undefined}
               >
-                <SidebarItem label={label} href={href} Icon={Icon} onClick={() => goTo(href)} />
+                <SidebarItem
+                  label={label}
+                  Icon={Icon}
+                  onClick={() => goTo(href)}
+                />
                 {isFunctionalities && (
                   <FunctionalitiesFlyout
                     open={funcMenuOpen}

@@ -18,7 +18,7 @@ export default function WhatIsSection() {
         <FadeIn>
           <SectionHeader
             eyebrow="Sobre o SmartFlow"
-            title={<>O que é o <span className="text-[#3B82F6]">SmartFlow?</span></>}
+            title={<>O que é o <span className="text-brand-light">SmartFlow?</span></>}
             description="O SmartFlow é um sistema desenvolvido para auxiliar no gerenciamento de estabelecimentos comerciais, centralizando em uma única plataforma as principais atividades administrativas e operacionais."
           />
           <p className="leading-relaxed mb-8 text-slate-500">
@@ -30,7 +30,7 @@ export default function WhatIsSection() {
             {BULLET_POINTS.map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <div className="w-5 h-5 rounded-full bg-brand/20 border border-brand/40 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check size={10} className="text-[#3B82F6]" />
+                  <Check size={10} className="text-brand-light" />
                 </div>
                 <span className="text-sm text-slate-600 dark:text-slate-400">{item}</span>
               </div>
@@ -38,7 +38,7 @@ export default function WhatIsSection() {
           </div>
         </FadeIn>
         <FadeIn delay={0.15}>
-          <ScreenFrame imageName="financeiro1" />
+          <ScreenFrame mockupKey="financeiro" imageName="financeiro1" />
         </FadeIn>
       </div>
     </section>

@@ -39,8 +39,8 @@ export default function HeroSection() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-20 grid lg:grid-cols-2 gap-16 items-center w-full">
-        <div>
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-8 sm:py-12 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center w-full">
+        <div className="min-w-0">
           <motion.div
             {...HERO_REVEAL}
             transition={{ duration: 0.5 }}
@@ -57,7 +57,7 @@ export default function HeroSection() {
             {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.1 }}
             className={[
-              "font-display text-6xl lg:text-7xl font-extrabold leading-none mb-5",
+              "font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-none mb-5",
               "text-slate-900 dark:text-white",
             ].join(" ")}
           >
@@ -116,10 +116,10 @@ export default function HeroSection() {
           <motion.div
             {...HERO_REVEAL}
             transition={{ duration: 0.5, delay: 0.42 }}
-            className="flex gap-8 mt-12 pt-8 border-t border-black/6 dark:border-white/5"
+            className="grid grid-cols-3 gap-x-3 gap-y-4 mt-12 pt-8 border-t border-black/6 dark:border-white/5 sm:flex sm:gap-8"
           >
             {STATS.map(({ value, label }) => (
-              <div key={label}>
+              <div key={label} className="min-w-0">
                 <div
                     className="font-display text-2xl font-bold text-slate-900 dark:text-white"
                 >
@@ -139,7 +139,7 @@ export default function HeroSection() {
             delay: 0.25,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className="relative"
+          className="relative min-w-0"
         >
           <div className="absolute -inset-6 bg-brand/6 rounded-3xl blur-3xl pointer-events-none" />
           <div

@@ -7,7 +7,7 @@ export default function FunctionalitiesFlyout({
   onSelect,
 }) {
   const flyoutClasses = [
-    "absolute left-16 top-0 z-50 min-w-[220px] rounded-2xl border border-black/10",
+    "absolute left-16 top-0 z-50 max-h-[calc(100vh-16rem)] min-w-[220px] overflow-y-auto overscroll-contain rounded-2xl border border-black/10",
     "bg-white/95 px-2 py-2 shadow-2xl transition-all duration-200",
     "dark:border-white/10 dark:bg-[#0F172A]/95",
     open ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",

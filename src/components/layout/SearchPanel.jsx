@@ -6,7 +6,7 @@ export default function SearchPanel({
   onResult,
 }) {
   return (
-    <div className="border-t border-black/6 bg-white/95 dark:border-white/5 dark:bg-[#0F172A]/95">
+    <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-t border-black/6 bg-white/95 dark:border-white/5 dark:bg-[#0F172A]/95">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4">
         <div className="rounded-2xl border border-black/8 bg-slate-50 p-3 dark:border-white/10 dark:bg-[#0B1220]">
           <div className="relative">

@@ -7,7 +7,7 @@ export default function HeaderActions({
   onNavigate,
 }) {
   return (
-    <div className="hidden md:flex items-center gap-2">
+    <div className="hidden xl:flex items-center gap-2">
       <button
         type="button"
         aria-label="Abrir busca"

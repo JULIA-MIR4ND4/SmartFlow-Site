@@ -13,7 +13,7 @@ const BULLET_POINTS = [
 export default function WhatIsSection() {
   return (
     <section id="sobre" className="py-32 relative">
-      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-96 h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute left-0 top-1/2 -translate-y-1/2 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-20 items-center">
         <FadeIn>
           <SectionHeader

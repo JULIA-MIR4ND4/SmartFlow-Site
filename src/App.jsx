@@ -22,7 +22,7 @@ export default function App() {
         <div className="min-h-screen bg-slate-50 text-slate-900 transition-colors duration-300 dark:bg-[#0D1629] dark:text-white">
           <div className="flex min-h-screen">
             <Sidebar open={false} onClose={() => {}} />
-            <div className="flex-1">
+            <div className="min-w-0 flex-1">
               <Header />
               <main className="pt-16">
                 <HeroSection />

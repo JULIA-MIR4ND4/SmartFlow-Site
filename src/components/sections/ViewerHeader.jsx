@@ -4,26 +4,26 @@ export default function ViewerHeader({ universe, screenIdx, total, closeButtonRe
   const Icon = universe.icon;
 
   return (
-    <div className="flex items-center justify-between px-6 py-4 border-b border-black/6 bg-white dark:border-white/5 dark:bg-[#070E1E]">
+    <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-3 border-b border-black/6 bg-white dark:border-white/5 dark:bg-[#070E1E] sm:flex-nowrap sm:px-6 sm:py-4">
       <button
         ref={closeButtonRef}
         type="button"
         aria-label="Voltar à galeria"
         onClick={onClose}
-        className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-slate-200 transition-colors"
+        className="flex shrink-0 items-center gap-1.5 whitespace-nowrap text-sm text-slate-400 hover:text-slate-200 transition-colors"
       >
         <ChevronLeft size={16} />
         Voltar à galeria
       </button>
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <div className="w-5 h-5 rounded flex items-center justify-center" style={{ background: universe.color }}>
           <Icon size={12} className="text-white" />
         </div>
-        <span id="universe-viewer-title" className="font-display font-semibold text-slate-900 dark:text-white">
+        <span id="universe-viewer-title" className="min-w-0 font-display font-semibold text-slate-900 dark:text-white">
           {universe.name}
         </span>
       </div>
-      <div className="text-sm text-slate-400 dark:text-slate-500">
+      <div className="ml-auto shrink-0 whitespace-nowrap text-sm text-slate-400 dark:text-slate-500 sm:ml-0">
         Tela {screenIdx + 1} de {total}
       </div>
     </div>

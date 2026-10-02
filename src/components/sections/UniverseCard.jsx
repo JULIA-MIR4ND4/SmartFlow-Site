@@ -47,7 +47,7 @@ export default function UniverseCard({ universe, index, onSelect }) {
             {firstImage && (
               <ScreenImage
                 name={firstImage}
-                fit={universe.imageFit || "cover"}
+                fit="contain"
               />
             )}
           </div>

@@ -11,7 +11,7 @@ export default function ModuleCard({ feature, index }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{ duration: 0.35 }}
-      className={`grid gap-8 lg:gap-12
+      className={`grid grid-cols-1 gap-8 lg:gap-12
         ${isReversed ? "lg:grid-cols-[0.95fr_1.05fr]" : "lg:grid-cols-[1.05fr_0.95fr]"}`}
     >
       <div

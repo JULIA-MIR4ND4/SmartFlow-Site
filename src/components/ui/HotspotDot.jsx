@@ -54,7 +54,7 @@ const HOTSPOT_PALETTE = {
 
 export default function HotspotDot({ spot, index, isActive, onToggle }) {
   const num = spot.number || `${index + 1}`.padStart(2, "0");
-  const flipX = spot.x > 55;
+  const tooltipSide = spot.x < 30 ? "right" : spot.x > 70 ? "left" : "center";
   const flipY = spot.y > 60;
   const palette = HOTSPOT_PALETTE[spot.category] || HOTSPOT_PALETTE.default;
 
@@ -89,11 +89,15 @@ export default function HotspotDot({ spot, index, isActive, onToggle }) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.15 }}
-            className="absolute z-20 w-60 pointer-events-none"
+            className="absolute z-20 w-[min(15rem,calc(100vw-10rem))] max-h-[calc(100dvh-4rem)] overflow-y-auto pointer-events-none sm:w-60"
             style={{
-              [flipX ? "right" : "left"]: "calc(100% + 8px)",
+              ...(tooltipSide === "right"
+                ? { left: "calc(100% + 8px)" }
+                : tooltipSide === "left"
+                  ? { right: "calc(100% + 8px)" }
+                  : { left: "50%" }),
               [flipY ? "bottom" : "top"]: "50%",
-              transform: `translateY(${flipY ? "50%" : "-50%"})`,
+              transform: `translate(${tooltipSide === "center" ? "-50%" : "0"}, ${flipY ? "50%" : "-50%"})`,
             }}
           >
             <div

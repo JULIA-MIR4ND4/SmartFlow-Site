@@ -2,7 +2,7 @@ import { NAV_LINKS } from "../../data/navLinks.js";
 
 export default function DesktopNav({ onNavigate }) {
   return (
-    <nav className="hidden md:flex items-center gap-1">
+    <nav className="hidden xl:flex items-center gap-1">
       {NAV_LINKS.map(({ label, href }) => (
         <button
           key={href}

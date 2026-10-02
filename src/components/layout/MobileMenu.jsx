@@ -10,7 +10,7 @@ export function MobileActions({
   onToggleMenu,
 }) {
   return (
-    <div className="md:hidden flex items-center gap-2">
+    <div className="xl:hidden flex items-center gap-2">
       <button
         type="button"
         aria-label="Abrir busca"
@@ -48,11 +48,11 @@ export default function MobileMenu({ open, onNavigate }) {
           animate={{ opacity: 1, height: "auto" }}
           exit={{ opacity: 0, height: 0 }}
           className={[
-            "md:hidden border-t bg-white/95 backdrop-blur-xl border-black/6",
+            "xl:hidden border-t bg-white/95 backdrop-blur-xl border-black/6",
             "dark:bg-[#0F172A]/95 dark:border-white/5",
           ].join(" ")}
         >
-          <div className="px-6 py-4 space-y-1">
+          <div className="max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain px-6 py-4 space-y-1">
             {NAV_LINKS.map(({ label, href }) => (
               <button
                 key={href}
